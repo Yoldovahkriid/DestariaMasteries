@@ -1,0 +1,46 @@
+{
+  "destariamasteries:alchemy-mastery-name": "Alchemy",
+  "destariamasteries:alchemy-mastery-desc": "Turn nature's ingredients into deadly weapons and potent buffs. The Alchemy mastery unlocks the ability to brew powerful potions, coat weapons in lingering toxins, and unleash devastating explosive and chemical attacks.",
+
+  "destariamasteries:alchemy-basicconcoctions-name": "Basic Concoctions",
+  "destariamasteries:alchemy-basicconcoctions-desc": "Unlocks the ability to craft minor potions and poisons.",
+
+  "destariamasteries:alchemy-fungalnourishment-name": "Fungal Nourishment",
+  "destariamasteries:alchemy-fungalnourishment-desc": "Consuming mushrooms provides {0} additional saturation and increases your healing effectiveness by {1}%% for 10 seconds.",
+
+  "destariamasteries:alchemy-toxictransmutation-name": "Toxic Transmutation",
+  "destariamasteries:alchemy-toxictransmutation-desc": "Reduces the harmful effects of consuming mushrooms by {0}%%.",
+
+  "destariamasteries:alchemy-fungalfingers-name": "Fungal Fingers",
+  "destariamasteries:alchemy-fungalfingers-desc": "Unlocks the ability to craft mushroom substrate.",
+
+  "destariamasteries:alchemy-virulentreaction-name": "Virulent Reaction",
+  "destariamasteries:alchemy-virulentreaction-desc": "Increases the damage potency of your poisons by {0}%%.",
+
+  "destariamasteries:alchemy-potentdecoctions-name": "Potent Decoctions",
+  "destariamasteries:alchemy-potentdecoctions-desc": "Unlocks the ability to craft highly potent potions and poisons.",
+
+  "destariamasteries:alchemy-dazzleblast-name": "Dazzle Blast",
+  "destariamasteries:alchemy-dazzleblast-desc": "Blinds a targeted enemy for {0} seconds.",
+
+  "destariamasteries:alchemy-poisoncloud-name": "Poison Cloud",
+  "destariamasteries:alchemy-poisoncloud-desc": "Creates a lingering cloud of poison for {0} seconds.\nRequires a mushroom. The cloud's poison damage is dependent on the type of mushroom used.",
+
+  "destariamasteries:alchemy-concussiveblast-name": "Concussive Blast",
+  "destariamasteries:alchemy-concussiveblast-desc": "Deafens a targeted enemy for {0} seconds.",
+
+  "destariamasteries:alchemy-primedtoxin-name": "Primed Toxin",
+  "destariamasteries:alchemy-primedtoxin-desc": "Coats your equipped blade in poison, causing your attacks to poison targets for {0} seconds.",
+
+  "destariamasteries:alchemy-granddetonations-name": "Grand Detonations",
+  "destariamasteries:alchemy-granddetonations-desc": "Unlocks the ability to craft powerful explosives.",
+
+  "destariamasteries:alchemy-toxicreserves-name": "Toxic Reserves",
+  "destariamasteries:alchemy-toxicreserves-desc": "While poisoned, your movement speed is increased by {0}%% and hunger depletion is reduced by {1}%%.",
+
+  "destariamasteries:alchemy-costlymistake-name": "Costly Mistake",
+  "destariamasteries:alchemy-costlymistake-desc": "Inflicts poison upon yourself for {0} seconds.",
+
+  "destariamasteries:alchemy-catalyticsurge-name": "Catalytic Surge",
+  "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt."
+}

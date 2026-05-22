@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DestariaMasteries/DestariaMasteries/DestariaMasteries.csproj" />
+  <Project Path="DestariaMasteries/ZZCakeBuild/CakeBuild.csproj" />
+</Solution>
