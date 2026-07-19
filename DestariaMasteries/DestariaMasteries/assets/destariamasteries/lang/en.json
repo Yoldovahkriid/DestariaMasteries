@@ -42,5 +42,65 @@
   "destariamasteries:alchemy-costlymistake-desc": "Inflicts poison upon yourself for {0} seconds.",
 
   "destariamasteries:alchemy-catalyticsurge-name": "Catalytic Surge",
-  "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt."
+  "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt.",
+
+  "destariamasteries:mechanist-mastery-name": "Mechanist",
+  "destariamasteries:mechanist-mastery-desc": "CHANGE THIS LATER: Harness the power of machinery and engineering to gain an edge in combat. The Mechanist mastery unlocks the ability to craft and utilize advanced mechanical devices, from automated turrets to explosive gadgets, giving you a technological advantage on the battlefield.",
+
+  "destariamasteries:mechanist-combatengineering-name": "Combat Engineering",
+  "destariamasteries:mechanist-combatengineering-desc": "Unlocks the ability to craft {0} and increases crossbow damage by {1}%%.",
+
+  "destariamasteries:mechanist-tinkering-name": "Tinkering",
+  "destariamasteries:mechanist-tinkering-desc": "{0} and increases damage against mechanical creatures by {1}%%",
+
+  "destariamasteries:mechanist-delicatetouch-name": "Delicate Touch",
+  "destariamasteries:mechanist-delicatetouch-desc": "You're used to working with small, fragile parts, so your touch is delicate and precise. Chisels, hammers, shears, saws, and knives you use have a {0}%% chance not to lose durability when they normally would.",
+
+  "destariamasteries:mechanist-tuning-name": "Tuning",
+  "destariamasteries:mechanist-tuning-desc": "Unlocks the ability to craft and use the Tuning Spear",
+
+  "destariamasteries:mechanist-beasttamer-name": "Beast Tamer",
+  "destariamasteries:mechanist-beasttamer-desc": "Decreases the damage of your Tuning Spear against mechanical creatures by {0}%%. {1}",
+
+  "destariamasteries:mechanist-beastslayer-name": "Beast Slayer",
+  "destariamasteries:mechanist-beastslayer-desc": "Increases the damage of your Tuning Spear against mechanical creatures by {0}%%.",
+
+  "destariamasteries:mechanist-eyeforcraftsmanship-name": "Eye for Craftsmanship",
+  "destariamasteries:mechanist-eyeforcraftsmanship-desc": "While wearing glasses, you gain {0}%% more loot from mechanical creatures.",
+
+  "destariamasteries:mechanist-scrapmechanics-name": "Scrap Mechanic",
+  "destariamasteries:mechanist-scrapmechanics-desc": "Convert {0} metal scraps into {1} rusty gear(s).",
+
+  "destariamasteries:mechanist-antiarmor-name": "Anti-Armor",
+  "destariamasteries:mechanist-antiarmor-desc": "Gain the Ability to craft the Goat Foot's Crossbow",
+
+  "destariamasteries:mechanist-temporaladjustment-name": "Temporal Adjustment",
+  "destariamasteries:mechanist-temporaladjustment-desc": "Imbue once every 24 hours a rusty gear with your life energy to turn it into a temporal gear.",
+
+  "destariamasteries:mechanist-temporalinurement-name": "Temporal Inurement",
+  "destariamasteries:mechanist-temporalinurement-desc": "Reduces the rate at which you lose temporal stability by {0}%%.",
+
+  "destariamasteries:mechanist-antianything-name": "Anti-Anything",
+  "destariamasteries:mechanist-antianything-desc": "Gain the ability to craft the Windless Crossbow",
+
+  "destariamasteries:mechanist-producttesting-name": "Product Testing",
+  "destariamasteries:mechanist-producttesting-desc": "Reduces crossbow dispersion by {0}%% and increases crossbow damage by {1}%%.",
+
+  "destariamasteries:mechanist-refineddevelopment-name": "Refined Development",
+  "destariamasteries:mechanist-refineddevelopment-desc": "Craft chutes with cupronickel for double the output.",
+
+  "destariamasteries:mechanist-wardagainstbeasts-name": "Ward against Beasts",
+  "destariamasteries:mechanist-wardagainstbeasts-desc": "Understanding the mechanisms behind mechanical creatures makes you more adept at defending yourself from them. You take {0}%% less damage from mechanical creatures, and {1}%% less damage from other monsters.",
+
+  "destariamasteries:mechanist-turnbacktheclock-name": "Turn back the clock",
+  "destariamasteries:mechanist-turnbacktheclock-desc": "Once per day (resetting at 0:00 UTC), when dealt a fatal blow, time fractures to save you. Your body is thrown backward through time, rewinding you to your spawn point with {0}%% health.",
+
+  "destariamasteries:mechanist-stormchaser-name": "Storm Chase",
+  "destariamasteries:mechanist-stormchaser-desc": "Your time spent around temporal machinery has given you insight to the energies that power them which has given you somewhat of a sixth sense for their ebb and flow. You always exactly know when the next temporal storm is coming.",
+
+  "destariamasteries:mechanist-temporaldevastation-name": "Temporal Devastation",
+  "destariamasteries:mechanist-temporaldevastation-desc": "Once every 30 minutes, violently shatter a temporal gear to rip apart the fabric of time. All monsters within 12 blocks take {0} damage, leaving their corpses utterly mangled. The chronal backwash causes all players in the area to lose {1}%% temporal stability within one second and slows them by {1}%% for 2 seconds.",
+
+  "game:item-creature-locust-corrupt-sawblade-hacked": "Hacked Corrupt Sawblade Locust",
+  "destariamasteries:block-jonasscrew-*": "Jonas Screw"
 }

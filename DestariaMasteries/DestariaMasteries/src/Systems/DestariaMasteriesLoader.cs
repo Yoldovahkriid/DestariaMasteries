@@ -1,5 +1,9 @@
 ﻿using DestariaMasteries.src.Alchemy;
+using DestariaMasteries.src.Behavior.CollectibleBehaviors;
+using DestariaMasteries.src.Behavior.EntityBehaviors;
 using DestariaMasteries.src.Effects;
+using DestariaMasteries.src.Mechanist;
+using DestariaMasteries.src.Mechanist.Blocks.Jonasscrew;
 using HarmonyLib;
 using MasteryLibrary;
 using Vintagestory.API.Client;
@@ -8,6 +12,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.Client;
+using Vintagestory.GameContent.Mechanics;
+using Vintagestory.Server;
 
 namespace DestariaMasteries.src.Systems
 {
@@ -18,26 +24,63 @@ namespace DestariaMasteries.src.Systems
         private Harmony Harmony;
         public override void Start(ICoreAPI api)
         {
-            Harmony = new Harmony("DestariaSkills");
-            Harmony.PatchAll();
-
+            if (!Harmony.HasAnyPatches(Mod.Info.ModID))
+            {
+                Harmony = new Harmony(Mod.Info.ModID);
+                Harmony.PatchAllUncategorized();
+            }
+            //Masteries
             MasteryLibrary = api.ModLoader.GetModSystem<MasteryLibraryAPI>();
             MasteryLibrary.MasteryDefinitions.AddMastery(new AlchemyMastery());
-
+            MasteryLibrary.MasteryDefinitions.AddMastery(new MechanistMastery());
+            //Alchemy Skills
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PrimedToxin());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new DazzleBlast());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new CostlyMistake());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new CatalyticSurge());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PoisonCloud());
-
+            //Mechanist Skills
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new ScrapMechanic());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new TemporalAdjustment());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new StormChaser());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new TemporalDevastation());
+            //Effects
             MasteryLibrary.EffectRegistry.RegisterEffect(new PoisonDOT());
             MasteryLibrary.EffectRegistry.RegisterEffect(new Blindness());
             MasteryLibrary.EffectRegistry.RegisterEffect(new Deafness());
+            MasteryLibrary.EffectRegistry.RegisterEffect(new StabilityDrain());
+
+            api.RegisterBlockClass("BlockJonasScrew", typeof(BlockJonasScrew));
+
+            api.RegisterCollectibleBehaviorClass("SmallItemDamageReduction", typeof(SmallItemDamageReduction));
+            api.RegisterCollectibleBehaviorClass("DamageScalar", typeof(DamageScalarBehavior));
+
+            api.RegisterBlockEntityBehaviorClass("MPJonasScrew", typeof(BEBehaviorMPJonasScrew));
+
+            api.RegisterEntityBehaviorClass("DamageResistances", typeof(DamageResistances));
         }
 
         public override void StartServerSide(ICoreServerAPI api)
         {
-            Mod.Logger.Notification("Hello from template mod server side: " + Lang.Get("destariamasteries:hello"));
+            api.ChatCommands.Create("skilldebug")
+                .RequiresPrivilege(Privilege.chat)
+                .BeginSubCommand("gettraits")
+                .RequiresPrivilege(Privilege.chat)
+                .HandleWith((TextCommandCallingArgs args) =>
+                {
+                    EntityPlayer player = args.Caller.Entity as EntityPlayer;
+                    foreach (var kvp in player.Stats)
+                    {
+                        string stat = $"{kvp.Key}: ";
+                        foreach (var item in kvp.Value.ValuesByKey)
+                        {
+                            stat += $"{item.Key} = {item.Value.Value}, ";
+                        }
+                        api.SendMessage(args.Caller.Player, GlobalConstants.AllChatGroups, stat, EnumChatType.Notification);
+                    }
+                    return TextCommandResult.Success();
+                })
+                .EndSubCommand();
         }
 
         public override void StartClientSide(ICoreClientAPI api)
@@ -45,5 +88,9 @@ namespace DestariaMasteries.src.Systems
             ClientAPI = api;
         }
 
+        public override void Dispose()
+        {
+            Harmony?.UnpatchAll($"{Mod.Info.ModID}");
+        }
     }
 }

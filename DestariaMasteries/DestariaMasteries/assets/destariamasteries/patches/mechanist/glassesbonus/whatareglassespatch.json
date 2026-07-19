@@ -1,0 +1,8 @@
+[
+  {
+    "file": "game:itemtypes/wearable/seraph/face",
+    "op": "addmerge",
+    "path": "/attributesByType/@.*-(snow-goggles|rotwalker|rottenking|surgeon|glasses-clockmaker|arctic|funeralmask|glasses)/isGlasses",
+    "value": true
+  }
+]

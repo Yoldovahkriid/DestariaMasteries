@@ -1,0 +1,155 @@
+[
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/3/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/3/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/3/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/3/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/3/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-gearfoot/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-gearfoot/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-gearfoot/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bowtorn",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-gearfoot/3/dropModbyStat",
+    "value": "glassesbonus"
+  }
+]

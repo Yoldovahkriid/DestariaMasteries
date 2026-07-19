@@ -1,0 +1,126 @@
+[
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-surface/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-deep/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-tainted/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-corrupt/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*-nightmare/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+
+
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/shiver",
+    "op": "addmerge",
+    "path": "/server/behaviors/9/dropsByType/*/2/dropModbyStat",
+    "value": "glassesbonus"
+  }
+]

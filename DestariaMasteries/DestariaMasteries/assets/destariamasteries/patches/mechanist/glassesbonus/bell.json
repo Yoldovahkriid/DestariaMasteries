@@ -1,0 +1,32 @@
+[
+  {
+    "file": "game:entities/lore/bell",
+    "op": "addmerge",
+    "path": "/drops/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bell",
+    "op": "addmerge",
+    "path": "/drops/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bell",
+    "op": "addmerge",
+    "path": "/drops/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bell",
+    "op": "addmerge",
+    "path": "/drops/3/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/bell",
+    "op": "addmerge",
+    "path": "/drops/4/dropModbyStat",
+    "value": "glassesbonus"
+  }
+]

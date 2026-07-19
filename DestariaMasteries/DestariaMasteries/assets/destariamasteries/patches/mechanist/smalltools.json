@@ -1,0 +1,44 @@
+[
+  {
+    "file": "game:itemtypes/tool/chisel",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  },
+  {
+    "file": "game:itemtypes/tool/chisel",
+    "op": "addmerge",
+    "path": "/behaviorsByType/@(.*-steel|.*-meteoriciron|.*-iron)/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  },
+  {
+    "file": "game:itemtypes/tool/hammer",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  },
+  {
+    "file": "game:itemtypes/tool/knife",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  },
+  {
+    "file": "game:itemtypes/tool/saw",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  },
+  {
+    "file": "game:itemtypes/tool/shears",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  },
+  {
+    "file": "game:itemtypes/tool/shears",
+    "op": "addmerge",
+    "path": "/behaviorsByType/@(.*-steel|.*-meteoriciron|.*-iron)/-",
+    "value": { "name": "SmallItemDamageReduction" }
+  }
+]

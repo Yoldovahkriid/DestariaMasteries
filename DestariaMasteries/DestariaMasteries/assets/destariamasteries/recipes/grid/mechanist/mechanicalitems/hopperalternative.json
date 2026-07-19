@@ -1,0 +1,25 @@
+{
+  "ingredientPattern": "I_I,_I_",
+  "ingredients": {
+    "I": {
+      "type": "item",
+      "code": "game:metalplate-cupronickel"
+    }
+  },
+  "width": 3,
+  "height": 2,
+  "attributes": {
+    "requiresSkill": "RefinedDevelopment",
+    "requiresLevel": 1,
+    "scalesWithSkill": "EfficientConstruction",
+    "outputScaling": {
+      "ScalingMethod": "Array",
+      "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "game:hopper",
+    "quantity": 2
+  }
+}
