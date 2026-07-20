@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
@@ -50,6 +51,7 @@ namespace DestariaMasteries.src.Patches
 
                         if (player.Player is IServerPlayer serverPlayer)
                         {
+                            serverPlayer.SendMessage(GlobalConstants.AllChatGroups, "Time fractures around you...", EnumChatType.Notification);
                             EntityPos spawnPos = serverPlayer.GetSpawnPosition(false);
                             player.TeleportTo(spawnPos);
                         }

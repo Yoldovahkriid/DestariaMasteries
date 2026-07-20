@@ -583,7 +583,7 @@ namespace DestariaMasteries.src.Mechanist
         public override int Column => 6;
         public override EnumSkillType SkillType => EnumSkillType.Active;
         public override string Ability => "TemporalDevastation";
-        public override float Cooldown => 1800;
+        public override float Cooldown => 0;
         public TemporalDevastationSkill()
         {
             var skilldamage = new Dictionary<string, object> { { "Values", new float[] { 15, 30, 45, 60, 80 } } };
