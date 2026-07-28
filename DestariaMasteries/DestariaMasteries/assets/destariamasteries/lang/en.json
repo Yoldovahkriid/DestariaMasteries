@@ -42,5 +42,24 @@
   "destariamasteries:alchemy-costlymistake-desc": "Inflicts poison upon yourself for {0} seconds.",
 
   "destariamasteries:alchemy-catalyticsurge-name": "Catalytic Surge",
-  "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt."
+  "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt.",
+
+  "destariamasteries:healing-mastery-name": "Healing",
+  "destariamasteries:healing-mastery-desc": "Endure injury, recover faster, and turn simple medical supplies into reliable lifesavers.",
+
+  "destariamasteries:healing-thickskinned-name": "Thick Skinned",
+  "destariamasteries:healing-thickskinned-desc": "Increases healing effectiveness and healing item use speed by {0}%%.",
+
+  "destariamasteries:healing-soulrecovery-name": "Soul Recovery",
+  "destariamasteries:healing-soulrecovery-desc": "Instantly restores {0}%% of your missing health. Cooldown: {1} minutes.",
+
+  "destariamasteries:healing-soultouch-name": "Soul Touch",
+  "destariamasteries:healing-soultouch-desc": "Soul Recovery also heals nearby players for {0}%% of the health restored to you.",
+
+  "destariamasteries:healing-herbalremedies-name": "Herbal Remedies",
+  "destariamasteries:healing-herbalremedies-desc": "Unlocks the ability to craft the temporal bandage (a bandage that also heals nearby players).",
+
+  "destariamasteries:healing-shockingfingers-name": "Shocking Fingers",
+  "destariamasteries:healing-shockingfingers-desc": "Instantly revives a targeted player without consuming a bandage. Cooldown: {0} minutes."
+
 }

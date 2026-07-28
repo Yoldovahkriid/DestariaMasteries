@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <Reference Include="MasteryLibrary">
-      <HintPath>..\..\..\MasteryLibrary\MasteryLibrary\Releases\masterylibrary\MasteryLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\AppData\Roaming\VintagestoryData\Mods\masterylibrary_1.0.0\MasteryLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VintagestoryAPI">

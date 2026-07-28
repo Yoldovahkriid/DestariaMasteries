@@ -1,5 +1,6 @@
 ﻿using DestariaMasteries.src.Alchemy;
 using DestariaMasteries.src.Effects;
+using DestariaMasteries.src.Healing;
 using HarmonyLib;
 using MasteryLibrary;
 using Vintagestory.API.Client;
@@ -23,12 +24,15 @@ namespace DestariaMasteries.src.Systems
 
             MasteryLibrary = api.ModLoader.GetModSystem<MasteryLibraryAPI>();
             MasteryLibrary.MasteryDefinitions.AddMastery(new AlchemyMastery());
+            MasteryLibrary.MasteryDefinitions.AddMastery(new HealingMastery());
 
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PrimedToxin());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new DazzleBlast());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new CostlyMistake());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new CatalyticSurge());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PoisonCloud());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new SoulRecovery());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new ShockingFingers());
 
             MasteryLibrary.EffectRegistry.RegisterEffect(new PoisonDOT());
             MasteryLibrary.EffectRegistry.RegisterEffect(new Blindness());
