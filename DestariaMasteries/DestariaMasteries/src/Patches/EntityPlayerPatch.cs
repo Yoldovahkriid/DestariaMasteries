@@ -17,6 +17,8 @@ namespace DestariaMasteries.src.Patches
     {
         private const string TurnBackTheClockLastUseDayKey = "destariamasteries:turnbacktheclock-lastusedayutc";
 
+        private const string TurnBackTheClockTriggerKey = "destariamasteries:turnbacktheclock-trigger";
+
         private static long GetUtcDayIndex()
         {
             return DateTimeOffset.UtcNow.ToUnixTimeSeconds() / 86400L;
@@ -49,11 +51,14 @@ namespace DestariaMasteries.src.Patches
                         float healthRefund = player.Stats.GetBlended("deathHealthRefund") - 1.0f;
                         ebh.Health = ebh.MaxHealth * healthRefund;
 
+                        player.WatchedAttributes.SetLong(TurnBackTheClockTriggerKey, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
+
                         if (player.Player is IServerPlayer serverPlayer)
                         {
                             serverPlayer.SendMessage(GlobalConstants.AllChatGroups, "Time fractures around you...", EnumChatType.Notification);
                             EntityPos spawnPos = serverPlayer.GetSpawnPosition(false);
                             player.TeleportTo(spawnPos);
+                            serverPlayer.Entity.World.PlaySoundAt(new AssetLocation("destariamasteries:sounds/tickingclock"), spawnPos.X, spawnPos.Y, spawnPos.Z);
                         }
 
                         MarkTurnBackTheClockUsed(player);

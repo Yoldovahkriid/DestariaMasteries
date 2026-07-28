@@ -76,6 +76,7 @@
 
 <ItemGroup>
   <Folder Include="assets\destariamasteries\blocktypes\abilities\" />
+  <Folder Include="assets\destariamasteries\sounds\" />
 </ItemGroup>
 
 <ItemGroup>
