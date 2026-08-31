@@ -51,8 +51,13 @@ namespace DestariaMasteries.src.Behavior.EntityBehaviors
             float damageResistanceAgainstRust = entityPlayer.Stats.GetBlended("damageResistanceAgainstRust");
             if (damageResistanceAgainstRust > 0 && entity.Tags.Overlaps(RustMonsters))
             {
-                entity.Api.Logger.Debug($"Rust multiplier Multiplier: {damageResistanceAgainstRust}");
                 totalmultiplier *= damageResistanceAgainstRust;
+            }
+
+            float damageResistanceWhenDrunk = entityPlayer.Stats.GetBlended("damageResistanceWhenDrunk");
+            if (damageResistanceWhenDrunk > 0 && entityPlayer.WatchedAttributes.GetFloat("intoxication") > 0.3f)
+            {
+                totalmultiplier *= damageResistanceWhenDrunk;
             }
 
             entity.Api.Logger.Debug($"Total Multiplier: {totalmultiplier}");

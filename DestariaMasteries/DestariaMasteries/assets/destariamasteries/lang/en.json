@@ -101,6 +101,88 @@
   "destariamasteries:mechanist-temporaldevastation-name": "Temporal Devastation",
   "destariamasteries:mechanist-temporaldevastation-desc": "Once every 30 minutes, violently shatter a temporal gear to rip apart the fabric of time. All monsters within 12 blocks take {0} damage, leaving their corpses utterly mangled. The chronal backwash causes all players in the area to lose {1}%% temporal stability within one second and slows them by {1}%% for 2 seconds.",
 
+
+  "destariamasteries:homesteader-mastery-name": "Homesteader",
+  "destariamasteries:homesteader-mastery-desc": "ADD LATER",
+
+  "destariamasteries:homesteader-subsistence-name": "Subsistence",
+  "destariamasteries:homesteader-subsistence-desc": "Gain the ability to turn harvested crops into seeds, harvest {0}% more crops, berries and fruits from fruit trees. Gain {1}%% more meat from animals and fish",
+
+  "destariamasteries:homesteader-ambercombs-name": "Amber Combs",
+  "destariamasteries:homesteader-ambercombs-desc": "When harvesting skeps they no longer fall apart into their materials. You will also get 50%% more honeycombs",
+
+  "destariamasteries:homesteader-emeraldboughs-name": "Emerald Boughs",
+  "destariamasteries:homesteader-emeraldboughs-desc": "When taking cuttings from bushes and fruit trees, you gain twice as many. You will also receive twice as many tree seeds and are garanteed to get atleast one sapling when cutting down a tree.",
+
+  "destariamasteries:homesteader-goldenfields-name": "Golden Fields",
+  "destariamasteries:homesteader-goldenfields-desc": "You gain {0}%% when harvesting crops. Crops you plant have a +/-5°C greater temperature tolerance",
+
+  "destariamasteries:homesteader-deepblue-name": "Deep Blue",
+  "destariamasteries:homesteader-deepblue-desc": "You receive {0}%% more meat when flaying fish. You can also craft fishing bait from fruits, grains and vegetables",
+
+  "destariamasteries:homesteader-whispersinred-name": "Whispers In Red",
+  "destariamasteries:homesteader--desc": "You gain {0}%% more yield from animals",
+
+  "destariamasteries:homesteader-selfsufficient-name": "",
+  "destariamasteries:homesteader-selfsufficient-desc": "",
+
+  "destariamasteries:homesteader-bitfruity-name": "Bit Fruity",
+  "destariamasteries:homesteader-bitfruity-desc": "Harvest {0}%% more from berry bushes, fruit trees and pineapples",
+
+  "destariamasteries:homesteader-heartyveggies-name": "Hearty Veggies",
+  "destariamasteries:homesteader-heartyveggies-desc": "Harvest {0}%% more vegetables",
+
+  "destariamasteries:homesteader-themiller-name": "The Miller",
+  "destariamasteries:homesteader-themiller-desc": "Harvest {0}%% more grains and grass",
+
+  "destariamasteries:homesteader-gentletouch-name": "Gentle Touch",
+  "destariamasteries:homesteader-gentletouch-desc": "Attempt to calm an animal that has already been milked today with a {0}%% chance of success. On success the animal becomes milkable again.",
+
+  "destariamasteries:homesteader-grovetending-name": "Grove Tending",
+  "destariamasteries:homesteader-grovetending-desc": "Attempt to revive an already dead cutting with a {0}%% chance of success. On failure destroys the cutting. Furthermore gain an additional {0}% yield from berry bushes and fruit trees",
+
+  "destariamasteries:homesteader-tothebone-name": "To The Bone",
+  "destariamasteries:homesteader-tothebone-desc": "While holding a knife, you can exert yourself to strip every single last bit of an animal or fish. This adds 50%% to the yield. You can use this Ability {0} times per day",
+
+  "destariamasteries:homesteader-macrobrewery-name": "Macrobrewery",
+  "destariamasteries:homesteader-macrobrewery-desc": "You can give a fruit press a skillfull spin causing it to fully compress instantly. (Note: Due to Server-Client Async it takes a long time for the animation to update but it will still juice fully) When filling a fruit press there is a {0}%% chance to save an item",
+
+  "destariamasteries:homesteader-itainteasy-name": "It Ain't Easy",
+  "destariamasteries:homesteader-itainteasy-desc": "You can craft a curdling agent from salt, vinegar and certain fruit juices which can instantly curdle milk",
+
+  "destariamasteries:homesteader-rationing-name": "Rationing",
+  "destariamasteries:homesteader-rationing-desc": "When planting seeds or using fertilizer there is a {0}%% chance to save the item. Your satiety depletes {1}%% slower.",
+
+  "destariamasteries:homesteader-brewmaster-name": "Brewmaster",
+  "destariamasteries:homesteader-brewmaster-desc": "Once per day you can use a temporal gear to accelerate the process of a sealed barrel. You will also receive {0}%% less damage while drunk.",
+
+  "destariamasteries:homesteader-earlybird-name": "Early Bird",
+  "destariamasteries:homesteader-earlybird-desc": "Every morning the first crop you harvest will restore 50% of your health.",
+
+  "destariamasteries:homesteader-foolsflax-name": "Fools Flax",
+  "destariamasteries:homesteader-foolsflax-desc": "Harvest {0}%% more flax fibres. Was it worth 30 points?",
+
+  "destariamasteries:homesteader-greenerthangreen-name": "Greener than Green",
+  "destariamasteries:homesteader-greenerthangreen-desc": "Once per week you can use 9 fertilizer to accelerate the growth of crops in a 3x3 area instantly marturing them.",
+
+  "destariamasteries:homesteader-miracleoflife-name": "Miracle of Life",
+  "destariamasteries:homesteader-miracleoflife-desc": "Once per day, you can help along a pregnant animal giving birth immidiatly.",
+
+
+  "destariamasteries:item-fishingbait-vegetable": "Vegetable Fishbait",
+  "destariamasteries:item-fishingbait-fruit": "Fruit Fishbait",
+  "destariamasteries:item-fishingbait-grain": "Grain Fishbait",
+
+  "destariamasteries:item-axe-felling-scrap": "Scrap axe",
+  "destariamasteries:item-axe-felling-metal": "Scrap metal axe",
+  "destariamasteries:item-hoe-scrap": "Scrap hoe",
+  "destariamasteries:item-hoe-metal": "Scrap metal hoe",
+  "destariamasteries:item-shears-scrap": "Scrap shears",
+  "destariamasteries:item-shears-metal": "Scrap metal shears",
+  "destariamasteries:item-scythe-scrap": "Scrap scythe",
+  "destariamasteries:item-scythe-metal": "Scrap metal scythe",
+
   "game:item-creature-locust-corrupt-sawblade-hacked": "Hacked Corrupt Sawblade Locust",
+
   "destariamasteries:block-jonasscrew-*": "Jonas Screw"
 }

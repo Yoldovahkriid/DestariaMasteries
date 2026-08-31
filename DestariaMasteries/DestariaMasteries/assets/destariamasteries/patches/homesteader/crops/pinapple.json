@@ -1,0 +1,9 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/pineapple",
+    "op": "addmerge",
+    "path": "/dropsByType/*-16/1/dropModbyStat",
+    "value": "fruitHarvestMultiplier",
+    "side": "server"
+  }
+]

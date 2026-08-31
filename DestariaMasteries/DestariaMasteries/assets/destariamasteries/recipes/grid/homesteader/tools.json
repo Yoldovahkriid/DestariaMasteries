@@ -1,0 +1,242 @@
+[
+  {
+    "name": "scrapaxe",
+    "recipeGroup": 1,
+    "ingredientPattern": "SSR,SH_",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-scraps",
+        "quantity": 2
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      },
+      "H": {
+        "type": "item",
+        "code": "game:stick"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 1
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:axe-felling-scrap",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "metalaxe",
+    "recipeGroup": 1,
+    "ingredientPattern": "SSR,SH_",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-parts",
+        "quantity": 2
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      },
+      "H": {
+        "type": "item",
+        "code": "game:stick"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 3
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:axe-felling-metal",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "scraphoe",
+    "recipeGroup": 1,
+    "ingredientPattern": "SSR,_H_",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-scraps",
+        "quantity": 3
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      },
+      "H": {
+        "type": "item",
+        "code": "game:stick"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 1
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:hoe-scrap",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "metalhoe",
+    "recipeGroup": 1,
+    "ingredientPattern": "SSR,_H_",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-parts",
+        "quantity": 3
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      },
+      "H": {
+        "type": "item",
+        "code": "game:stick"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 3
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:hoe-metal",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "scrapshears",
+    "recipeGroup": 1,
+    "ingredientPattern": "SR,_S",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-scraps",
+        "quantity": 3
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 1
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:shears-scrap",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "metalshears",
+    "recipeGroup": 1,
+    "ingredientPattern": "SR,_S",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-parts",
+        "quantity": 3
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 3
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:shears-metal",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "scrapscythe",
+    "recipeGroup": 1,
+    "ingredientPattern": "RSS,SH_",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-scraps",
+        "quantity": 2
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      },
+      "H": {
+        "type": "item",
+        "code": "game:stick"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 1
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:scythe-scrap",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "metalscythe",
+    "recipeGroup": 1,
+    "ingredientPattern": "RSS,SH_",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:metal-parts",
+        "quantity": 2
+      },
+      "R": {
+        "type": "item",
+        "code": "game:stone-*"
+      },
+      "H": {
+        "type": "item",
+        "code": "game:stick"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Selfsufficient",
+      "requiresLevel": 3
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:scythe-metal",
+      "quantity": 1
+    }
+  }
+]

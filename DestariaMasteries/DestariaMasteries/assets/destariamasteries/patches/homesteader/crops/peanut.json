@@ -1,0 +1,30 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/peanut",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/quantity/avg",
+    "value": "2",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/peanut",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/peanut",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/quantity/avg",
+    "value": "5",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/peanut",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

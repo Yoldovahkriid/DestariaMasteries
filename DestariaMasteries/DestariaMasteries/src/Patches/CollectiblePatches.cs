@@ -11,20 +11,29 @@ using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 namespace DestariaMasteries.src.Patches
 {
     [HarmonyPatch(typeof(CollectibleObject), "tryEatStop")]
-    public class CollectiblePatchesTryEatStop
+    public class CollectiblePatchesTryEatStopPatch
     {
+        private static AssetLocation mushroomWildcard = new AssetLocation("*:mushroom-*");
+        private static AssetLocation vegetableWildcard = new AssetLocation("*:vegetable-*");
+        private static bool IsMushroom(AssetLocation asset) 
+        { 
+            return WildcardUtil.Match(mushroomWildcard, asset);
+        } 
+        private static bool IsVegetable(AssetLocation asset)
+        {
+            return WildcardUtil.Match(vegetableWildcard, asset);
+        }
+
         static bool Prefix(CollectibleObject __instance, float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
             FoodNutritionProperties nutriProps = __instance.GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity);
-            bool IsMushroom = false;
-            if (__instance.Code.Path.Contains("mushroom"))
-            {
-                IsMushroom |= true;
-            }
+
             if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
             {
                 TransitionState state = __instance.UpdateAndGetTransitionState(byEntity.World, slot, EnumTransitionType.Perish);
@@ -34,7 +43,7 @@ namespace DestariaMasteries.src.Patches
                 float healthLossMul = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, slot.Itemstack, byEntity);
 
                 float bonusNutrition = 0;
-                if (IsMushroom && byEntity.HasBehavior<EntityBehaviorEffects>() && byEntity.HasBehavior<EntityBehaviorPlayerMasteries>())
+                if (IsMushroom(__instance.Code) && byEntity.HasBehavior<EntityBehaviorEffects>() && byEntity.HasBehavior<EntityBehaviorPlayerMasteries>())
                 {
                     bonusNutrition = byEntity.Stats.GetBlended("mushroomsSaturation"); //Subtracting one because of BaseValue
                     EntityBehaviorPlayerMasteries? masteries = byEntity.GetBehavior<EntityBehaviorPlayerMasteries>();
@@ -53,6 +62,10 @@ namespace DestariaMasteries.src.Patches
                         }
                         effectManager?.AddEffect(effect);
                     }
+                }
+                if (IsVegetable(__instance.Code))
+                {
+                    bonusNutrition = nutriProps.Satiety * byEntity.Stats.GetBlended("vegetablesSaturation");
                 }
                 byEntity.ReceiveSaturation((nutriProps.Satiety + bonusNutrition) * satLossMul, nutriProps.FoodCategory, nutriProps.SaturationLossDelay);
 
@@ -82,7 +95,7 @@ namespace DestariaMasteries.src.Patches
                 }
 
                 float healthChange = nutriProps.Health * healthLossMul;
-                if (healthChange < 0 && IsMushroom)
+                if (healthChange < 0 && IsMushroom(__instance.Code))
                 {
                     healthChange *= Math.Max(player.Entity.Stats.GetBlended("mushroomDamageMult"), 0);
                 }

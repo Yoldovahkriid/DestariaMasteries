@@ -1,0 +1,106 @@
+[
+  {
+    "name": "fishingpole-bait",
+    "recipeGroup": 2,
+    "ingredientPattern": "P,B",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:fishingpole-simple-{type}",
+        "allowedVariants": [ "wood", "bamboo" ]
+      },
+      "B": {
+        "type": "item",
+        "code": "destariamasteries:fishingbait-*"
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "output": {
+      "type": "item",
+      "code": "game:fishingpole-simple-{type}"
+    }
+  },
+  {
+    "name": "fishingbait",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,H",
+    "shapeless": true,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "H": {
+        "type": "item",
+        "code": "game:grain-*"
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "DeepBlue"
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:fishingbait-grain",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "fishingbait",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,H",
+    "shapeless": true,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "H": {
+        "type": "item",
+        "code": "game:fruit-*"
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "DeepBlue"
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:fishingbait-fruit",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "fishingbait",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,H",
+    "shapeless": true,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "H": {
+        "type": "item",
+        "code": "game:vegetable-*"
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "DeepBlue"
+    },
+    "output": {
+      "type": "item",
+      "code": "destariamasteries:fishingbait-vegetable",
+      "quantity": 1
+    }
+  }
+]

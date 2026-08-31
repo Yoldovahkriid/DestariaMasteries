@@ -16,6 +16,11 @@ namespace DestariaMasteries.src.Patches
             {
                 __result = 0.05f;
             }
+
+            if (__instance.entity.WatchedAttributes.HasAttribute("ToTheBone") && __instance.entity.WatchedAttributes.GetBool("ToTheBone"))
+            {
+                __result *= 1.5f;
+            }
         }
     }
 }

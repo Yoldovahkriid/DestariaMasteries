@@ -2,16 +2,20 @@
 using DestariaMasteries.src.Behavior.CollectibleBehaviors;
 using DestariaMasteries.src.Behavior.EntityBehaviors;
 using DestariaMasteries.src.Effects;
+using DestariaMasteries.src.Homesteader;
 using DestariaMasteries.src.Mechanist;
 using DestariaMasteries.src.Mechanist.Blocks.Jonasscrew;
+using DestariaMasteries.src.Utils;
 using HarmonyLib;
 using MasteryLibrary;
+using MasteryLibrary.src.Behaviors.EntityBehaviors;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.Client;
+using Vintagestory.GameContent;
 using Vintagestory.GameContent.Mechanics;
 using Vintagestory.Server;
 
@@ -22,6 +26,7 @@ namespace DestariaMasteries.src.Systems
         public static ICoreClientAPI? ClientAPI;
         MasteryLibraryAPI MasteryLibrary;
         private Harmony Harmony;
+        private ICoreServerAPI? sapi;
         public override void Start(ICoreAPI api)
         {
             if (!Harmony.HasAnyPatches(Mod.Info.ModID))
@@ -33,6 +38,7 @@ namespace DestariaMasteries.src.Systems
             MasteryLibrary = api.ModLoader.GetModSystem<MasteryLibraryAPI>();
             MasteryLibrary.MasteryDefinitions.AddMastery(new AlchemyMastery());
             MasteryLibrary.MasteryDefinitions.AddMastery(new MechanistMastery());
+            MasteryLibrary.MasteryDefinitions.AddMastery(new HomesteaderMastery());
             //Alchemy Skills
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PrimedToxin());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new DazzleBlast());
@@ -44,6 +50,13 @@ namespace DestariaMasteries.src.Systems
             MasteryLibrary.AbilityRegistry.RegisterAbility(new TemporalAdjustment());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new StormChaser());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new TemporalDevastation());
+            //Homesteader Skills
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new GroveTending());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new GentleTouch());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new ToTheBone());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new BrewMaster());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new GreenerThanGreen());
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new MiracleOfLife());
             //Effects
             MasteryLibrary.EffectRegistry.RegisterEffect(new PoisonDOT());
             MasteryLibrary.EffectRegistry.RegisterEffect(new Blindness());
@@ -62,6 +75,7 @@ namespace DestariaMasteries.src.Systems
 
         public override void StartServerSide(ICoreServerAPI api)
         {
+            sapi = api;
             api.ChatCommands.Create("skilldebug")
                 .RequiresPrivilege(Privilege.chat)
                 .BeginSubCommand("gettraits")
@@ -81,6 +95,8 @@ namespace DestariaMasteries.src.Systems
                     return TextCommandResult.Success();
                 })
                 .EndSubCommand();
+
+            api.Event.BreakBlock += XpRewardEvaluator.OnBlockBroken;
         }
 
         public override void StartClientSide(ICoreClientAPI api)

@@ -1,0 +1,58 @@
+[
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-pine/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-acacia/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-larch/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-crimsonkingmaple/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-redwood/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-ebony/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*-purpleheart/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/drops/0/quantityByType/*/dropModbyStat",
+    "value": "saplingDropRate",
+    "side": "server"
+  }
+]

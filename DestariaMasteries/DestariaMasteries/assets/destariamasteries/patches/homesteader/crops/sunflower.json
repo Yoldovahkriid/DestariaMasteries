@@ -1,0 +1,16 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/sunflower",
+    "op": "addmerge",
+    "path": "/dropsByType/*-12/1/quantity/avg",
+    "value": "3.25",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/sunflower",
+    "op": "addmerge",
+    "path": "/dropsByType/*-12/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  }
+]
