@@ -82,7 +82,7 @@ namespace DestariaMasteries.src.Systems
                 .RequiresPrivilege(Privilege.chat)
                 .HandleWith((TextCommandCallingArgs args) =>
                 {
-                    EntityPlayer player = args.Caller.Entity as EntityPlayer;
+                    EntityPlayer? player = args.Caller.Entity as EntityPlayer;
                     foreach (var kvp in player.Stats)
                     {
                         string stat = $"{kvp.Key}: ";
