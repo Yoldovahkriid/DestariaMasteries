@@ -1,10 +1,14 @@
-﻿using HarmonyLib;
+﻿using CombatOverhaul.Implementations;
+using DestariaMasteries.src.Utils;
+using HarmonyLib;
 using MasteryLibrary.src.Behaviors.EntityBehaviors;
 using MasteryLibrary.src.Core.Masteries.Instances;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using Vintagestory.API.Common;
+using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
 namespace DestariaMasteries.src.Patches
@@ -26,6 +30,27 @@ namespace DestariaMasteries.src.Patches
             if (!byPlayer.InventoryManager.TryGiveItemstack(cuttingStack))
             {
                 api.World.SpawnItemEntity(cuttingStack, __instance.Pos.ToVec3d().Add(0.5, 0.5, 0.5));
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(BEBehaviorFruitingBush), nameof(BEBehaviorFruitingBush.OnBlockInteractStop))]
+    public static class BEBehaviorFruitingBush_OnBlockInteractStopPatch
+    {
+        private static readonly FieldInfo BhBushField = AccessTools.Field(typeof(BEBehaviorFruitingBush), "bhBush");
+        private static readonly MethodInfo GetHarvestTimeMulMethod = AccessTools.Method(typeof(BEBehaviorFruitingBush), "getHarvestTimeMul");
+        public static void Prefix(BEBehaviorFruitingBush __instance, out bool __state)
+        {
+            __state = __instance.BState != null && __instance.BState.Growthstate == EnumFruitingBushGrowthState.Ripe;
+        }
+
+        public static void Postfix(BEBehaviorFruitingBush __instance, bool __state, IWorldAccessor world, IPlayer byPlayer)
+        {
+            if (world.Side != EnumAppSide.Server || byPlayer == null) return;
+
+            if (__state && __instance.BState.Growthstate == EnumFruitingBushGrowthState.Mature)
+            {
+                XpRewardEvaluator.OnHarvest(byPlayer as IServerPlayer, 5f);
             }
         }
     }

@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 namespace DestariaMasteries.src.Utils
 {
@@ -255,9 +258,125 @@ namespace DestariaMasteries.src.Utils
         private static AssetLocation cropWildcard = new AssetLocation("*:crop-*-*");
         private static float CalculateCropXP(Block block, IServerPlayer byPlayer)
         {
-            block.CropProps;
-            return 2f;
+            BlockCropProperties cropProps = block.CropProps;
+            if (cropProps == null) return 0f;
+
+            string[] parts = block.Code.Path.Split('-');
+            if (parts.Length < 3 || !int.TryParse(parts[parts.Length - 1], out int currentStage))
+            {
+                return 0f;
+            }
+
+            if (currentStage < cropProps.GrowthStages)
+            {
+                return 0f;
+            }
+
+            float totalGrowthDays = cropProps.GrowthStages * cropProps.TotalGrowthMonths;
+
+            // a(months)^2+b(months)+c
+            float a = 0.05f;
+            float b = 0.5f;
+            float c = 10.0f;
+
+            float xp = (a * totalGrowthDays * totalGrowthDays) + (b * totalGrowthDays) + c;
+
+            return MathF.Floor(MathF.Max(xp, 1f));
         }
         #endregion
+
+        #region Harvest XP Calculation
+        public static void OnHarvest(IServerPlayer byPlayer, float basexp)
+        {
+            if (byPlayer == null) return;
+            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
+            float xptoaward = basexp;
+            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for harvesting");
+
+            data?.GainExperience(xptoaward);
+        }
+        #endregion
+
+        #region Tree/Log XP Calculation
+        private static AssetLocation logWildcard = new AssetLocation("*:log-*-*-*");
+        private static AssetLocation logSectionWildcard = new AssetLocation("*:logsection-*-*-*");
+
+        private static Dictionary<string, float> logXp = new()
+        {
+            { "birch", 2f },
+            { "oak", 2f },
+            { "maple", 2f },
+            { "pine", 2f },
+            { "acacia", 2f },
+            { "kapok", 2f },
+            { "baldcypress", 2f },
+            { "larch", 2f },
+            { "redwood", 2f },
+            { "ebony", 8f },
+            { "walnut", 2f },
+            { "purpleheart", 8f }
+        };
+
+        public static float GetXpForTreeBlock(Block block)
+        {
+            if (block == null) return 0f;
+            if (!WildcardUtil.Match(logWildcard, block.Code) && !WildcardUtil.Match(logSectionWildcard, block.Code)) return 0f;
+
+            string[] parts = block.Code.Path.Split('-');
+            if (parts.Length < 3) return 1f;
+
+            string species = parts[2];
+            return logXp.TryGetValue(species, out var xp) ? xp : 1f;
+        }
+        public static void OnTreeHarvest(IServerPlayer byPlayer, float basexp)
+        {
+            if (byPlayer == null) return;
+            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
+            float xptoaward = basexp;
+            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for harvesting a tree");
+            data?.GainExperience(xptoaward);
+        }
+        #endregion
+
+        #region Entity Death XP Calculation
+        private static float XpPerHealthPoint = 1.5f; // 1.5 XP per health point of the entity
+        public static void OnEntityDeath(Entity entity, DamageSource damageSource)
+        {
+            if (entity == null || damageSource == null) return;
+            IServerPlayer? byPlayer = damageSource.SourceEntity as IServerPlayer;
+            if (byPlayer == null) return;
+            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
+            float xptoaward = entity.GetBehavior<EntityBehaviorHealth>()?.MaxHealth * XpPerHealthPoint ?? 1f;
+            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for killing {entity.Code}");
+            data?.GainExperience(xptoaward);
+        }
+        #endregion
+
+        #region Entity Harvest XP Calculation
+        private static float HarvestXp = 20f;
+        public static void OnEntityHarvest(Entity entity, IServerPlayer byPlayer)
+        {
+            if (entity == null || byPlayer == null) return;
+            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
+            float xptoaward = HarvestXp;
+            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for harvesting {entity.Code}");
+            data?.GainExperience(xptoaward);
+        }
+        #endregion
+
+        #region Social XP Calculation
+        private static float SocialXpPerPlayer = 5f; // 5 XP per tick for social interaction
+
+        // This method assumes that the caller already culled inactive players
+        public static void GrantSocialXp(IServerPlayer player, int amount)
+        {
+            if (player == null) return;
+            var data = player.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
+            float xptoaward = SocialXpPerPlayer * amount;
+            player?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {player.PlayerName} for social interaction. There had been {amount} players around.");
+            data?.GainExperience(xptoaward);
+        }
+        #endregion
+
     }
 }

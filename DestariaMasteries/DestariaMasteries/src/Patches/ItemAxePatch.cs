@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using DestariaMasteries.src.Utils;
+using HarmonyLib;
 using MasteryLibrary.src.Behaviors.EntityBehaviors;
 using MasteryLibrary.src.Core.Masteries.Instances;
 using System;
@@ -7,6 +8,7 @@ using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
 namespace DestariaMasteries.src.Patches
@@ -14,6 +16,12 @@ namespace DestariaMasteries.src.Patches
     [HarmonyPatch(typeof(ItemAxe), nameof(ItemAxe.OnBlockBrokenWith))]
     public static class ItemAxePatch
     {
+        private class TreeBreakState
+        {
+            public ItemStack SeedStack;
+            public float TotalXp;
+        }
+
         static void Prefix(
             ItemAxe __instance,
             IWorldAccessor world,
@@ -21,14 +29,15 @@ namespace DestariaMasteries.src.Patches
             ItemSlot itemslot,
             BlockSelection blockSel,
             float dropQuantityMultiplier,
-            out ItemStack __state)
+            out TreeBreakState __state)
         {
-            __state = null;
+            __state = new TreeBreakState();
 
             if (world.Side != EnumAppSide.Server) return;
             if (blockSel == null) return;
+
             PlayerMasteryData? data = byEntity.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            if (data == null || !data.HasSkill("EmeraldBoughs"));
+            bool hasEmeraldBoughs = data != null && data.HasSkill("EmeraldBoughs");
 
             Stack<BlockPos> positions;
             try
@@ -43,7 +52,14 @@ namespace DestariaMasteries.src.Patches
             foreach (BlockPos pos in positions)
             {
                 Block block = world.BlockAccessor.GetBlock(pos);
-                if (block == null || block.BlockMaterial != EnumBlockMaterial.Leaves) continue;
+                if (block == null) continue;
+
+                // Sum XP for every block in the tree rather than awarding per-block;
+                // the total is granted once in the Postfix via OnTreeHarvest.
+                __state.TotalXp += XpRewardEvaluator.GetXpForTreeBlock(block);
+
+                if (!hasEmeraldBoughs || __state.SeedStack != null) continue;
+                if (block.BlockMaterial != EnumBlockMaterial.Leaves) continue;
 
                 BlockDropItemStack[] drops = block.Drops;
                 if (drops == null) continue;
@@ -55,9 +71,9 @@ namespace DestariaMasteries.src.Patches
 
                     if (resolved.Collectible.Code.Path.Contains("treeseed"))
                     {
-                        __state = resolved.Clone();
-                        __state.StackSize = 1;
-                        return;
+                        __state.SeedStack = resolved.Clone();
+                        __state.SeedStack.StackSize = 1;
+                        break;
                     }
                 }
             }
@@ -71,19 +87,27 @@ namespace DestariaMasteries.src.Patches
             ItemSlot itemslot,
             BlockSelection blockSel,
             float dropQuantityMultiplier,
-            ItemStack __state)
+            TreeBreakState __state)
         {
             if (!__result || __state == null) return;
             if (world.Side != EnumAppSide.Server) return;
 
-            ItemStack seedStack = __state.Clone();
             IPlayer? byPlayer = (byEntity as EntityPlayer)?.Player;
 
-            bool given = byPlayer != null && byPlayer.InventoryManager.TryGiveItemstack(seedStack, true);
-
-            if (!given)
+            if (__state.SeedStack != null)
             {
-                world.SpawnItemEntity(seedStack, blockSel.Position.ToVec3d().Add(0.5, 0.5, 0.5));
+                ItemStack seedStack = __state.SeedStack.Clone();
+                bool given = byPlayer != null && byPlayer.InventoryManager.TryGiveItemstack(seedStack, true);
+
+                if (!given)
+                {
+                    world.SpawnItemEntity(seedStack, blockSel.Position.ToVec3d().Add(0.5, 0.5, 0.5));
+                }
+            }
+
+            if (__state.TotalXp > 0f && byPlayer is IServerPlayer serverPlayer)
+            {
+                XpRewardEvaluator.OnTreeHarvest(serverPlayer, __state.TotalXp);
             }
         }
 

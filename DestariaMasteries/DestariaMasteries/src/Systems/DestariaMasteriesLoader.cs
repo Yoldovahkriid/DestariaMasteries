@@ -24,9 +24,10 @@ namespace DestariaMasteries.src.Systems
     public class DestariaMasteriesLoader : ModSystem
     {
         public static ICoreClientAPI? ClientAPI;
-        MasteryLibraryAPI MasteryLibrary;
-        private Harmony Harmony;
+        MasteryLibraryAPI? MasteryLibrary;
+        private Harmony? Harmony;
         private ICoreServerAPI? sapi;
+        private SocialXpSystem? socialXpSystem;
         public override void Start(ICoreAPI api)
         {
             if (!Harmony.HasAnyPatches(Mod.Info.ModID))
@@ -97,6 +98,9 @@ namespace DestariaMasteries.src.Systems
                 .EndSubCommand();
 
             api.Event.BreakBlock += XpRewardEvaluator.OnBlockBroken;
+            api.Event.OnEntityDeath += XpRewardEvaluator.OnEntityDeath;
+
+            socialXpSystem = new SocialXpSystem(api);
         }
 
         public override void StartClientSide(ICoreClientAPI api)
@@ -107,6 +111,7 @@ namespace DestariaMasteries.src.Systems
         public override void Dispose()
         {
             Harmony?.UnpatchAll($"{Mod.Info.ModID}");
+            socialXpSystem?.Dispose();
         }
     }
 }
