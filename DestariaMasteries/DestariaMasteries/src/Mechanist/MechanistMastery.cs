@@ -26,11 +26,11 @@ namespace DestariaMasteries.src.Mechanist
             var tuning = new TuningSkill();
             this.Skills.Add(tuning.Code, tuning);
 
-            var beastTamer = new BeastTamerSkill();
-            this.Skills.Add(beastTamer.Code, beastTamer);
+            var mechanicalTamer = new MechanicalTamerSkill();
+            this.Skills.Add(mechanicalTamer.Code, mechanicalTamer);
 
-            var beastSlayer = new BeastSlayerSkill();
-            this.Skills.Add(beastSlayer.Code, beastSlayer);
+            var mechanicalSlayer = new MechanicalSlayerSkill();
+            this.Skills.Add(mechanicalSlayer.Code, mechanicalSlayer);
 
             var efficientConstruction = new EfficientConstructionSkill();
             this.Skills.Add(efficientConstruction.Code, efficientConstruction);
@@ -59,8 +59,8 @@ namespace DestariaMasteries.src.Mechanist
             var refinedDevelopment = new RefinedDevelopmentSkill();
             this.Skills.Add(refinedDevelopment.Code, refinedDevelopment);
 
-            var wardagainstbeasts = new WardAgainstBeastsSkill();
-            this.Skills.Add(wardagainstbeasts.Code, wardagainstbeasts);
+            var wardagainstmonsters = new WardAgainstMonstersSkill();
+            this.Skills.Add(wardagainstmonsters.Code, wardagainstmonsters);
 
             var turnbacktheclock = new TurnBackTheClockSkill();
             this.Skills.Add(turnbacktheclock.Code, turnbacktheclock);
@@ -201,16 +201,16 @@ namespace DestariaMasteries.src.Mechanist
         }
     }
 
-    public class BeastTamerSkill : Skill
+    public class MechanicalTamerSkill : Skill
     {
-        public override string Code => "BeastTamer";
+        public override string Code => "MechanicalTamer";
         public override int MaxLevel => 3;
         public override int RequiredMasteryLevel => 6;
         public override int Column => 3;
         public override EnumSkillType SkillType => EnumSkillType.Passive;
 
         public override string? ExclusiveGroup => "BeastSkills";
-        public BeastTamerSkill()
+        public MechanicalTamerSkill()
         {
             var parameters = new Dictionary<string, object> { { "BaseValue", -0.33f } };
             var passivestats = new Dictionary<string, StatConfiguration> { { "TuningSpearDamageAgainstMechanicals", new StatConfiguration("Linear", parameters) } };
@@ -223,7 +223,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDisplayName(int level)
         {
-            return Lang.Get("destariamasteries:mechanist-beasttamer-name");
+            return Lang.Get("destariamasteries:mechanist-mechanicaltamer-name");
         }
         public override string GetDescription(int level)
         {
@@ -234,19 +234,19 @@ namespace DestariaMasteries.src.Mechanist
             }
             var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
             float tuningSpearDmgAgainstMechanicals = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("TuningSpearDamageAgainstMechanicals"), level);
-            return Lang.Get("destariamasteries:mechanist-beasttamer-desc", tuningSpearDmgAgainstMechanicals * -100, bonusText);
+            return Lang.Get("destariamasteries:mechanist-mechanicaltamer-desc", tuningSpearDmgAgainstMechanicals * -100, bonusText);
         }
     }
 
-    public class BeastSlayerSkill : Skill
+    public class MechanicalSlayerSkill : Skill
     {
-        public override string Code => "BeastSlayer";
+        public override string Code => "MechanicalSlayer";
         public override int MaxLevel => 3;
         public override int RequiredMasteryLevel => 6;
         public override int Column => 5;
         public override EnumSkillType SkillType => EnumSkillType.Passive;
         public override string? ExclusiveGroup => "BeastSkills";
-        public BeastSlayerSkill()
+        public MechanicalSlayerSkill()
         {
             var parameters = new Dictionary<string, object> { { "Values", new float[] { 1.25f, 2.5f, 4.0f } } };
             var passivestats = new Dictionary<string, StatConfiguration> { { "TuningSpearDamageAgainstMechanicals", new StatConfiguration("Array", parameters) } };
@@ -259,13 +259,13 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDisplayName(int level)
         {
-            return Lang.Get("destariamasteries:mechanist-beastslayer-name");
+            return Lang.Get("destariamasteries:mechanist-mechanicalslayer-name");
         }
         public override string GetDescription(int level)
         {
             var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
             float tuningSpearDmgAgainstMechanicals = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("TuningSpearDamageAgainstMechanicals"), level);
-            return Lang.Get("destariamasteries:mechanist-beastslayer-desc", tuningSpearDmgAgainstMechanicals * 100);
+            return Lang.Get("destariamasteries:mechanist-mechanicalslayer-desc", tuningSpearDmgAgainstMechanicals * 100);
         }
     }
 
@@ -497,14 +497,14 @@ namespace DestariaMasteries.src.Mechanist
         }
     }
 
-    public class WardAgainstBeastsSkill : Skill
+    public class WardAgainstMonstersSkill : Skill
     {
-        public override string Code => "WardAgainstBeast";
+        public override string Code => "WardAgainstMonsters";
         public override int MaxLevel => 5;
         public override int RequiredMasteryLevel => 26;
         public override int Column => 0;
         public override EnumSkillType SkillType => EnumSkillType.Passive;
-        public WardAgainstBeastsSkill()
+        public WardAgainstMonstersSkill()
         {
             var parameters = new Dictionary<string, object> { { "BaseValue", -0.1f } };
             var passivestats = new Dictionary<string, StatConfiguration> { { "damageResistanceAgainstMechanicals", new StatConfiguration("Linear", parameters) } };
@@ -514,7 +514,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDisplayName(int level)
         {
-            return Lang.Get("destariamasteries:mechanist-wardagainstbeasts-name");
+            return Lang.Get("destariamasteries:mechanist-wardagainstmonsters-name");
         }
         public override string GetDescription(int level)
         {
@@ -522,7 +522,7 @@ namespace DestariaMasteries.src.Mechanist
             float damageResistanceAgainstMechanicals = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("damageResistanceAgainstMechanicals"), level);
             float damageResistanceAgainstRust = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("damageResistanceAgainstRust"), level);
 
-            return Lang.Get("destariamasteries:mechanist-wardagainstbeasts-desc", damageResistanceAgainstMechanicals * -100, damageResistanceAgainstRust * -100);
+            return Lang.Get("destariamasteries:mechanist-wardagainstmonsters-desc", damageResistanceAgainstMechanicals * -100, damageResistanceAgainstRust * -100);
         }
     }
 
@@ -604,7 +604,7 @@ namespace DestariaMasteries.src.Mechanist
             StatConfiguration damage = GetValueSafe<StatConfiguration>("SkillDamage");
             StatConfiguration loststability = GetValueSafe<StatConfiguration>("LostStability");
             StatConfiguration slowAmount = GetValueSafe<StatConfiguration>("SlowAmount");
-            return Lang.Get("destariamasteries:mechanist-temporaldevastation-desc", StatScalingUtil.GetScaledValue(damage, level) * 100, StatScalingUtil.GetScaledValue(loststability, level) * 100, StatScalingUtil.GetScaledValue(slowAmount, level) * 100);
+            return Lang.Get("destariamasteries:mechanist-temporaldevastation-desc", StatScalingUtil.GetScaledValue(damage, level), StatScalingUtil.GetScaledValue(loststability, level) * 100, StatScalingUtil.GetScaledValue(slowAmount, level) * 100);
         }
     }
 }

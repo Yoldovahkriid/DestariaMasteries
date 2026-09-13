@@ -33,7 +33,7 @@ namespace DestariaMasteries.src.Mechanist
                 world.SpawnItemEntity(gearStack, context.Player.Entity.Pos.XYZ);
             }
             // We give the player the temporal gear but only then deal damage to him this should avoid lethal damage causing the gear to teleport to the player
-            context.Player.Entity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = EnumDamageType.Injury, IgnoreInvFrames = true }, 1f);
+            context.Player.Entity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = EnumDamageType.Injury, IgnoreInvFrames = true }, 7.5f);
 
             return AbilityResult.SuccessResult();
         }

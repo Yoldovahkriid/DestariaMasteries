@@ -1,8 +1,6 @@
 ﻿using MasteryLibrary.src.Behaviors.EntityBehaviors;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Server;
@@ -19,20 +17,42 @@ namespace DestariaMasteries.src.Utils
         NoXP
     }
 
+    public enum XpSourceCategory
+    {
+        Mining,
+        Farming,
+        Foraging,
+        Woodcutting,
+        Combat,
+        AnimalHarvest,
+        Social
+    }
+
     public static class XpRewardEvaluator
     {
+        private static void GrantXpToPlayer(IServerPlayer byPlayer, float amount, XpSourceCategory source, string detail = null)
+        {
+            if (byPlayer == null || amount <= 0f) return;
+
+            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
+            if (data == null) return; // nothing was actually granted, so don't log that it was
+
+            string suffix = string.IsNullOrEmpty(detail) ? string.Empty : $" ({detail})";
+            byPlayer.Entity?.Api.Logger.Event($"Awarded {amount} XP to {byPlayer.PlayerName} for {source}{suffix}");
+
+            data.GainExperience(amount);
+        }
 
         public static void OnBlockBroken(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling)
         {
             Block block = blockSel.Block;
-
             if (block == null) return;
 
-            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            float xptoaward = GetExpForBlock(block, byPlayer);
-            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for breaking {block.Code}");
+            BlockTypeEnum blockType = GetBlockType(block.Code);
+            float xpToAward = GetExpForBlock(block, byPlayer, blockType);
+            XpSourceCategory source = blockType == BlockTypeEnum.Crop ? XpSourceCategory.Farming : XpSourceCategory.Mining;
 
-            data?.GainExperience(xptoaward);
+            GrantXpToPlayer(byPlayer, xpToAward, source, block.Code?.ToString());
         }
 
         private static BlockTypeEnum GetBlockType(AssetLocation block)
@@ -52,18 +72,15 @@ namespace DestariaMasteries.src.Utils
             else return BlockTypeEnum.NoXP;
         }
 
-        private static float GetExpForBlock(Block block, IServerPlayer byPlayer)
+        private static float GetExpForBlock(Block block, IServerPlayer byPlayer, BlockTypeEnum blockType)
         {
-            switch (GetBlockType(block.Code))
+            return blockType switch
             {
-                case BlockTypeEnum.Ore:
-                    return CalculateOreXP(block, byPlayer);
-                case BlockTypeEnum.UngradedOre:
-                    return CalculateUngradedOreXP(block, byPlayer);
-                case BlockTypeEnum.Crop:
-                    return CalculateCropXP(block, byPlayer);
-            }
-            return 0f;
+                BlockTypeEnum.Ore => CalculateOreXP(block, byPlayer),
+                BlockTypeEnum.UngradedOre => CalculateUngradedOreXP(block, byPlayer),
+                BlockTypeEnum.Crop => CalculateCropXP(block, byPlayer),
+                _ => 0f
+            };
         }
 
         #region Ore XP Calculation
@@ -125,8 +142,8 @@ namespace DestariaMasteries.src.Utils
             { "medium", 2f },
             { "high", 3f },
         };
-        private static Dictionary<string, string> materialToProductCache = new Dictionary<string, string>();
-        private static Dictionary<string, bool> materialIsGemCache = new Dictionary<string, bool>();
+        private static Dictionary<string, string> materialToProductCache = new();
+        private static Dictionary<string, bool> materialIsGemCache = new();
         private static Dictionary<string, string> oreMaterialToNuggetMaterial = new()
         {
             { "quartz_nativegold", "nativegold" },
@@ -205,13 +222,14 @@ namespace DestariaMasteries.src.Utils
                 return null;
             if (oreMaterial == null) return null;
 
-            if (materialToProductCache.TryGetValue(oreMaterial, out var cachedProduct))
+            string cacheKey = $"{oreBlock.Code.Domain}:{oreMaterial}";
+            if (materialToProductCache.TryGetValue(cacheKey, out var cachedProduct))
                 return cachedProduct;
 
             string? product = ResolveViaNugget(oreBlock.Code.Domain, oreMaterial, world);
             if (product == null) return null;
 
-            materialToProductCache[oreMaterial] = product;
+            materialToProductCache[cacheKey] = product;
             return product;
         }
 
@@ -240,7 +258,8 @@ namespace DestariaMasteries.src.Utils
 
         private static bool IsGemMaterial(string oreDomain, string oreMaterial, IWorldAccessor world)
         {
-            if (materialIsGemCache.TryGetValue(oreMaterial, out var cached)) return cached;
+            string cacheKey = $"{oreDomain}:{oreMaterial}";
+            if (materialIsGemCache.TryGetValue(cacheKey, out var cached)) return cached;
 
             Item? gemItem = world.GetItem(new AssetLocation(oreDomain, $"gem-{oreMaterial}-rough"));
             if (gemItem == null && oreDomain != "game")
@@ -249,7 +268,7 @@ namespace DestariaMasteries.src.Utils
             }
 
             bool isGem = gemItem != null;
-            materialIsGemCache[oreMaterial] = isGem;
+            materialIsGemCache[cacheKey] = isGem;
             return isGem;
         }
         #endregion
@@ -272,14 +291,14 @@ namespace DestariaMasteries.src.Utils
                 return 0f;
             }
 
-            float totalGrowthDays = cropProps.GrowthStages * cropProps.TotalGrowthMonths;
+            float totalGrowthMonths = cropProps.GrowthStages * cropProps.TotalGrowthMonths;
 
             // a(months)^2+b(months)+c
             float a = 0.05f;
             float b = 0.5f;
             float c = 10.0f;
 
-            float xp = (a * totalGrowthDays * totalGrowthDays) + (b * totalGrowthDays) + c;
+            float xp = (a * totalGrowthMonths * totalGrowthMonths) + (b * totalGrowthMonths) + c;
 
             return MathF.Floor(MathF.Max(xp, 1f));
         }
@@ -288,12 +307,7 @@ namespace DestariaMasteries.src.Utils
         #region Harvest XP Calculation
         public static void OnHarvest(IServerPlayer byPlayer, float basexp)
         {
-            if (byPlayer == null) return;
-            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            float xptoaward = basexp;
-            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for harvesting");
-
-            data?.GainExperience(xptoaward);
+            GrantXpToPlayer(byPlayer, basexp, XpSourceCategory.Foraging);
         }
         #endregion
 
@@ -328,13 +342,10 @@ namespace DestariaMasteries.src.Utils
             string species = parts[2];
             return logXp.TryGetValue(species, out var xp) ? xp : 1f;
         }
+
         public static void OnTreeHarvest(IServerPlayer byPlayer, float basexp)
         {
-            if (byPlayer == null) return;
-            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            float xptoaward = basexp;
-            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for harvesting a tree");
-            data?.GainExperience(xptoaward);
+            GrantXpToPlayer(byPlayer, basexp, XpSourceCategory.Woodcutting);
         }
         #endregion
 
@@ -343,12 +354,12 @@ namespace DestariaMasteries.src.Utils
         public static void OnEntityDeath(Entity entity, DamageSource damageSource)
         {
             if (entity == null || damageSource == null) return;
-            IServerPlayer? byPlayer = damageSource.SourceEntity as IServerPlayer;
-            if (byPlayer == null) return;
-            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            float xptoaward = entity.GetBehavior<EntityBehaviorHealth>()?.MaxHealth * XpPerHealthPoint ?? 1f;
-            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for killing {entity.Code}");
-            data?.GainExperience(xptoaward);
+            if (damageSource.SourceEntity is not IServerPlayer byPlayer) return;
+
+            float? healthBasedXp = entity.GetBehavior<EntityBehaviorHealth>()?.MaxHealth * XpPerHealthPoint;
+            float xpToAward = healthBasedXp ?? 1f;
+
+            GrantXpToPlayer(byPlayer, xpToAward, XpSourceCategory.Combat, entity.Code?.ToString());
         }
         #endregion
 
@@ -357,10 +368,7 @@ namespace DestariaMasteries.src.Utils
         public static void OnEntityHarvest(Entity entity, IServerPlayer byPlayer)
         {
             if (entity == null || byPlayer == null) return;
-            var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            float xptoaward = HarvestXp;
-            byPlayer?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {byPlayer.PlayerName} for harvesting {entity.Code}");
-            data?.GainExperience(xptoaward);
+            GrantXpToPlayer(byPlayer, HarvestXp, XpSourceCategory.AnimalHarvest, entity.Code?.ToString());
         }
         #endregion
 
@@ -370,13 +378,9 @@ namespace DestariaMasteries.src.Utils
         // This method assumes that the caller already culled inactive players
         public static void GrantSocialXp(IServerPlayer player, int amount)
         {
-            if (player == null) return;
-            var data = player.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
-            float xptoaward = SocialXpPerPlayer * amount;
-            player?.Entity?.Api.Logger.Event($"Awarded {xptoaward} XP to {player.PlayerName} for social interaction. There had been {amount} players around.");
-            data?.GainExperience(xptoaward);
+            float xpToAward = SocialXpPerPlayer * amount;
+            GrantXpToPlayer(player, xpToAward, XpSourceCategory.Social, $"{amount} nearby players");
         }
         #endregion
-
     }
 }

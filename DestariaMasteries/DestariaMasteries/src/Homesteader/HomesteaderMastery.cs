@@ -1,4 +1,5 @@
-﻿using MasteryLibrary.src.Core.Masteries.Data;
+﻿using DestariaMasteries.src.Utils;
+using MasteryLibrary.src.Core.Masteries.Data;
 using MasteryLibrary.src.Utilities;
 using System;
 using System.Collections.Generic;
@@ -98,22 +99,25 @@ namespace DestariaMasteries.src.Homesteader
         public override int RequiredMasteryLevel => 1;
         public SubsistanceSkill()
         {
-            var fruitMult = new Dictionary<string, object> { { "BaseValue", 0.05f } };
-            var grainMult = new Dictionary<string, object> { { "BaseValue", 0.05f } };
-            var vegetableBoost = new Dictionary<string, object> { { "BaseValue", 0.05f } };
-            var forageBoost = new Dictionary<string, object> { { "BaseValue", 0.05f } };
-            var meatBoost = new Dictionary<string, object> { { "BaseValue", 0.02f } };
-            var fishMult = new Dictionary<string, object> { { "BaseValue", 0.25f } };
-
-            var passiveStats = new Dictionary<string, StatConfiguration> { { "fruitHarvestMultiplier", new StatConfiguration("Linear", fruitMult) } };
-            passiveStats.Add("grainHarvestMultiplier", new StatConfiguration("Linear", grainMult));
-            passiveStats.Add("vegetableHarvestMultiplier", new StatConfiguration("Linear", vegetableBoost));
-            passiveStats.Add("forageDropRate", new StatConfiguration("Linear", forageBoost)); // Needed to boost fruit trees and berry bushes
-            passiveStats.Add("meatDropRate", new StatConfiguration("Linear", meatBoost));
-            passiveStats.Add("fishFlayMultiplier", new StatConfiguration("Linear", fishMult));
-
-            Attributes.Add("PassiveStats", passiveStats);
+            Attributes["PassiveStats"] = new Dictionary<string, StatConfiguration>
+            {
+                ["fruitHarvestMultiplier"] = new("Linear", new() { ["BaseValue"] = 0.05f }),
+                ["grainHarvestMultiplier"] = new("Linear", new() { ["BaseValue"] = 0.05f }),
+                ["vegetableHarvestMultiplier"] = new("Linear", new() { ["BaseValue"] = 0.05f }),
+                ["forageDropRate"] = new("Linear", new() { ["BaseValue"] = 0.05f }),
+                ["meatDropRate"] = new("Linear", new() { ["BaseValue"] = 0.02f }),
+                ["fishFlayMultiplier"] = new("Linear", new() { ["BaseValue"] = 0.25f })
+            };
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-subsistence-name");
+        }
+
+        public override string GetDescription(int level) =>
+            Lang.Get("destariamasteries:homesteader-subsistence-desc",
+                this.GetScaledPercentArgs(level, "fruitHarvestMultiplier", "meatDropRate"));
     }
 
     public class AmberCombsSkill : Skill
@@ -126,6 +130,16 @@ namespace DestariaMasteries.src.Homesteader
         public AmberCombsSkill()
         {
 
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-ambercombs-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-ambercombs-desc");
         }
     }
 
@@ -143,6 +157,16 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "fruitTreeCuttingDropRate", new StatConfiguration("Linear", fruitTreeCuttingMult) } };
             passiveStats.Add("saplingDropRate", new StatConfiguration("Linear", saplingMult));
             Attributes.Add("PassiveStats", passiveStats);
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-emeraldboughs-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-emeraldboughs-desc");
         }
     }
 
@@ -162,6 +186,17 @@ namespace DestariaMasteries.src.Homesteader
 
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-goldenfields-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-goldenfields-desc",
+                this.GetScaledPercentArgs(level, "grainHarvestMultiplier"));
+        }
     }
 
     public class DeepBlueSkill : Skill
@@ -177,6 +212,17 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "fishFlayMultiplier", new StatConfiguration("Linear", fishMult) } };
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-deepblue-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-deepblue-desc",
+                this.GetScaledPercentArgs(level, "fishFlayMultiplier"));
+        }
     }
 
     public class WhispersInRed : Skill
@@ -191,12 +237,23 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "animalLootDropRate", new StatConfiguration("Linear", new Dictionary<string, object> { { "BaseValue", 0.25f } }) } };
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-whispersinred-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-whispersinred-desc",
+                this.GetScaledPercentArgs(level, "animalLootDropRate"));
+        }
     }
 
     public class SelfsufficientSkill : Skill
     {
         public override string Code => "Selfsufficient";
-        public override int MaxLevel => 1;
+        public override int MaxLevel => 3;
         public override int Column => 2;
         public override EnumSkillType SkillType => EnumSkillType.Passive;
         public override int RequiredMasteryLevel => 8;
@@ -204,6 +261,25 @@ namespace DestariaMasteries.src.Homesteader
         {
             var passiveStats = new Dictionary<string, StatConfiguration> { { "hungerrate ", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.0f, -0.1f, -0.1f } } } ) } };
             Attributes.Add("PassiveStats", passiveStats);
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-selfsufficient-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            string desc = Lang.Get("destariamasteries:homesteader-selfsufficient-desc-levelone");
+            if (level >= 2)
+            {
+                desc += Lang.Get("destariamasteries:homesteader-selfsufficient-desc-leveltwo", this.GetScaledPercentArgs(level, "hungerrate"));
+            }
+            if (level >= 3)
+            {
+                desc += Lang.Get("destariamasteries:homesteader-selfsufficient-desc-levelthree");
+            }
+            return desc;
         }
     }
 
@@ -223,6 +299,23 @@ namespace DestariaMasteries.src.Homesteader
             var activestats = new Dictionary<string, StatConfiguration> { { "walkspeed", new StatConfiguration("Array", activeParameters) } };
             Attributes.Add("ActiveStats", activestats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-bitfruity-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            string desc = Lang.Get("destariamasteries:homesteader-bitfruity-desc",
+                this.GetScaledPercentArgs(level, "fruitHarvestMultiplier"));
+            if (level == 5)
+            {
+                desc += Lang.Get("destariamasteries:homesteader-bitfruity-desc-level5",
+                    this.GetScaledPercentArgs(level, "walkspeed"));
+            }
+            return desc;
+        }
     }
 
     public class HeartyVeggiesSkill : Skill
@@ -238,6 +331,23 @@ namespace DestariaMasteries.src.Homesteader
             passiveStats.Add("vegetableSaturation", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.0f, 0.0f, 0.0f, 0.0f, 1.00f } } }));
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-heartyveggies-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            string desc = Lang.Get("destariamasteries:homesteader-heartyveggies-desc",
+                this.GetScaledPercentArgs(level, "vegetableHarvestMultiplier"));
+            if (level == 5)
+            {
+                desc += Lang.Get("destariamasteries:homesteader-heartyveggies-desc-level5",
+                    this.GetScaledPercentArgs(level, "vegetableSaturation"));
+            }
+            return desc;
+        }
     }
 
     public class TheMillerSkill : Skill
@@ -252,6 +362,23 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "forageDropRate", new StatConfiguration("Linear", new Dictionary<string, object> { { "BaseValue", 0.05f } }) } };
             passiveStats.Add("grassHarvestMultiplier", new StatConfiguration("Linear", new Dictionary<string, object> { { "BaseValue", 0.05f } }));
             Attributes.Add("PassiveStats", passiveStats);
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-themiller-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            string desc = Lang.Get("destariamasteries:homesteader-themiller-desc",
+                this.GetScaledPercentArgs(level, "forageDropRate", "grassHarvestMultiplier"));
+            if (level == 5)
+            {
+                desc += Lang.Get("destariamasteries:homesteader-themiller-desc-level5",
+                    this.GetScaledPercentArgs(level, "quernSpeed"));
+            }
+            return desc;
         }
     }
 
@@ -272,11 +399,24 @@ namespace DestariaMasteries.src.Homesteader
             var activestats = new Dictionary<string, StatConfiguration> { { "cuttingReviveChance", new StatConfiguration("Array", activeParameters) } };
             Attributes.Add("ActiveStats", activestats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-grovetending-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-grovetending-desc", 
+                this.GetScaledPercentActiveArgs(level, "cuttingReviveChance"),
+                this.GetScaledPercentArgs(level, "forageDropRate"));
+        }
     }
     public class GentleTouchSkill : Skill
     {
         public override string Code => "GentleTouch";
         public override string Ability => "GentleTouch";
+        public override float Cooldown => 86400;
         public override int MaxLevel => 5;
         public override int Column => 3;
         public override EnumSkillType SkillType => EnumSkillType.Active;
@@ -286,6 +426,17 @@ namespace DestariaMasteries.src.Homesteader
             var activeParameters = new Dictionary<string, object> { { "Values", new float[] { 0.1f, 0.2f, 0.3f, 0.5f, 0.8f } } };
             var activestats = new Dictionary<string, StatConfiguration> { { "calmChance", new StatConfiguration("Array", activeParameters) } };
             Attributes.Add("ActiveStats", activestats);
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-gentletouch-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-gentletouch-desc",
+                this.GetScaledPercentActiveArgs(level, "calmChance"));
         }
     }
 
@@ -299,6 +450,16 @@ namespace DestariaMasteries.src.Homesteader
         public override int RequiredMasteryLevel => 16;
         public ToTheBoneSkill()
         {
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-tothebone-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-tothebone-desc", level);
         }
     }
 
@@ -314,6 +475,17 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "fruitPressSaveChance", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.05f, 0.1f, 0.15f, 0.2f, 0.33f } } }) } };
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-macrobrewery-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-macrobrewery-desc",
+                this.GetScaledPercentArgs(level, "fruitPressSaveChance"));
+        }
     }
 
     public class ItAintEasySkill : Skill
@@ -326,6 +498,16 @@ namespace DestariaMasteries.src.Homesteader
         public ItAintEasySkill()
         {
 
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-itainteasy-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-itainteasy-desc");
         }
     }
 
@@ -343,6 +525,17 @@ namespace DestariaMasteries.src.Homesteader
             passiveStats.Add("saveFertilizerChance", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.03f, 0.06f, 0.09f, 0.12f, 0.2f } } }));
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-rationing-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-rationing-desc",
+                this.GetScaledPercentArgs(level, "saveFertilizerChance", "hungerrate"));
+        }
     }
 
     public class BrewMasterSkill : Skill
@@ -359,6 +552,17 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "damageResistanceWhenDrunk", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { -0.04f, -0.08f, -0.12f, -0.2f, -0.3f } } }) } };
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-brewmaster-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-brewmaster-desc",
+                this.GetScaledPercentActiveArgs(level, "damageResistanceWhenDrunk"));
+        }
     }
 
     public class EarlyBirdSkill : Skill
@@ -371,6 +575,16 @@ namespace DestariaMasteries.src.Homesteader
         public EarlyBirdSkill()
         {
 
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-earlybird-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-earlybird-desc");
         }
     }
 
@@ -386,12 +600,24 @@ namespace DestariaMasteries.src.Homesteader
             var passiveStats = new Dictionary<string, StatConfiguration> { { "flaxFibreDropRate", new StatConfiguration("Linear", new Dictionary<string, object> { { "BaseValue", 0.1f } }) } };
             Attributes.Add("PassiveStats", passiveStats);
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-foolsflax-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-foolsflax-desc",
+                this.GetScaledPercentArgs(level, "flaxFibreDropRate"));
+        }
     }
 
     public class GreenerThanGreenSkill : Skill 
     {
         public override string Code => "GreenerThanGreen";
         public override string Ability => "GreenerThanGreen";
+        public override float Cooldown => 604800;
         public override int MaxLevel => 1;
         public override int Column => 1;
         public override EnumSkillType SkillType => EnumSkillType.Active;
@@ -399,12 +625,23 @@ namespace DestariaMasteries.src.Homesteader
         public GreenerThanGreenSkill()
         {
         }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-greenerthangreen-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-greenerthangreen-desc");
+        }
     }
 
     public class MiracleOfLifeSkill : Skill
     {
         public override string Code => "MiracleOfLife";
         public override string Ability => "MiracleOfLife";
+        public override float Cooldown => 86400;
         public override int MaxLevel => 1;
         public override int Column => 3;
         public override EnumSkillType SkillType => EnumSkillType.Active;
@@ -415,6 +652,16 @@ namespace DestariaMasteries.src.Homesteader
             {
                 {1, new List<SkillPrerequisite> { new SkillPrerequisite { SkillCode = "GentleTouch", MinimumLevel = 1 } } }
             };
+        }
+
+        public override string GetDisplayName(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-miracleoflife-name");
+        }
+
+        public override string GetDescription(int level)
+        {
+            return Lang.Get("destariamasteries:homesteader-miracleoflife-desc");
         }
     }
 }

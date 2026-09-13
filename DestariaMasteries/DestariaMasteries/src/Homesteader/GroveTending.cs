@@ -41,24 +41,32 @@ namespace DestariaMasteries.src.Homesteader
             }
 
             Block block = context.Player.Entity.Api.World.BlockAccessor.GetBlock(blockSel.Position);
-            if (block.Code.Path == "fruittree-cutting" && context.API.World.Rand.NextDouble() <= chance)
+            if (block.Code.Path == "fruittree-cutting")
             {
-                FruitTreeGrowingBranchBH fruittree = block.GetBEBehavior<FruitTreeGrowingBranchBH>(blockSel.Position);
-                BlockEntityFruitTreeBranch branchEntity = fruittree.Blockentity as BlockEntityFruitTreeBranch;
-                branchEntity.FoliageState = EnumFoliageState.Plain;
-                FieldInfo listenerIdfield = fruittree.GetType().GetField("listenerId", BindingFlags.NonPublic | BindingFlags.Instance);
-                FieldInfo callbackTimeMs = fruittree.GetType().GetField("callbackTimeMs", BindingFlags.NonPublic | BindingFlags.Instance);
-                MethodInfo onTickMethod = fruittree.GetType().GetMethod("OnTick", BindingFlags.NonPublic | BindingFlags.Instance);
-                var DelegateAction = (Action<float>)onTickMethod.CreateDelegate(typeof(Action<float>), fruittree);
-                if (listenerIdfield != null) { 
-                    long listenerId = (long)listenerIdfield.GetValue(fruittree);
-                    listenerIdfield.SetValue(fruittree, branchEntity.RegisterGameTickListener(DelegateAction, (int)callbackTimeMs.GetValue(fruittree) + branchEntity.Api.World.Rand.Next((int)callbackTimeMs.GetValue(fruittree))));
+                if (context.API.World.Rand.NextDouble() <= chance)
+                {
+                    FruitTreeGrowingBranchBH fruittree = block.GetBEBehavior<FruitTreeGrowingBranchBH>(blockSel.Position);
+                    BlockEntityFruitTreeBranch branchEntity = fruittree.Blockentity as BlockEntityFruitTreeBranch;
+                    branchEntity.FoliageState = EnumFoliageState.Plain;
+                    FieldInfo listenerIdfield = fruittree.GetType().GetField("listenerId", BindingFlags.NonPublic | BindingFlags.Instance);
+                    FieldInfo callbackTimeMs = fruittree.GetType().GetField("callbackTimeMs", BindingFlags.NonPublic | BindingFlags.Instance);
+                    MethodInfo onTickMethod = fruittree.GetType().GetMethod("OnTick", BindingFlags.NonPublic | BindingFlags.Instance);
+                    var DelegateAction = (Action<float>)onTickMethod.CreateDelegate(typeof(Action<float>), fruittree);
+                    if (listenerIdfield != null)
+                    {
+                        long listenerId = (long)listenerIdfield.GetValue(fruittree);
+                        listenerIdfield.SetValue(fruittree, branchEntity.RegisterGameTickListener(DelegateAction, (int)callbackTimeMs.GetValue(fruittree) + branchEntity.Api.World.Rand.Next((int)callbackTimeMs.GetValue(fruittree))));
+                    }
+                    branchEntity.GrowTries = 1;
+                    var rootBe = context.Player.Entity.Api.World.BlockAccessor.GetBlockEntity(branchEntity.Pos.AddCopy(branchEntity.RootOff)) as BlockEntityFruitTreeBranch;
+                    var rootbh = rootBe.GetBehavior<FruitTreeRootBH>();
+                    rootbh.propsByType[branchEntity.TreeType].State = EnumFruitTreeState.Young;
+                    branchEntity.MarkDirty(true);
                 }
-                branchEntity.GrowTries = 1;
-                var rootBe = context.Player.Entity.Api.World.BlockAccessor.GetBlockEntity(branchEntity.Pos.AddCopy(branchEntity.RootOff)) as BlockEntityFruitTreeBranch;
-                var rootbh = rootBe.GetBehavior<FruitTreeRootBH>();
-                rootbh.propsByType[branchEntity.TreeType].State = EnumFruitTreeState.Young;
-                branchEntity.MarkDirty(true);
+                else
+                {
+                    context.API.World.BlockAccessor.BreakBlock(blockSel.Position, context.Player);
+                }
             }
 
             return AbilityResult.SuccessResult("Grove Tending executed successfully.");
