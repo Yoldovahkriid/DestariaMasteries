@@ -45,25 +45,37 @@
   "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt.",
 
   "destariamasteries:mechanist-mastery-name": "Mechanist",
-  "destariamasteries:mechanist-mastery-desc": "CHANGE THIS LATER: Harness the power of machinery and engineering to gain an edge in combat. The Mechanist mastery unlocks the ability to craft and utilize advanced mechanical devices, from automated turrets to explosive gadgets, giving you a technological advantage on the battlefield.",
+  "destariamasteries:mechanist-mastery-desc": "Unlocks the mastery of clockwork and engineering, transforming raw metal and ingenuity into survival. Whether automating industry or deploying precision weaponry, you bend machines to your absolute will.",
 
   "destariamasteries:mechanist-combatengineering-name": "Combat Engineering",
-  "destariamasteries:mechanist-combatengineering-desc": "Unlocks the ability to craft {0} and increases crossbow damage by {1}%%.",
+  "destariamasteries:mechanist-combatengineering-desc-level1": "Unlocks the ability to craft Simple Crossbows and increases crossbow damage by {0}%%.",
+  "destariamasteries:mechanist-combatengineering-desc-level3": "Unlocks the ability to craft Simple Crossbows and Repeating Crossbows, and increases crossbow damage by {0}%%.",
+  "destariamasteries:mechanist-combatengineering-desc-level5": "Unlocks the ability to craft Simple Crossbows, Repeating Crossbows, and Latch Crossbows, and increases crossbow damage by {0}%%.",
 
   "destariamasteries:mechanist-tinkering-name": "Tinkering",
-  "destariamasteries:mechanist-tinkering-desc": "{0} and increases damage against mechanical creatures by {1}%%",
+  "destariamasteries:mechanist-tinkering-desc-level1": "Gain the ability to craft chutes, hoppers, axles, and angled gears.\nAlso increases damage against mechanical creatures by {0}%%.",
+  "destariamasteries:mechanist-tinkering-desc-level3": "Gain the ability to craft chutes, hoppers, axles, angled gears, helve hammers, pounders, basic windmills, and their remaining associated parts.\nAlso increases damage against mechanical creatures by {0}%%.",
+  "destariamasteries:mechanist-tinkering-desc-level5": "Gain the ability to craft chutes, hoppers, axles, angled gears, helve hammers, pounders, basic windmills, reinforced rotors, and their remaining associated parts.\nAlso increases damage against mechanical creatures by {0}%%.",
 
   "destariamasteries:mechanist-delicatetouch-name": "Delicate Touch",
-  "destariamasteries:mechanist-delicatetouch-desc": "You're used to working with small, fragile parts, so your touch is delicate and precise. Chisels, hammers, shears, saws, and knives you use have a {0}%% chance not to lose durability when they normally would.",
+  "destariamasteries:mechanist-delicatetouch-desc": "Accustomed to handling small, fragile components, your touch is precise and practiced. Chisels, hammers, shears, saws, and knives have a {0}%% chance to not lose durability when used.",
 
   "destariamasteries:mechanist-tuning-name": "Tuning",
-  "destariamasteries:mechanist-tuning-desc": "Unlocks the ability to craft and use the Tuning Spear",
+  "destariamasteries:mechanist-tuning-desc": "Unlocks the ability to craft and use the Tuning Spear.",
 
   "destariamasteries:mechanist-mechanicaltamer-name": "Mechanical Tamer",
-  "destariamasteries:mechanist-mechanicaltamer-desc": "Decreases the damage of your Tuning Spear against mechanical creatures by {0}%%. {1}",
+  "destariamasteries:mechanist-mechanicaltamer-desc-level1": "Decreases the damage dealt by your Tuning Spear to mechanical creatures by {0}%%.\nThis skill is mutually exclusive with Mechanical Slayer.",
+  "destariamasteries:mechanist-mechanicaltamer-desc-level3": "Decreases the damage dealt by your Tuning Spear to mechanical creatures by {0}%%.\nAllows the hacking of sawblade locusts.",
 
   "destariamasteries:mechanist-mechanicalslayer-name": "Mechanical Slayer",
-  "destariamasteries:mechanist-mechanicalslayer-desc": "Increases the damage of your Tuning Spear against mechanical creatures by {0}%%.",
+  "destariamasteries:mechanist-mechanicalslayer-desc": "Increases the damage dealt by your Tuning Spear to mechanical creatures by {0}%%.\nThis skill is mutually exclusive with Mechanical Tamer.",
+
+  "destariamasteries:mechanist-efficientconstruction-name": "Efficient Construction",
+  "destariamasteries:mechanist-efficientconstruction-desc-level1": "Yields one extra item when crafting chutes, hoppers, axles, and angled gears.",
+  "destariamasteries:mechanist-efficientconstruction-desc-level2": "Yields one extra item when crafting chutes, hoppers, axles, angled gears, helve hammers, pounders, basic windmills, and their remaining associated parts.",
+  "destariamasteries:mechanist-efficientconstruction-desc-level3": "Yields two extra items when crafting chutes, hoppers, axles, and angled gears.\nYields one extra item when crafting helve hammers, pounders, basic windmills, reinforced rotors, and their remaining associated parts.",
+  "destariamasteries:mechanist-efficientconstruction-desc-level4": "Yields two extra items when crafting chutes, hoppers, axles, angled gears, helve hammers, pounders, basic windmills, and their remaining associated parts.",
+  "destariamasteries:mechanist-efficientconstruction-desc-level5": "Yields two extra items when crafting chutes, hoppers, axles, angled gears, helve hammers, pounders, basic windmills, and their remaining associated parts. Crafting reinforced rotors yields one extra item.",
 
   "destariamasteries:mechanist-eyeforcraftsmanship-name": "Eye for Craftsmanship",
   "destariamasteries:mechanist-eyeforcraftsmanship-desc": "While wearing glasses, you gain {0}%% more loot from mechanical creatures.",
@@ -72,106 +84,107 @@
   "destariamasteries:mechanist-scrapmechanics-desc": "Convert {0} metal scraps into {1} rusty gear(s).",
 
   "destariamasteries:mechanist-antiarmor-name": "Anti-Armor",
-  "destariamasteries:mechanist-antiarmor-desc": "Gain the Ability to craft the Goat Foot's Crossbow",
+  "destariamasteries:mechanist-antiarmor-desc": "Unlocks the ability to craft the Goat Foot Crossbow.",
 
   "destariamasteries:mechanist-temporaladjustment-name": "Temporal Adjustment",
-  "destariamasteries:mechanist-temporaladjustment-desc": "Imbue once every 24 hours a rusty gear with your life energy to turn it into a temporal gear. This will deal 7.5 unmodifieable damage.",
+  "destariamasteries:mechanist-temporaladjustment-desc": "Once every 24 hours, imbue a rusty gear with your life energy to transform it into a temporal gear. This inflicts 7.5 unmodifiable damage.",
 
   "destariamasteries:mechanist-temporalinurement-name": "Temporal Inurement",
   "destariamasteries:mechanist-temporalinurement-desc": "Reduces the rate at which you lose temporal stability by {0}%%.",
 
   "destariamasteries:mechanist-antianything-name": "Anti-Anything",
-  "destariamasteries:mechanist-antianything-desc": "Gain the ability to craft the Windless Crossbow",
+  "destariamasteries:mechanist-antianything-desc": "Unlocks the ability to craft the Windless Crossbow.",
 
   "destariamasteries:mechanist-producttesting-name": "Product Testing",
   "destariamasteries:mechanist-producttesting-desc": "Reduces crossbow dispersion by {0}%% and increases crossbow damage by {1}%%.",
 
   "destariamasteries:mechanist-refineddevelopment-name": "Refined Development",
-  "destariamasteries:mechanist-refineddevelopment-desc": "Craft chutes with cupronickel for double the output.",
+  "destariamasteries:mechanist-refineddevelopment-desc-level1": "Craft chutes with cupronickel for double the output.",
+  "destariamasteries:mechanist-refineddevelopment-desc-level2": "Craft chutes with cupronickel for double the output. Wooden mechanical parts, such as axles, gears, and clutches, no longer require tools to craft.",
+  "destariamasteries:mechanist-refineddevelopment-desc-level3": "Craft chutes with cupronickel for double the output. Wooden mechanical parts, such as axles, gears, and clutches, no longer require tools to craft. Unlocks the Jonas Screw, which uses a temporal gear to provide a slow, continuous source of mechanical power.",
 
-  "destariamasteries:mechanist-wardagainstmonsters-name": "Ward against Monsters",
-  "destariamasteries:mechanist-wardagainstmonsters-desc": "Understanding the mechanisms behind mechanical creatures makes you more adept at defending yourself from them. You take {0}%% less damage from mechanical creatures, and {1}%% less damage from other monsters.",
+  "destariamasteries:mechanist-wardagainstmonsters-name": "Ward Against Monsters",
+  "destariamasteries:mechanist-wardagainstmonsters-desc": "Understanding the mechanisms behind mechanical creatures improves your defensive instincts. You take {0}%% less damage from mechanical creatures and {1}%% less damage from other monsters.",
 
-  "destariamasteries:mechanist-turnbacktheclock-name": "Turn back the clock",
+  "destariamasteries:mechanist-turnbacktheclock-name": "Turn Back the Clock",
   "destariamasteries:mechanist-turnbacktheclock-desc": "Once per day (resetting at 0:00 UTC), when dealt a fatal blow, time fractures to save you. Your body is thrown backward through time, rewinding you to your spawn point with {0}%% health.",
 
-  "destariamasteries:mechanist-stormchaser-name": "Storm Chase",
-  "destariamasteries:mechanist-stormchaser-desc": "Your time spent around temporal machinery has given you insight to the energies that power them which has given you somewhat of a sixth sense for their ebb and flow. You exactly know when the next temporal storm is coming.",
+  "destariamasteries:mechanist-stormchaser-name": "Storm Chaser",
+  "destariamasteries:mechanist-stormchaser-desc": "Your time spent around temporal machinery grants you insight into their power sources, giving you a sixth sense for their ebb and flow. You know precisely when the next temporal storm will arrive.",
 
   "destariamasteries:mechanist-temporaldevastation-name": "Temporal Devastation",
-  "destariamasteries:mechanist-temporaldevastation-desc": "Once every 30 minutes, violently shatter a temporal gear to rip apart the fabric of time. All monsters within 12 blocks take {0} damage, leaving their corpses utterly mangled. The chronal backwash causes all players in the area to lose {1}%% temporal stability within one second and slows them by {1}%% for 2 seconds.",
-
+  "destariamasteries:mechanist-temporaldevastation-desc": "Once every 30 minutes, violently shatter a temporal gear to rip apart the fabric of time. All monsters within 12 blocks take {0} damage, leaving their remains utterly mangled. The chronal backwash causes all players in the area to lose {1}%% temporal stability within one second and slows them by {1}%% for 2 seconds.",
 
   "destariamasteries:homesteader-mastery-name": "Homesteader",
-  "destariamasteries:homesteader-mastery-desc": "ADD LATER",
+  "destariamasteries:homesteader-mastery-desc": "Unlocks the art of sustainable living and agriculture, turning the untamed wilderness into a flourishing estate. Whether cultivating resilient crops, tending orchards, or managing livestock, you master the rhythms of the land to thrive off the grid.",
 
   "destariamasteries:homesteader-subsistence-name": "Subsistence",
-  "destariamasteries:homesteader-subsistence-desc": "Gain the ability to turn harvested crops into seeds, harvest {0}%% more crops, berries and fruits from fruit trees. Gain {1}%% more meat from animals and fish",
+  "destariamasteries:homesteader-subsistence-desc": "Gain the ability to turn harvested crops into seeds, and harvest {0}%% more crops, berries, and fruits from fruit trees. Gain {1}%% more meat from animals and fish.",
 
   "destariamasteries:homesteader-ambercombs-name": "Amber Combs",
-  "destariamasteries:homesteader-ambercombs-desc": "When harvesting skeps they no longer fall apart into their materials. You will also get 50%% more honeycombs",
+  "destariamasteries:homesteader-ambercombs-desc": "When harvesting skeps, they no longer break down into their components. You also yield 50%% more honeycombs.",
 
   "destariamasteries:homesteader-emeraldboughs-name": "Emerald Boughs",
-  "destariamasteries:homesteader-emeraldboughs-desc": "When taking cuttings from bushes and fruit trees, you gain twice as many. You will also receive twice as many tree seeds and are garanteed to get atleast one sapling when cutting down a tree.",
+  "destariamasteries:homesteader-emeraldboughs-desc": "When taking cuttings from bushes and fruit trees, you gain twice as many. You also receive twice as many tree seeds and are guaranteed to get at least one sapling when cutting down a tree.",
 
   "destariamasteries:homesteader-goldenfields-name": "Golden Fields",
-  "destariamasteries:homesteader-goldenfields-desc": "You gain {0}%% when harvesting crops. Crops you plant have a +/-5°C greater temperature tolerance",
+  "destariamasteries:homesteader-goldenfields-desc": "You gain {0}%% more yield when harvesting crops. Crops you plant have a ±5°C greater temperature tolerance.",
 
   "destariamasteries:homesteader-deepblue-name": "Deep Blue",
-  "destariamasteries:homesteader-deepblue-desc": "You receive {0}%% more meat when flaying fish. You can also craft fishing bait from fruits, grains and vegetables",
+  "destariamasteries:homesteader-deepblue-desc": "You receive {0}%% more meat when cleaning fish. You can also craft fishing bait from fruits, grains, and vegetables.",
 
-  "destariamasteries:homesteader-whispersinred-name": "Whispers In Red",
-  "destariamasteries:homesteader-whispersinred-desc": "You gain {0}%% more yield from animals",
+  "destariamasteries:homesteader-whispersinred-name": "Whispers in Red",
+  "destariamasteries:homesteader-whispersinred-desc": "You gain {0}%% more yield from animals.",
 
   "destariamasteries:homesteader-selfsufficient-name": "Self-Sufficient",
-  "destariamasteries:homesteader-selfsufficient-desc-levelone": "You can create farming tools from metal scraps",
-  "destariamasteries:homesteader-selfsufficient-desc-leveltwo": "Your hungerrate is reduced by {0}%%",
-  "destariamasteries:homesteader-selfsufficient-desc-levelthree": "You can create farming tools from metal parts",
+  "destariamasteries:homesteader-selfsufficient-desc-levelone": "You can create farming tools from metal scraps.",
+  "destariamasteries:homesteader-selfsufficient-desc-leveltwo": "Your hunger rate is reduced by {0}%%.",
+  "destariamasteries:homesteader-selfsufficient-desc-levelthree": "You can create farming tools from metal parts.",
 
   "destariamasteries:homesteader-bitfruity-name": "Bit Fruity",
-  "destariamasteries:homesteader-bitfruity-desc": "Harvest {0}%% more from berry bushes, fruit trees and pineapples",
-  "destariamasteries:homesteader-bitfruity-desc-level5": "Drinking fruit juice increases your walkspeed by {0}%% for 30 seconds",
+  "destariamasteries:homesteader-bitfruity-desc": "Harvest {0}%% more from berry bushes, fruit trees, and pineapples.",
+  "destariamasteries:homesteader-bitfruity-desc-level5": "Drinking fruit juice increases your walk speed by {0}%% for 30 seconds.",
 
   "destariamasteries:homesteader-heartyveggies-name": "Hearty Veggies",
-  "destariamasteries:homesteader-heartyveggies-desc": "Harvest {0}%% more vegetables",
-  "destariamasteries:homesteader-heartyveggies-desc-level5": "You gain {0}%% more satiety from eating raw vegetables",
+  "destariamasteries:homesteader-heartyveggies-desc": "Harvest {0}%% more vegetables.",
+  "destariamasteries:homesteader-heartyveggies-desc-level5": "You gain {0}%% more satiety from eating raw vegetables.",
 
   "destariamasteries:homesteader-themiller-name": "The Miller",
-  "destariamasteries:homesteader-themiller-desc": "Harvest {0}%% more grains and grass",
-  "destariamasteries:homesteader-themiller-desc-level5": "You can operate the quern 4 times faster",
+  "destariamasteries:homesteader-themiller-desc": "Harvest {0}%% more grains and grass.",
+  "destariamasteries:homesteader-themiller-desc-level5": "You can operate the quern 4 times faster.",
 
   "destariamasteries:homesteader-gentletouch-name": "Gentle Touch",
-  "destariamasteries:homesteader-gentletouch-desc": "Attempt to calm an animal that has already been milked today with a {0}%% chance of success. On success the animal becomes milkable again. The cooldown is only applied on failure.",
+  "destariamasteries:homesteader-gentletouch-desc": "Attempt to calm an animal that has already been milked today with a {0}%% chance of success. On success, the animal becomes milkable again. The cooldown is only applied on failure.",
 
   "destariamasteries:homesteader-grovetending-name": "Grove Tending",
-  "destariamasteries:homesteader-grovetending-desc": "Attempt to revive an already dead cutting with a {0}%% chance of success. On failure destroys the cutting. Furthermore gain an additional {0}% yield from berry bushes and fruit trees",
+  "destariamasteries:homesteader-grovetending-desc": "Attempt to revive a dead cutting with a {0}%% chance of success. On failure, the cutting is destroyed. Furthermore, gain an additional {0}%% yield from berry bushes and fruit trees.",
 
-  "destariamasteries:homesteader-tothebone-name": "To The Bone",
-  "destariamasteries:homesteader-tothebone-desc": "While holding a knife, you can exert yourself to strip every single last bit of an animal or fish. This adds 50%% to the yield. You can use this Ability {0} times per day",
+  "destariamasteries:homesteader-tothebone-name": "To the Bone",
+  "destariamasteries:homesteader-tothebone-desc": "While holding a knife, you can exert yourself to strip every last bit from an animal or fish, adding 50%% to the yield. You can use this ability {0} times per day.",
 
   "destariamasteries:homesteader-macrobrewery-name": "Macrobrewery",
-  "destariamasteries:homesteader-macrobrewery-desc": "You can give a fruit press a skillfull spin causing it to fully compress instantly. (Note: Due to Server-Client Async it takes a long time for the animation to update but it will still juice fully) When filling a fruit press there is a {0}%% chance to save an item",
+  "destariamasteries:homesteader-macrobrewery-desc": "You can give a fruit press a skillful spin, causing it to compress instantly. (Note: Due to server-client async, the animation may take a moment to catch up, but it will juice fully.) When filling a fruit press, there is a {0}%% chance to save the item.",
 
   "destariamasteries:homesteader-itainteasy-name": "It Ain't Easy",
-  "destariamasteries:homesteader-itainteasy-desc": "You can craft a curdling agent from salt, vinegar and certain fruit juices which can instantly curdle milk",
+  "destariamasteries:homesteader-itainteasy-desc": "You can craft a curdling agent from salt, vinegar, and certain fruit juices to instantly curdle milk.",
 
   "destariamasteries:homesteader-rationing-name": "Rationing",
-  "destariamasteries:homesteader-rationing-desc": "When planting seeds or using fertilizer there is a {0}%% chance to save the item. Your satiety depletes {1}%% slower.",
+  "destariamasteries:homesteader-rationing-desc": "When planting seeds or using fertilizer, there is a {0}%% chance to save the item. Your satiety depletes {1}%% slower.",
 
   "destariamasteries:homesteader-brewmaster-name": "Brewmaster",
-  "destariamasteries:homesteader-brewmaster-desc": "Once per day you can use a temporal gear to accelerate the process of a sealed barrel. You will also receive {0}%% less damage while drunk.",
+  "destariamasteries:homesteader-brewmaster-desc": "Once per day, you can use a temporal gear to accelerate the aging process of a sealed barrel. You also receive {0}%% less damage while drunk.",
 
   "destariamasteries:homesteader-earlybird-name": "Early Bird",
-  "destariamasteries:homesteader-earlybird-desc": "Every morning the first crop you harvest will restore 50% of your health.",
+  "destariamasteries:homesteader-earlybird-desc": "Every morning, the first crop you harvest restores 50%% of your health.",
 
-  "destariamasteries:homesteader-foolsflax-name": "Fools Flax",
-  "destariamasteries:homesteader-foolsflax-desc": "Harvest {0}%% more flax fibres. Was it worth 30 points?",
+  "destariamasteries:homesteader-foolsflax-name": "Fool's Flax",
+  "destariamasteries:homesteader-foolsflax-desc": "Harvest {0}%% more flax fibers. Was it worth 30 points?",
 
-  "destariamasteries:homesteader-greenerthangreen-name": "Greener than Green",
-  "destariamasteries:homesteader-greenerthangreen-desc": "Once per week you can use 9 fertilizer to accelerate the growth of crops in a 3x3 area instantly marturing them.",
+  "destariamasteries:homesteader-greenerthangreen-name": "Greener Than Green",
+  "destariamasteries:homesteader-greenerthangreen-desc": "Once per week, you can use 9 fertilizer to instantly mature all crops in a 3x3 area.",
 
   "destariamasteries:homesteader-miracleoflife-name": "Miracle of Life",
-  "destariamasteries:homesteader-miracleoflife-desc": "Once per day, you can help along a pregnant animal giving birth immidiatly.",
+  "destariamasteries:homesteader-miracleoflife-desc": "Once per day, you can assist a pregnant animal to give birth immediately.",
 
 
   "destariamasteries:item-fishingbait-vegetable": "Vegetable Fishbait",

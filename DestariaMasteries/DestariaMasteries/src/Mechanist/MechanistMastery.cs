@@ -1,4 +1,5 @@
-﻿using MasteryLibrary.src.Core.Masteries.Data;
+﻿using DestariaMasteries.src.Utils;
+using MasteryLibrary.src.Core.Masteries.Data;
 using MasteryLibrary.src.Utilities;
 using System;
 using System.Collections.Generic;
@@ -104,19 +105,18 @@ namespace DestariaMasteries.src.Mechanist
 
         public override string GetDescription(int level)
         {
-            StringBuilder craftableCrossbows = new StringBuilder();
-            craftableCrossbows.Append("Simple Crossbows, ");
-            if (level >= 3)
+            if (level == 3 || level == 4)
             {
-                craftableCrossbows.Append("Repeating Crossbows,");
+                return Lang.Get("destariamasteries:mechanist-combatengineering-desc-level3", this.GetScaledPercentArgs(level, "crossbowDamageMultiplier"));
             }
             if (level == 5)
             {
-                craftableCrossbows.Append("Latch Crossbows");
+                return Lang.Get("destariamasteries:mechanist-combatengineering-desc-level5", this.GetScaledPercentArgs(level, "crossbowDamageMultiplier"));
             }
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float crossbowDmgMult = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("crossbowDamageMultiplier"), level);
-            return Lang.Get("destariamasteries:mechanist-combatengineering-desc", craftableCrossbows.ToString().TrimEnd(',', ' '), crossbowDmgMult * 100);
+            else
+            {
+                return Lang.Get("destariamasteries:mechanist-combatengineering-desc-level1", this.GetScaledPercentArgs(level, "crossbowDamageMultiplier"));
+            }
         }
     }
 
@@ -140,19 +140,18 @@ namespace DestariaMasteries.src.Mechanist
 
         public override string GetDescription(int level)
         {
-            string mechanicalitems = "Gain the ability to craft chutes, hoppers, axles, and angled gears.";
-            if (level >= 3)
+            if (level == 3 || level == 4)
             {
-                mechanicalitems = "Gain the ability to craft helve hammers, pounders, basic windmills, and their remaining associated parts (for example, big gears, sails";
+                return Lang.Get("destariamasteries:mechanist-tinkering-desc-level3", this.GetScaledPercentArgs(level, "mechanicalsDamage"));
             }
             if (level == 5)
             {
-                mechanicalitems = "Gain the ability to craft reinforced rotors and various other assorted mechanical parts and machines. (for example, clutches, brakes, and any mod machines)";
+                return Lang.Get("destariamasteries:mechanist-tinkering-desc-level5", this.GetScaledPercentArgs(level, "mechanicalsDamage"));
             }
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float mechanicalsDmgMult = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("mechanicalsDamage"), level);
-
-            return Lang.Get("destariamasteries:mechanist-tinkering-desc", mechanicalitems, mechanicalsDmgMult * 100);
+            else
+            {
+                return Lang.Get("destariamasteries:mechanist-tinkering-desc-level1", this.GetScaledPercentArgs(level, "mechanicalsDamage"));
+            }
         }
     }
 
@@ -175,9 +174,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float smallToolDmgReduction = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("smallToolDamageReduction"), level);
-            return Lang.Get("destariamasteries:mechanist-delicatetouch-desc", smallToolDmgReduction * 100);
+            return Lang.Get("destariamasteries:mechanist-delicatetouch-desc", this.GetScaledPercentArgs(level, "smallToolDamageReduction"));
         }
     }
 
@@ -227,14 +224,15 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            string bonusText = "";
             if (level == 3)
             {
-                bonusText = "Gain the ability to hack a corrupt sawblade locust";
+                return Lang.Get("destariamasteries:mechanist-mechanicaltamer-desc-level3", this.GetScaledPercentArgs(level, "TuningSpearDamageAgainstMechanicals"));
+
             }
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float tuningSpearDmgAgainstMechanicals = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("TuningSpearDamageAgainstMechanicals"), level);
-            return Lang.Get("destariamasteries:mechanist-mechanicaltamer-desc", tuningSpearDmgAgainstMechanicals * -100, bonusText);
+            else
+            {
+                return Lang.Get("destariamasteries:mechanist-mechanicaltamer-desc-level1", this.GetScaledPercentArgs(level, "TuningSpearDamageAgainstMechanicals"));
+            }
         }
     }
 
@@ -263,9 +261,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float tuningSpearDmgAgainstMechanicals = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("TuningSpearDamageAgainstMechanicals"), level);
-            return Lang.Get("destariamasteries:mechanist-mechanicalslayer-desc", tuningSpearDmgAgainstMechanicals * 100);
+            return Lang.Get("destariamasteries:mechanist-mechanicalslayer-desc", this.GetScaledPercentArgs(level, "TuningSpearDamageAgainstMechanicals"));
         }
     }
 
@@ -289,7 +285,21 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc");
+           switch (level) 
+           { 
+                case 1:
+                    return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc-level1");
+                case 2:
+                    return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc-level2");
+                case 3:
+                    return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc-level3");
+                case 4:
+                    return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc-level4");
+                case 5:
+                    return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc-level5");
+                default:
+                    return Lang.Get("destariamasteries:mechanist-efficientconstruction-desc-level1");
+           }
         }
     }
 
@@ -312,10 +322,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-
-            var glassesBonus = GetValueSafe<Dictionary<string, StatConfiguration>>("glassesbonus");
-            float bonus = StatScalingUtil.GetScaledValue(glassesBonus?.GetValueOrDefault("glassesBonus"), level);
-            return Lang.Get("destariamasteries:mechanist-eyeforcraftsmanship-desc", bonus * 100);
+            return Lang.Get("destariamasteries:mechanist-eyeforcraftsmanship-desc", this.GetScaledPercentArgs(level, "glassesBonus"));
         }
     }
 
@@ -410,9 +417,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float temporalStabilityDropRate = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("temporalStabilityDropRate"), level);
-            return Lang.Get("destariamasteries:mechanist-temporalinurement-desc", temporalStabilityDropRate * 100);
+            return Lang.Get("destariamasteries:mechanist-temporalinurement-desc", this.GetScaledPercentArgs(level, "temporalStabilityDropRate"));
         }
     }
 
@@ -466,10 +471,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float crossbowDispersion = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("crossbowDispersion"), level);
-            float crossbowDamageMultiplier = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("crossbowDamageMultiplier"), level);
-            return Lang.Get("destariamasteries:mechanist-producttesting-desc", crossbowDispersion * 100, crossbowDamageMultiplier * 100);
+            return Lang.Get("destariamasteries:mechanist-producttesting-desc", this.GetScaledPercentArgs(level, "crossbowDispersion", "crossbowDamageMultiplier"));
         }
     }
 
@@ -493,7 +495,17 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            return Lang.Get("destariamasteries:mechanist-refineddevelopment-desc");
+            switch (level)
+            {
+                case 1:
+                    return Lang.Get("destariamasteries:mechanist-refineddevelopment-desc-level1");
+                case 2:
+                    return Lang.Get("destariamasteries:mechanist-refineddevelopment-desc-level2");
+                case 3:
+                    return Lang.Get("destariamasteries:mechanist-refineddevelopment-desc-level3");
+                default:
+                    return Lang.Get("destariamasteries:mechanist-refineddevelopment-desc-level1");
+            }
         }
     }
 
@@ -518,11 +530,7 @@ namespace DestariaMasteries.src.Mechanist
         }
         public override string GetDescription(int level)
         {
-            var passiveStats = GetValueSafe<Dictionary<string, StatConfiguration>>("PassiveStats");
-            float damageResistanceAgainstMechanicals = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("damageResistanceAgainstMechanicals"), level);
-            float damageResistanceAgainstRust = StatScalingUtil.GetScaledValue(passiveStats?.GetValueOrDefault("damageResistanceAgainstRust"), level);
-
-            return Lang.Get("destariamasteries:mechanist-wardagainstmonsters-desc", damageResistanceAgainstMechanicals * -100, damageResistanceAgainstRust * -100);
+            return Lang.Get("destariamasteries:mechanist-wardagainstmonsters-desc", this.GetScaledPercentArgs(level, "damageResistanceAgainstMechanicals", "damageResistanceAgainstRust"));
         }
     }
 
@@ -583,7 +591,7 @@ namespace DestariaMasteries.src.Mechanist
         public override int Column => 6;
         public override EnumSkillType SkillType => EnumSkillType.Active;
         public override string Ability => "TemporalDevastation";
-        public override float Cooldown => 0;
+        public override float Cooldown => 1800;
         public TemporalDevastationSkill()
         {
             var skilldamage = new Dictionary<string, object> { { "Values", new float[] { 15, 30, 45, 60, 80 } } };
