@@ -31,15 +31,7 @@ namespace DestariaMasteries.src.Utils
     public static class XpRewardEvaluator
     {
         private const string ConfigFileName = "MasteryXpConfig.json";
-
-        /// <summary>
-        /// Active configuration. Defaults to a fresh MasteryXpConfig() so callers
-        /// never hit a null reference even if Initialize() hasn't run yet, but
-        /// Initialize(api) should be called once on server start to load (or create)
-        /// the on-disk config so it can actually be edited.
-        /// </summary>
         public static MasteryXpConfig Config { get; private set; } = new MasteryXpConfig();
-
         private static AssetLocation oreWildcard = new AssetLocation("*:ore-*-*-*");
         private static AssetLocation ungradedOreWildcard = new AssetLocation("*:ore-*-*");
         private static AssetLocation cropWildcard = new AssetLocation("*:crop-*-*");
@@ -77,6 +69,13 @@ namespace DestariaMasteries.src.Utils
         private static void GrantXpToPlayer(IServerPlayer byPlayer, float amount, XpSourceCategory source, string detail = null)
         {
             if (byPlayer == null || amount <= 0f) return;
+
+            EnumGameMode gm = byPlayer.WorldData.CurrentGameMode;
+            if (gm == EnumGameMode.Creative || gm == EnumGameMode.Spectator)
+            {
+                byPlayer.Entity?.Api.Logger.Event($"Not awarding XP to {byPlayer.PlayerName} for {source} because they are in {gm} mode.");
+                return;
+            }
 
             var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
             if (data == null) return; // nothing was actually granted, so don't log that it was
