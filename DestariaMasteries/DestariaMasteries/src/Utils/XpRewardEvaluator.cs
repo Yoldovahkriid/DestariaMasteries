@@ -340,7 +340,7 @@ namespace DestariaMasteries.src.Utils
             if (parts.Length < 3) return 1f;
 
             string species = parts[2];
-            return logXp.TryGetValue(species, out var xp) ? xp : 1f;
+            return logXp.TryGetValue(species, out var xp) ? xp : 2f;
         }
 
         public static void OnTreeHarvest(IServerPlayer byPlayer, float basexp)

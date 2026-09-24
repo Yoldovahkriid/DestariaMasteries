@@ -8,16 +8,10 @@ using DestariaMasteries.src.Mechanist.Blocks.Jonasscrew;
 using DestariaMasteries.src.Utils;
 using HarmonyLib;
 using MasteryLibrary;
-using MasteryLibrary.src.Behaviors.EntityBehaviors;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
-using Vintagestory.Client;
-using Vintagestory.GameContent;
-using Vintagestory.GameContent.Mechanics;
-using Vintagestory.Server;
 
 namespace DestariaMasteries.src.Systems
 {
@@ -101,6 +95,11 @@ namespace DestariaMasteries.src.Systems
             api.Event.OnEntityDeath += XpRewardEvaluator.OnEntityDeath;
 
             socialXpSystem = new SocialXpSystem(api);
+
+            MasteryLibrary?.Events.OnPlayerLeveledUp += (IServerPlayer player, int newLevel, int previousLevel) =>
+            {
+                sapi.SendMessage(player, GlobalConstants.AllChatGroups, $"You have leveled up and are now level {newLevel}!", EnumChatType.Notification);
+            };
         }
 
         public override void StartClientSide(ICoreClientAPI api)
