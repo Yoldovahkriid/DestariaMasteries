@@ -8,7 +8,7 @@ using DestariaMasteries.src.Utils;
 
 namespace DestariaMasteries.src.Systems
 {
-    public class SocialXpSystem : IDisposable
+    public class SocialXpSystem
     {
         private readonly int _tickIntervalMs;
         private readonly float _checkRadiusSq;
