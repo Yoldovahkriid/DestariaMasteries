@@ -91,6 +91,8 @@ namespace DestariaMasteries.src.Systems
                 })
                 .EndSubCommand();
 
+            XpRewardEvaluator.Initialize(api);
+
             api.Event.BreakBlock += XpRewardEvaluator.OnBlockBroken;
             api.Event.OnEntityDeath += XpRewardEvaluator.OnEntityDeath;
 

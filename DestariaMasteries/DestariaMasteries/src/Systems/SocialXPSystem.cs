@@ -10,13 +10,13 @@ namespace DestariaMasteries.src.Systems
 {
     public class SocialXpSystem : IDisposable
     {
-        private const int TickIntervalMs = 30000;          // 30 seconds
-        private const float CheckRadiusSq = 12.0f * 12.0f; // 12 blocks (squared for performance)
-        private const double EpsilonMovementSq = 0.01 * 0.01; // 0.01 blocks
-        private const double EpsilonRotation = 0.02;       // 0.02 degrees
-        private const int IdleTicksThreshold = 4;
-        private const int MinPlayersForSocialXp = 2;       // Count includes the player + nearby
-        private const int XpAwardedAfterTicks = 10;
+        private readonly int _tickIntervalMs;
+        private readonly float _checkRadiusSq;
+        private readonly double _epsilonMovementSq;
+        private readonly double _epsilonRotation;
+        private readonly int _idleTicksThreshold;
+        private readonly int _minPlayersForSocialXp;
+        private readonly int _xpAwardedAfterTicks;
 
         private readonly ICoreServerAPI _sapi;
         private readonly Dictionary<string, PlayerActivityStatus> _activityStatuses = new();
@@ -25,7 +25,17 @@ namespace DestariaMasteries.src.Systems
         public SocialXpSystem(ICoreServerAPI sapi)
         {
             _sapi = sapi;
-            _listenerId = _sapi.Event.RegisterGameTickListener(OnGameTick, TickIntervalMs);
+
+            SocialSystemConfig cfg = XpRewardEvaluator.Config.SocialSystem;
+            _tickIntervalMs = cfg.TickIntervalMs;
+            _checkRadiusSq = cfg.CheckRadius * cfg.CheckRadius;
+            _epsilonMovementSq = cfg.EpsilonMovement * cfg.EpsilonMovement;
+            _epsilonRotation = cfg.EpsilonRotation;
+            _idleTicksThreshold = cfg.IdleTicksThreshold;
+            _minPlayersForSocialXp = cfg.MinPlayersForSocialXp;
+            _xpAwardedAfterTicks = cfg.XpAwardedAfterTicks;
+
+            _listenerId = _sapi.Event.RegisterGameTickListener(OnGameTick, _tickIntervalMs);
             _sapi.Event.PlayerDisconnect += OnDisconnect;
             _sapi.Event.PlayerChat += OnPlayerChat;
         }
@@ -33,7 +43,7 @@ namespace DestariaMasteries.src.Systems
         private void OnGameTick(float dt)
         {
             IPlayer[] players = _sapi.World.AllOnlinePlayers;
-            if (players.Length < MinPlayersForSocialXp) return;
+            if (players.Length < _minPlayersForSocialXp) return;
 
             foreach (IServerPlayer player in players)
             {
@@ -46,9 +56,9 @@ namespace DestariaMasteries.src.Systems
 
                 status.ActiveTicks++;
 
-                if (status.ActiveTicks >= XpAwardedAfterTicks && CountNearbyActivePlayers(player) >= MinPlayersForSocialXp - 1)
+                if (status.ActiveTicks >= _xpAwardedAfterTicks && CountNearbyActivePlayers(player) >= _minPlayersForSocialXp - 1)
                 {
-                    XpRewardEvaluator.GrantSocialXp(player, XpAwardedAfterTicks);
+                    XpRewardEvaluator.GrantSocialXp(player, _xpAwardedAfterTicks);
                     status.ActiveTicks = 0;
                 }
             }
@@ -73,7 +83,7 @@ namespace DestariaMasteries.src.Systems
                 double yawDiff = Math.Abs(currentYaw - status.LastYaw);
                 double pitchDiff = Math.Abs(currentPitch - status.LastPitch);
 
-                if (distSq < EpsilonMovementSq && yawDiff < EpsilonRotation && pitchDiff < EpsilonRotation)
+                if (distSq < _epsilonMovementSq && yawDiff < _epsilonRotation && pitchDiff < _epsilonRotation)
                 {
                     status.IdleTicks++;
                 }
@@ -88,7 +98,7 @@ namespace DestariaMasteries.src.Systems
             status.LastPitch = currentPitch;
 
             bool previouslyActive = status.IsActive;
-            status.IsActive = status.IdleTicks < IdleTicksThreshold;
+            status.IsActive = status.IdleTicks < _idleTicksThreshold;
 
             if (!status.IsActive && previouslyActive)
             {
@@ -108,7 +118,7 @@ namespace DestariaMasteries.src.Systems
 
                 if (_activityStatuses.TryGetValue(otherPlayer.PlayerUID, out var status) && status.IsActive)
                 {
-                    if (sourcePos.SquareDistanceTo(otherPlayer.Entity.Pos.XYZ) <= CheckRadiusSq)
+                    if (sourcePos.SquareDistanceTo(otherPlayer.Entity.Pos.XYZ) <= _checkRadiusSq)
                     {
                         count++;
                     }
