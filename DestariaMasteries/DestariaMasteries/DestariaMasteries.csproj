@@ -8,8 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="CrossbowsFork">
+      <HintPath>..\external\CrossbowsFork.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="MasteryLibrary">
       <HintPath>..\..\..\..\..\AppData\Roaming\VintagestoryData\Mods\masterylibrary_1.0.0\MasteryLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OverhaullibLegacyCompat">
+      <HintPath>..\external\OverhaullibLegacyCompat.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VintagestoryAPI">
@@ -64,6 +72,15 @@
   <Content Include="modicon.png" Condition="Exists('modicon.png')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+</ItemGroup>
+
+<ItemGroup>
+  <Folder Include="assets\destariamasteries\blocktypes\abilities\" />
+  <Folder Include="assets\destariamasteries\sounds\" />
+</ItemGroup>
+
+<ItemGroup>
+  <PackageReference Include="OpenTK" Version="4.9.4" />
 </ItemGroup>
 
 </Project>

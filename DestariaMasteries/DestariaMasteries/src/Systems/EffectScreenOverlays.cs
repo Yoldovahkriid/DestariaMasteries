@@ -10,8 +10,14 @@ namespace DestariaMasteries.src.Systems
     internal class EffectScreenOverlays : ModSystem
     {
         ICoreClientAPI capi;
-        IShaderProgram OverlayShaderProg;
-        BlindnessShader renderer;
+
+        ScreenEffectsRenderer effectsRenderer;
+        IShaderProgram blindnessShaderProg;
+        IShaderProgram turnBackTheClockShaderProg;
+        BlindnessOverlayEffect blindnessEffect;
+
+        const string TurnBackTheClockTriggerKey = "destariamasteries:turnbacktheclock-trigger";
+        long lastSeenTurnBackTheClockTrigger = 0L;
 
         public override bool ShouldLoad(EnumAppSide forSide) => forSide == EnumAppSide.Client;
 
@@ -19,28 +25,69 @@ namespace DestariaMasteries.src.Systems
         {
             capi = api;
 
-            api.Event.ReloadShader += LoadShader;
-            LoadShader();
+            api.Event.ReloadShader += LoadShaders;
+            LoadShaders();
 
-            renderer = new BlindnessShader(capi, OverlayShaderProg);
-            api.Event.RegisterRenderer(renderer, EnumRenderStage.Ortho);
+            effectsRenderer = new ScreenEffectsRenderer(capi);
+            api.Event.RegisterRenderer(effectsRenderer, EnumRenderStage.Ortho);
+
+            blindnessEffect = new BlindnessOverlayEffect(capi, blindnessShaderProg);
+            effectsRenderer.AddEffect(blindnessEffect);
+
+            api.Event.RegisterGameTickListener(CheckTurnBackTheClockTrigger, 100);
         }
 
-        public bool LoadShader()
+        void CheckTurnBackTheClockTrigger(float dt)
         {
-            OverlayShaderProg = capi.Shader.NewShaderProgram();
+            Vintagestory.API.Common.Entities.Entity player = capi.World.Player?.Entity;
+            if (player == null) return;
 
-            OverlayShaderProg.AssetDomain = Mod.Info.ModID;
-
-            capi.Shader.RegisterFileShaderProgram("blindness", OverlayShaderProg);
-            OverlayShaderProg.Compile();
-
-            if (renderer != null)
+            long triggerValue = player.WatchedAttributes.GetLong(TurnBackTheClockTriggerKey, 0L);
+            if (triggerValue != 0L && triggerValue != lastSeenTurnBackTheClockTrigger)
             {
-                renderer.shaderProgram = OverlayShaderProg;
+                lastSeenTurnBackTheClockTrigger = triggerValue;
+                PlayTurnBackTheClockOverlay();
+            }
+        }
+
+        public void PlayTurnBackTheClockOverlay()
+        {
+            if (effectsRenderer == null || turnBackTheClockShaderProg == null) return;
+            if (effectsRenderer.HasEffect("turnbacktheclock")) return;
+
+            effectsRenderer.AddEffect(new TurnBackTheClockOverlayEffect(turnBackTheClockShaderProg));
+        }
+
+        public bool LoadShaders()
+        {
+            blindnessShaderProg?.Dispose();
+            turnBackTheClockShaderProg?.Dispose();
+
+            blindnessShaderProg = capi.Shader.NewShaderProgram();
+            blindnessShaderProg.AssetDomain = Mod.Info.ModID;
+            capi.Shader.RegisterFileShaderProgram("blindness", blindnessShaderProg);
+            blindnessShaderProg.Compile();
+
+            turnBackTheClockShaderProg = capi.Shader.NewShaderProgram();
+            turnBackTheClockShaderProg.AssetDomain = Mod.Info.ModID;
+            capi.Shader.RegisterFileShaderProgram("turnbacktheclock", turnBackTheClockShaderProg);
+            turnBackTheClockShaderProg.Compile();
+
+            if (blindnessEffect != null)
+            {
+                blindnessEffect.ShaderProgram = blindnessShaderProg;
             }
 
             return true;
+        }
+
+        public override void Dispose()
+        {
+            blindnessShaderProg?.Dispose();
+            turnBackTheClockShaderProg?.Dispose();
+            effectsRenderer?.Dispose();
+
+            base.Dispose();
         }
     }
 }

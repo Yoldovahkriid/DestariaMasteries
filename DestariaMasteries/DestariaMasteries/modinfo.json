@@ -7,9 +7,11 @@
     "Unknown"
   ],
   "description": "To be added",
-  "version": "1.0.0",
+  "version": "1.0.0-pre.1",
   "dependencies": {
-    "game": "1.21.0",
-    "masterylibrary": "*"
+    "game": "1.22.0",
+    "masterylibrary": "*",
+    "crossbowsfork": "*",
+    "playermodellib": "*"
   }
 }

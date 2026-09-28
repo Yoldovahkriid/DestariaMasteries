@@ -1,0 +1,21 @@
+[
+  {
+    "file": "game:recipes/grid/tool/hackingspear",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {
+      "requiresSkill": "Tuning",
+      "requiresLevel": 1
+    },
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/tool/spear",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value": {
+      "spear-generic-hacking": [ { "name": "DamageScalar" } ]
+    },
+    "side": "server"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "game:blocktypes/plant/tallgrass",
+    "op": "addmerge",
+    "path": "/dropsByType/*/0/dropModbyStat",
+    "value": "grassHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/tallgrass",
+    "op": "addmerge",
+    "path": "/dropsByType/*/1/dropModbyStat",
+    "value": "grassHarvestMultiplier",
+    "side": "server"
+  }
+]

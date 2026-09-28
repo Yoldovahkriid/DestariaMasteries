@@ -1,0 +1,156 @@
+[
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-reef-*/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-saltwater-coelacanth-*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-saltwater-mahi-mahi-*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-saltwater-grouper-*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-saltwater-(bream|hake|haddock|gurnard|pollock|salmon|snapper|tuna|wolf|wreckfish)-.*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-saltwater-(herring|mackerel|perch)-.*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-saltwater-coelacanth-*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-saltwater-mahi-mahi-*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-saltwater-grouper-*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-saltwater-(amberjack|barracuda|sturgeon)-.*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-saltwater-(salmon|snapper|tuna|wolf|wreckfish)-.*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-freshwater-arapaima-*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-freshwater-sheatfish-*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-freshwater-pike-*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-freshwater-(crappie|perch|trout|tilapia|piranha)-.*-adult/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-freshwater-arapaima-*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-freshwater-sheatfish-*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/fishraw-freshwater-pike-*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/@fishraw-freshwater-(bass|carp|catfish|pickerel|salmon|walleye)-.*-juvenile/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/food/fishraw",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*/1/properties/processedStacksByType/*/0/dropModbyStat",
+    "value": "fishFlayMultiplier",
+    "side": "server"
+  }
+]

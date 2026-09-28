@@ -1,0 +1,16 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/spelt",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/quantity/avg",
+    "value": "3",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/spelt",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  }
+]

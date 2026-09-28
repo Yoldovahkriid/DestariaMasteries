@@ -1,0 +1,9 @@
+[
+  {
+    "file": "game:entities/animal/mammal/bear-adult",
+    "op": "addmerge",
+    "path": "/server/behaviors/6/drops/0/dropModbyStat",
+    "value": "meatDropRate",
+    "side": "server"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "file": "game:itemtypes/resource/chutesection",
+    "op": "addmerge",
+    "path": "/variantgroups/0/states/-",
+    "value": "cupronickel",
+    "side": "server"
+  },
+  {
+    "file": "game:recipes/smithing/chutesection",
+    "op": "addmerge",
+    "path": "/ingredient/allowedVariants/-",
+    "value": "cupronickel",
+    "side": "server"
+  },
+  {
+    "file": "game:recipes/smithing/chutesection",
+    "op": "replace",
+    "path": "/output/code",
+    "value": "chutesection-{metal}",
+    "side": "server"
+  }
+]

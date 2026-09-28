@@ -1,0 +1,16 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/rye",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/quantity/avg",
+    "value": "2.25",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/rye",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  }
+]

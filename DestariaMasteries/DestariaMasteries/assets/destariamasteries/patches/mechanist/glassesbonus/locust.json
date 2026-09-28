@@ -1,0 +1,26 @@
+[
+  {
+    "file": "game:entities/lore/locust",
+    "op": "addmerge",
+    "path": "/dropsByType/locust-corrupt-sawblade/0/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/locust",
+    "op": "addmerge",
+    "path": "/dropsByType/locust-corrupt-sawblade/1/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/locust",
+    "op": "addmerge",
+    "path": "/dropsByType/locust-corrupt-sawblade/2/dropModbyStat",
+    "value": "glassesbonus"
+  },
+  {
+    "file": "game:entities/lore/locust",
+    "op": "addmerge",
+    "path": "/dropsByType/locust-corrupt-sawblade/3/dropModbyStat",
+    "value": "glassesbonus"
+  }
+]

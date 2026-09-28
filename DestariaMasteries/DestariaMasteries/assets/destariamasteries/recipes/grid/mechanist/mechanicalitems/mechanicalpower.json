@@ -1,0 +1,621 @@
+[
+  {
+    "ingredientPattern": "RSF",
+    "ingredients": {
+      "R": {
+        "type": "item",
+        "code": "game:resin"
+      },
+      "S": {
+        "type": "block",
+        "code": "game:log-placed-*-ud",
+        "quantity": 2
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 3,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:windmillrotor-wood-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "RSF",
+    "ingredients": {
+      "R": {
+        "type": "item",
+        "code": "game:resin"
+      },
+      "S": {
+        "type": "block",
+        "code": "game:logsection-placed-*-ud",
+        "quantity": 2
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 3,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:windmillrotor-wood-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "RBR,BAB,RBR",
+    "ingredients": {
+      "A": {
+        "type": "block",
+        "code": "game:supportbeam-{wood}",
+        "quantity": 4
+      },
+      "B": {
+        "type": "item",
+        "code": "game:bracket-heavy-{metal}"
+      },
+      "R": {
+        "type": "item",
+        "code": "game:rod-{metal}"
+      }
+    },
+    "allowedVariants": {
+      "wood": [ "oak", "maple", "kapok", "redwood", "ebony", "walnut", "purpleheart" ],
+      "metal": [ "iron", "meteoriciron", "steel" ]
+    },
+    "width": 3,
+    "height": 3,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:windmillrotor-metal-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "SF",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:log-placed-*-ud",
+        "name": "wood"
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 2,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:woodenaxle-ud",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "SF",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:logsection-placed-*-ud"
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 2,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:woodenaxle-ud",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "P_P,RSF",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:log-placed-*-ud"
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin"
+      },
+      "P": {
+        "type": "item",
+        "code": "game:stick"
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:angledgears-s",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "SLS,R_F",
+    "ingredients": {
+      "L": {
+        "type": "block",
+        "code": "game:log-placed-*-ud"
+      },
+      "S": {
+        "type": "item",
+        "code": "game:stick",
+        "quantity": 8
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin"
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:spurgear-s",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "P_P,RSF",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:logsection-placed-*-ud"
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin"
+      },
+      "P": {
+        "type": "item",
+        "code": "game:stick"
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:angledgears-s",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "SFR",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:log-placed-*-ud"
+      },
+      "F": {
+        "type": "block",
+        "code": "game:woodenaxle-ud"
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 2
+      }
+    },
+    "width": 3,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:brake-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "SFR",
+    "ingredients": {
+      "S": {
+        "type": "block",
+        "code": "game:logsection-placed-*-ud"
+      },
+      "F": {
+        "type": "block",
+        "code": "game:woodenaxle-ud"
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 2
+      }
+    },
+    "width": 3,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:brake-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "__P,_P_,PR_",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:plank-*",
+        "name": "wood"
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:helvehammerbase-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "__R,PAP,_F_",
+    "ingredients": {
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 4
+      },
+      "P": {
+        "type": "item",
+        "code": "game:plank-*",
+        "name": "wood",
+        "quantity": 4
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      },
+      "A": {
+        "type": "block",
+        "code": "game:woodenaxle-ud"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:woodentoggle-ns",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "PRS,AAA",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:plank-*",
+        "name": "wood",
+        "quantity": 2
+      },
+      "A": {
+        "type": "item",
+        "code": "game:plank-*",
+        "name": "wood",
+        "quantity": 1
+      },
+      "S": {
+        "type": "item",
+        "code": "game:stick",
+        "quantity": 12
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 2
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "item",
+      "code": "game:largegearsection-wood",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "PAS,RF_",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:plank-*",
+        "quantity": 8
+      },
+      "A": {
+        "type": "block",
+        "code": "game:log-placed-*-ud"
+      },
+      "S": {
+        "type": "item",
+        "code": "game:stick",
+        "quantity": 8
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 2
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered",
+        "quantity": 2
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:clutch-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "PAS,RF_",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:plank-*",
+        "quantity": 8
+      },
+      "A": {
+        "type": "block",
+        "code": "game:logsection-placed-*-ud"
+      },
+      "S": {
+        "type": "item",
+        "code": "game:stick",
+        "quantity": 8
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 2
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered",
+        "quantity": 2
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:clutch-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "GPG,RF_",
+    "ingredients": {
+      "G": {
+        "type": "block",
+        "code": "game:angledgears-s"
+      },
+      "P": {
+        "type": "item",
+        "code": "game:plank-*",
+        "name": "wood",
+        "quantity": 8
+      },
+      "R": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 2
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:transmission-ns",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "BAB",
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:hub-light4way-*",
+        "name": "metal",
+        "allowedVariants": [ "iron", "meteoriciron", "steel" ]
+      },
+      "A": {
+        "type": "block",
+        "code": "game:woodenaxle-ud"
+      }
+    },
+    "width": 3,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 2,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:waterwheel-3m-north",
+      "quantity": 1
+    }
+  }
+]

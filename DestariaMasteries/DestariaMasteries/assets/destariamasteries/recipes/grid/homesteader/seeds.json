@@ -1,0 +1,146 @@
+[
+  {
+    "name": "homesteader_vegetable_seeds",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "game:vegetable-*",
+        "name": "type",
+        "quantity": 3,
+        "SkipVariants": [ "cookedcattailroot", "cookedpapyrusroot", "olive", "bambooshoot" ]
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "game:seeds-{type}",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_grain_seeds",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "game:grain-*",
+        "name": "type",
+        "quantity": 3
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "game:seeds-{type}",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_legume_seeds",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "game:legume-*",
+        "name": "type",
+        "quantity": 3,
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "game:seeds-{type}",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_fruit_seeds",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "game:fruit-pineapple",
+        "quantity": 2
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "game:seeds-pineapple",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_spice_seeds",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "game:spice-licorice-raw",
+        "quantity": 2
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "game:seeds-licorice",
+      "quantity": 1
+    }
+  }
+]

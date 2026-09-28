@@ -1,0 +1,16 @@
+[
+  {
+    "file": "game:entities/animal/mammal/hooved/sheep-adult",
+    "op": "addmerge",
+    "path": "/server/behaviors/6/drops/0/dropModbyStat",
+    "value": "meatDropRate",
+    "side": "server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hooved/sheep-baby",
+    "op": "addmerge",
+    "path": "/server/behaviors/6/drops/0/dropModbyStat",
+    "value": "meatDropRate",
+    "side": "server"
+  }
+]

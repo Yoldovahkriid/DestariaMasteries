@@ -1,0 +1,30 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/cassava",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/quantity/avg",
+    "value": "2.5",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cassava",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cassava",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/quantity/avg",
+    "value": "8",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cassava",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  }
+]

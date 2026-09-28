@@ -1,0 +1,23 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/flax",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/quantity/avg",
+    "value": "1.5",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/flax",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/flax",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/2/dropModbyStat",
+    "value": "flaxFibreDropRate",
+    "side": "server"
+  }
+]

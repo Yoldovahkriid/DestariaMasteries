@@ -1,0 +1,42 @@
+{
+  "code": "jonasscrew",
+  "class": "BlockJonasScrew",
+  "entityBehaviors": [ { "name": "MPJonasScrew" } ],
+  "behaviors": [ { "name": "HorizontalOrientable" } ],
+  "variantgroups": [
+		{ "code":"side", "loadFromProperties": "game:abstract/horizontalorientation" }
+	],
+  "creativeinventory": { "general": ["*-north"] },
+  "drawType": "json",
+  "shapeByType": {
+    "*-north": { "base": "destariamasteries:block/metal/jonasscrew", "rotateY": 180 },
+    "*-west": { "base": "destariamasteries:block/metal/jonasscrew", "rotateY": 270 },
+    "*-south": { "base": "destariamasteries:block/metal/jonasscrew", "rotateY": 0 },
+    "*-east": { "base": "destariamasteries:block/metal/jonasscrew", "rotateY": 90 },
+  },
+  "blockMaterial": "Metal",
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "drops": [
+    {
+      "type": "block",
+      "code": "destariamasteries:jonasscrew-north",
+    }
+  ],
+  "collisionboxByType": {
+    "*-north": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875 },
+    "*-west": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875, "rotateY": 90 },
+    "*-south": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875, "rotateY": 180 },
+    "*-east": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875, "rotateY": 270 }
+  },
+  "selectionboxByType": {
+    "*-north": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875 },
+    "*-west": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875, "rotateY": 90 },
+    "*-south": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875, "rotateY": 180 },
+    "*-east": { "x1": 0.3125, "y1": 0.3125, "z1": 0, "x2": 0.6875, "y2": 0.6875, "z2": 0.875, "rotateY": 270 }
+  }
+}

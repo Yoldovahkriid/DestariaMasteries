@@ -1,0 +1,36 @@
+{
+  "ingredientPattern": "JCL,_TB",
+  "ingredients": {
+    "C": {
+      "type": "item",
+      "code": "game:chutesection-cupronickel",
+      "quantity": 2
+    },
+    "J": {
+      "type": "item",
+      "code": "game:jonasparts-connector01"
+    },
+    "T": {
+      "type": "item",
+      "code": "game:gear-temporal"
+    },
+    "L": {
+      "type": "item",
+      "code": "game:metalplate-lead"
+    },
+    "B": {
+      "type": "item",
+      "code": "game:metalplate-brass"
+    }
+  },
+  "width": 3,
+  "height": 2,
+  "attributes": {
+    "requiresSkill": "RefinedDevelopment",
+    "requiresLevel": 3
+  },
+  "output": {
+    "type": "block",
+    "code": "destariamasteries:jonasscrew-north"
+  }
+}

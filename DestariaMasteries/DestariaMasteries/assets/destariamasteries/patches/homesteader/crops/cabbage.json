@@ -1,0 +1,30 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/cabbage",
+    "op": "addmerge",
+    "path": "/dropsByType/*-11/1/quantity/avg",
+    "value": "0.425",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cabbage",
+    "op": "addmerge",
+    "path": "/dropsByType/*-11/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cabbage",
+    "op": "addmerge",
+    "path": "/dropsByType/*-12/1/quantity/avg",
+    "value": "1",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cabbage",
+    "op": "addmerge",
+    "path": "/dropsByType/*-12/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

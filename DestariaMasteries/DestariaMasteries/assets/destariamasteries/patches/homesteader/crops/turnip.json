@@ -1,0 +1,30 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/turnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-4/1/quantity/avg",
+    "value": "1.5",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/turnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-4/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/turnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-5/1/quantity/avg",
+    "value": "3.5",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/plant/crop/turnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-5/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

@@ -1,0 +1,171 @@
+[
+  {
+    "ingredientPattern": "I_,_I",
+    "ingredients": {
+      "I": {
+        "type": "item",
+        "code": "game:chutesection-cupronickel"
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 1,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:chute-elbow-down-east",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "I,I",
+    "ingredients": {
+      "I": {
+        "type": "item",
+        "code": "game:chutesection-cupronickel"
+      }
+    },
+    "width": 2,
+    "height": 1,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 1,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:chute-straight-ns",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "_I_,I_I,_I_",
+    "ingredients": {
+      "I": {
+        "type": "item",
+        "code": "game:chutesection-cupronickel"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 1,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:chute-cross-ground",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "_I_,I_I",
+    "ingredients": {
+      "I": {
+        "type": "item",
+        "code": "game:chutesection-cupronickel"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 1,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:chute-t-ns",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "_I_,II_",
+    "ingredients": {
+      "I": {
+        "type": "item",
+        "code": "game:chutesection-cupronickel"
+      }
+    },
+    "width": 3,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 1,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+      }
+    },
+    "output": {
+      "type": "block",
+      "code": "game:chute-3way-down-east",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "I_,S_,PH",
+    "ingredients": {
+      "I": {
+        "type": "item",
+        "tags": [ "tool-solderingiron" ],
+        "isTool": true,
+        "toolDurabilityCost": 2
+      },
+      "H": {
+        "type": "item",
+        "tags": [ "tool-hammer" ],
+        "isTool": true,
+        "toolDurabilityCost": 2
+      },
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-cupronickel"
+      },
+      "S": {
+        "type": "item",
+        "code": "game:solderbar-*",
+        "quantity": 2,
+        "name": "mat",
+        "allowedVariants": [ "tin", "silver" ]
+      }
+    },
+    "width": 2,
+    "height": 3,
+    "attributes": {
+      "requiresSkill": "RefinedDevelopment",
+      "requiresLevel": 1,
+      "scalesWithSkill": "EfficientConstruction",
+      "outputScaling": {
+        "ScalingMethod": "Array",
+        "ScalingParams ": { "Values": [ 5, 5, 6, 6, 6 ] }
+      }
+    },
+    "output": {
+      "type": "item",
+      "code": "game:chutesection-cupronickel",
+      "quantity": 4
+    }
+  }
+]

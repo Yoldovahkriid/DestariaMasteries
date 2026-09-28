@@ -1,0 +1,92 @@
+[
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "AntiAnything",
+      "requiresLevel": 1
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/1/attributes",
+    "value": {
+      "requiresSkill": "AntiArmor",
+      "requiresLevel": 1
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/2/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 5
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/3/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 5
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/4/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 3
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/5/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 3
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/6/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 3
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/7/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 3
+    },
+    "side": "server"
+  },
+  {
+    "file": "maltiezcrossbows:recipes/grid/crossbow",
+    "op": "addmerge",
+    "path": "/8/attributes",
+    "value": {
+      "requiresSkill": "CombatEngineering",
+      "requiresLevel": 1
+    },
+    "side": "server"
+  }
+]
