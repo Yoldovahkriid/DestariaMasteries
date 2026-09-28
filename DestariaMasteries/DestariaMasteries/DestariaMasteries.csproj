@@ -13,8 +13,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="MasteryLibrary">
-      <HintPath>..\..\..\..\..\AppData\Roaming\VintagestoryData\Mods\masterylibrary_1.0.0\MasteryLibrary.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\MasteryLibrary\MasteryLibrary\Releases\masterylibrary\MasteryLibrary.dll</HintPath>
     </Reference>
     <Reference Include="OverhaullibLegacyCompat">
       <HintPath>..\external\OverhaullibLegacyCompat.dll</HintPath>

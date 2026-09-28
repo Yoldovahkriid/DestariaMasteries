@@ -34,9 +34,9 @@ namespace DestariaMasteries.src.Systems
             MasteryLibrary = api.ModLoader.GetModSystem<MasteryLibraryAPI>();
             MasteryLibrary.MasteryDefinitions.AddMastery(new AlchemyMastery());
             MasteryLibrary.MasteryDefinitions.AddMastery(new HealingMastery());
-
             MasteryLibrary.MasteryDefinitions.AddMastery(new MechanistMastery());
             MasteryLibrary.MasteryDefinitions.AddMastery(new HomesteaderMastery());
+
             //Alchemy Skills
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PrimedToxin());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new DazzleBlast());
@@ -51,6 +51,7 @@ namespace DestariaMasteries.src.Systems
             MasteryLibrary.AbilityRegistry.RegisterAbility(new TemporalAdjustment());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new StormChaser());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new TemporalDevastation());
+
             //Homesteader Skills
             MasteryLibrary.AbilityRegistry.RegisterAbility(new GroveTending());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new GentleTouch());

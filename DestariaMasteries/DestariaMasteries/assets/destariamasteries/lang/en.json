@@ -60,10 +60,7 @@
   "destariamasteries:healing-herbalremedies-desc": "Unlocks the ability to craft the temporal bandage (a bandage that also heals nearby players).",
 
   "destariamasteries:healing-shockingfingers-name": "Shocking Fingers",
-  "destariamasteries:healing-shockingfingers-desc": "Instantly revives a targeted player without consuming a bandage. Cooldown: {0} minutes."
-
-}
-  "destariamasteries:alchemy-catalyticsurge-desc": "Purges all poison effects from yourself, healing you for {0}%% of the damage the poison would have dealt.",
+  "destariamasteries:healing-shockingfingers-desc": "Instantly revives a targeted player without consuming a bandage. Cooldown: {0} minutes.",
 
   "destariamasteries:mechanist-mastery-name": "Mechanist",
   "destariamasteries:mechanist-mastery-desc": "Unlocks the mastery of clockwork and engineering, transforming raw metal and ingenuity into survival. Whether automating industry or deploying precision weaponry, you bend machines to your absolute will.",
