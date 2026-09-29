@@ -1,8 +1,14 @@
-﻿using MasteryLibrary.src.Behaviors.EntityBehaviors;
+﻿using MasteryLibrary;
+using MasteryLibrary.src.Behaviors.EntityBehaviors;
+using MasteryLibrary.src.Networking.Packets;
+using MasteryLibrary.src.Networking.Server;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
@@ -14,6 +20,7 @@ namespace DestariaMasteries.src.Utils
         Ore,
         UngradedOre,
         Crop,
+        Mushroom,
         NoXP
     }
 
@@ -32,11 +39,13 @@ namespace DestariaMasteries.src.Utils
     {
         private const string ConfigFileName = "MasteryXpConfig.json";
         public static MasteryXpConfig Config { get; private set; } = new MasteryXpConfig();
+        private static NetworkServiceServer? NetworkService { get; set; } = null!;
         private static AssetLocation oreWildcard = new AssetLocation("*:ore-*-*-*");
         private static AssetLocation ungradedOreWildcard = new AssetLocation("*:ore-*-*");
         private static AssetLocation cropWildcard = new AssetLocation("*:crop-*-*");
         private static AssetLocation logWildcard = new AssetLocation("*:log-*-*-*");
         private static AssetLocation logSectionWildcard = new AssetLocation("*:logsection-*-*-*");
+        private static AssetLocation mushroomWildcard = new AssetLocation("*:mushroom-*");
 
         public static void Initialize(ICoreServerAPI api)
         {
@@ -64,26 +73,30 @@ namespace DestariaMasteries.src.Utils
             cropWildcard = new AssetLocation(Config.CropWildcard);
             logWildcard = new AssetLocation(Config.LogWildcard);
             logSectionWildcard = new AssetLocation(Config.LogSectionWildcard);
+            mushroomWildcard = new AssetLocation(Config.MushroomWildcard);
+
+            NetworkService = api.ModLoader.GetModSystem<MasteryLibraryAPI>().NetworkService as NetworkServiceServer;
         }
 
-        private static void GrantXpToPlayer(IServerPlayer byPlayer, float amount, XpSourceCategory source, string detail = null)
+        private static void GrantXpToPlayer(IServerPlayer byPlayer, float amount, EnumXpImageSourceType sourceImageType = EnumXpImageSourceType.Image, string? text = null, AssetLocation? sourceAsset = null)
         {
             if (byPlayer == null || amount <= 0f) return;
 
             EnumGameMode gm = byPlayer.WorldData.CurrentGameMode;
             if (gm == EnumGameMode.Creative || gm == EnumGameMode.Spectator)
             {
-                byPlayer.Entity?.Api.Logger.Event($"Not awarding XP to {byPlayer.PlayerName} for {source} because they are in {gm} mode.");
                 return;
             }
 
             var data = byPlayer.Entity?.GetBehavior<EntityBehaviorPlayerMasteries>()?.PlayerMasteryData;
             if (data == null) return; // nothing was actually granted, so don't log that it was
 
-            string suffix = string.IsNullOrEmpty(detail) ? string.Empty : $" ({detail})";
-            byPlayer.Entity?.Api.Logger.Event($"Awarded {amount} XP to {byPlayer.PlayerName} for {source}{suffix}");
-
             data.GainExperience(amount);
+
+            if (NetworkService != null)
+            {
+                NetworkService.SendXpPopUpPacket(byPlayer, amount, sourceImageType, text, sourceAsset);
+            }
         }
 
         public static void OnBlockBroken(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling)
@@ -95,7 +108,12 @@ namespace DestariaMasteries.src.Utils
             float xpToAward = GetExpForBlock(block, byPlayer, blockType);
             XpSourceCategory source = blockType == BlockTypeEnum.Crop ? XpSourceCategory.Farming : XpSourceCategory.Mining;
 
-            GrantXpToPlayer(byPlayer, xpToAward, source, block.Code?.ToString());
+            string localizedBlockName = block.GetPlacedBlockName(byPlayer.Entity.World, blockSel.Position);
+            if (xpToAward > 0)
+            {
+                byPlayer.Entity.Api.Logger.Audit($"Awarding {xpToAward} XP to player {byPlayer.PlayerName} for breaking block {block.Code} ({localizedBlockName}) of type {blockType} (source category: {source})");
+            }
+            GrantXpToPlayer(byPlayer, xpToAward, EnumXpImageSourceType.Block, localizedBlockName, block.Code);
         }
 
         private static BlockTypeEnum GetBlockType(AssetLocation block)
@@ -112,6 +130,10 @@ namespace DestariaMasteries.src.Utils
             {
                 return BlockTypeEnum.Crop;
             }
+            else if (WildcardUtil.Match(mushroomWildcard, block))
+            {
+                return BlockTypeEnum.Mushroom;
+            }
             else return BlockTypeEnum.NoXP;
         }
 
@@ -122,6 +144,7 @@ namespace DestariaMasteries.src.Utils
                 BlockTypeEnum.Ore => CalculateOreXP(block, byPlayer),
                 BlockTypeEnum.UngradedOre => CalculateUngradedOreXP(block, byPlayer),
                 BlockTypeEnum.Crop => CalculateCropXP(block, byPlayer),
+                BlockTypeEnum.Mushroom => Config.MushroomXp,
                 _ => 0f
             };
         }
@@ -281,11 +304,18 @@ namespace DestariaMasteries.src.Utils
             return MathF.Floor(MathF.Max(xp, 1f));
         }
         #endregion
-
         #region Harvest XP Calculation
-        public static void OnHarvest(IServerPlayer byPlayer, float basexp)
+        public static void OnHarvest(IServerPlayer byPlayer, float basexp, BlockPos pos, AssetLocation? sourceAsset = null)
         {
-            GrantXpToPlayer(byPlayer, basexp, XpSourceCategory.Foraging);
+            string? blockName = null;
+            if (sourceAsset != null)
+            {
+                Block block = byPlayer.Entity.World.BlockAccessor.GetBlock(pos);
+                blockName = block != null ? block.GetPlacedBlockName(byPlayer.Entity.World, pos) : new ItemStack(byPlayer.Entity.World.GetBlock(sourceAsset)).GetName();
+            }
+
+            byPlayer.Entity.Api.Logger.Audit($"Awarding {basexp} XP to player {byPlayer.PlayerName} for harvesting at position {pos} (block: {blockName}, source asset: {sourceAsset})");
+            GrantXpToPlayer(byPlayer, basexp, EnumXpImageSourceType.Block, blockName, sourceAsset);
         }
         #endregion
 
@@ -302,9 +332,20 @@ namespace DestariaMasteries.src.Utils
             return Config.LogXp.TryGetValue(species, out var xp) ? xp : Config.DefaultLogXp;
         }
 
-        public static void OnTreeHarvest(IServerPlayer byPlayer, float basexp)
+        public static void OnTreeHarvest(IServerPlayer byPlayer, float basexp, Block block = null, BlockPos pos = null, AssetLocation? source = null)
         {
-            GrantXpToPlayer(byPlayer, basexp, XpSourceCategory.Woodcutting);
+            string? blockName = null;
+            if (block != null && pos != null)
+            {
+                blockName = block.GetPlacedBlockName(byPlayer.Entity.World, pos);
+            }
+            else if (source != null)
+            {
+                blockName = new ItemStack(byPlayer.Entity.World.GetBlock(source)).GetName();
+            }
+
+            byPlayer.Entity.Api.Logger.Audit($"Awarding {basexp} XP to player {byPlayer.PlayerName} for harvesting tree/log (block: {blockName}, source asset: {source})");
+            GrantXpToPlayer(byPlayer, basexp, EnumXpImageSourceType.Block, blockName, source);
         }
         #endregion
 
@@ -312,12 +353,16 @@ namespace DestariaMasteries.src.Utils
         public static void OnEntityDeath(Entity entity, DamageSource damageSource)
         {
             if (entity == null || damageSource == null) return;
-            if (damageSource.SourceEntity is not IServerPlayer byPlayer) return;
+            if (damageSource.SourceEntity is not EntityPlayer byPlayer) return;
+
+            IServerPlayer? player = byPlayer.Player as IServerPlayer;
+            if (player == null) return;
 
             float? healthBasedXp = entity.GetBehavior<EntityBehaviorHealth>()?.MaxHealth * Config.XpPerHealthPoint;
             float xpToAward = healthBasedXp ?? Config.DefaultCombatXp;
 
-            GrantXpToPlayer(byPlayer, xpToAward, XpSourceCategory.Combat, entity.Code?.ToString());
+            byPlayer.Api.Logger.Audit($"Awarding {xpToAward} XP to player {player.PlayerName} for killing entity {entity.Code} ({entity.GetName()})");
+            GrantXpToPlayer(player, xpToAward, EnumXpImageSourceType.Entity, entity.GetName(), entity.Code);
         }
         #endregion
 
@@ -325,7 +370,8 @@ namespace DestariaMasteries.src.Utils
         public static void OnEntityHarvest(Entity entity, IServerPlayer byPlayer)
         {
             if (entity == null || byPlayer == null) return;
-            GrantXpToPlayer(byPlayer, Config.AnimalHarvestXp, XpSourceCategory.AnimalHarvest, entity.Code?.ToString());
+            byPlayer.Entity.Api.Logger.Audit($"Awarding {Config.AnimalHarvestXp} XP to player {byPlayer.PlayerName} for harvesting entity {entity.Code} ({entity.GetName()})");
+            GrantXpToPlayer(byPlayer, Config.AnimalHarvestXp, EnumXpImageSourceType.Entity, entity.GetName(), entity.Code);
         }
         #endregion
 
@@ -334,7 +380,8 @@ namespace DestariaMasteries.src.Utils
         public static void GrantSocialXp(IServerPlayer player, int amount)
         {
             float xpToAward = Config.SocialXpPerPlayer * amount;
-            GrantXpToPlayer(player, xpToAward, XpSourceCategory.Social, $"{amount} nearby players");
+            player.Entity.Api.Logger.Audit($"Awarding {xpToAward} XP to player {player.PlayerName} for social interaction with {amount} other players");
+            GrantXpToPlayer(player, xpToAward, EnumXpImageSourceType.Image, Lang.Get("destariamasteries:xpsource-social"), new AssetLocation("destariamasteries:textures/gui/xp-social.png"));
         }
         #endregion
     }

@@ -33,7 +33,6 @@ namespace DestariaMasteries.src.Patches
             }
         }
     }
-
     [HarmonyPatch(typeof(BEBehaviorFruitingBush), nameof(BEBehaviorFruitingBush.OnBlockInteractStop))]
     public static class BEBehaviorFruitingBush_OnBlockInteractStopPatch
     {
@@ -50,7 +49,7 @@ namespace DestariaMasteries.src.Patches
 
             if (__state && __instance.BState.Growthstate == EnumFruitingBushGrowthState.Mature)
             {
-                XpRewardEvaluator.OnHarvest(byPlayer as IServerPlayer, 5f);
+                XpRewardEvaluator.OnHarvest(byPlayer as IServerPlayer, 5f, __instance.Pos, __instance.Block.Code);
             }
         }
     }

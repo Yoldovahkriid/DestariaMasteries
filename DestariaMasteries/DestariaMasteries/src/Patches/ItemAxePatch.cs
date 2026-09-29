@@ -20,6 +20,8 @@ namespace DestariaMasteries.src.Patches
         {
             public ItemStack SeedStack;
             public float TotalXp;
+            public Block RepresentativeBlock;
+            public BlockPos RepresentativePos;
         }
 
         static void Prefix(
@@ -54,8 +56,12 @@ namespace DestariaMasteries.src.Patches
                 Block block = world.BlockAccessor.GetBlock(pos);
                 if (block == null) continue;
 
-                // Sum XP for every block in the tree rather than awarding per-block;
-                // the total is granted once in the Postfix via OnTreeHarvest.
+                if (__state.RepresentativeBlock == null && (XpRewardEvaluator.GetXpForTreeBlock(block) > 0f))
+                {
+                    __state.RepresentativeBlock = block;
+                    __state.RepresentativePos = pos;
+                }
+
                 __state.TotalXp += XpRewardEvaluator.GetXpForTreeBlock(block);
 
                 if (!hasEmeraldBoughs || __state.SeedStack != null) continue;
@@ -107,9 +113,8 @@ namespace DestariaMasteries.src.Patches
 
             if (__state.TotalXp > 0f && byPlayer is IServerPlayer serverPlayer)
             {
-                XpRewardEvaluator.OnTreeHarvest(serverPlayer, __state.TotalXp);
+                XpRewardEvaluator.OnTreeHarvest(serverPlayer, __state.TotalXp, __state.RepresentativeBlock, __state.RepresentativePos, __state.RepresentativeBlock?.Code); //[cite: 3, 4]
             }
         }
-
     }
 }

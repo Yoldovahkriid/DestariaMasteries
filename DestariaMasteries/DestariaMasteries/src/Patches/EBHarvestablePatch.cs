@@ -3,6 +3,8 @@ using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Vintagestory.API.Common;
+using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
 namespace DestariaMasteries.src.Patches
@@ -20,6 +22,18 @@ namespace DestariaMasteries.src.Patches
             if (__instance.entity.WatchedAttributes.HasAttribute("ToTheBone") && __instance.entity.WatchedAttributes.GetBool("ToTheBone"))
             {
                 __result *= 1.5f;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(EntityBehaviorHarvestable), nameof(EntityBehaviorHarvestable.GenerateDrops))]
+    public static class EntityBehaviorHarvestablePatch
+    {
+        public static void Postfix(EntityBehaviorHarvestable __instance, IPlayer byPlayer)
+        {
+            if (byPlayer is IServerPlayer serverPlayer && __instance.entity != null)
+            {
+                XpRewardEvaluator.OnEntityHarvest(__instance.entity, serverPlayer);
             }
         }
     }

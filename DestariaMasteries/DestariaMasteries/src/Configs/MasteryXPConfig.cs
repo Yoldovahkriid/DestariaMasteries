@@ -10,6 +10,7 @@ namespace DestariaMasteries.src.Utils
         public string CropWildcard = "*:crop-*-*";
         public string LogWildcard = "*:log-*-*-*";
         public string LogSectionWildcard = "*:logsection-*-*-*";
+        public string MushroomWildcard = "*:mushroom-*";
 
         // Ore -> smelted product base XP
         public Dictionary<string, float> ProductXp = new()
@@ -88,6 +89,9 @@ namespace DestariaMasteries.src.Utils
 
         // Crop XP formula: xp = a*totalMonths^2 + b*totalMonths + c
         public CropXpFormula CropXpFormula = new();
+
+        // Mushroom XP
+        public float MushroomXp = 5f;
 
         // Tree/log XP by species
         public Dictionary<string, float> LogXp = new()

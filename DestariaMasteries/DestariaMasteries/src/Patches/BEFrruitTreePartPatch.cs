@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
@@ -23,7 +24,7 @@ namespace DestariaMasteries.src.Patches
 
             if (__state && __instance.FoliageState == EnumFoliageState.Plain)
             {
-                XpRewardEvaluator.OnHarvest(byPlayer as IServerPlayer, 5f);
+                XpRewardEvaluator.OnHarvest(byPlayer as IServerPlayer, 5f, blockSel.Position, __instance.Block.Code);
             }
         }
     }
