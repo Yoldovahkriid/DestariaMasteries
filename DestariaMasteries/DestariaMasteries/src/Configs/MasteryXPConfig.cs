@@ -91,32 +91,32 @@ namespace DestariaMasteries.src.Utils
         public CropXpFormula CropXpFormula = new();
 
         // Mushroom XP
-        public float MushroomXp = 5f;
+        public float MushroomXp = 15f;
 
         // Tree/log XP by species
         public Dictionary<string, float> LogXp = new()
         {
-            { "birch", 2f },
-            { "oak", 2f },
-            { "maple", 2f },
-            { "pine", 2f },
-            { "acacia", 2f },
-            { "kapok", 2f },
-            { "baldcypress", 2f },
-            { "larch", 2f },
-            { "redwood", 2f },
-            { "ebony", 8f },
-            { "walnut", 2f },
-            { "purpleheart", 8f },
+            { "birch", 7.5f },
+            { "oak", 7.5f },
+            { "maple", 7.5f },
+            { "pine", 7.5f },
+            { "acacia", 7.5f },
+            { "kapok", 7.5f },
+            { "baldcypress", 7.5f },
+            { "larch", 7.5f },
+            { "redwood", 7.5f },
+            { "ebony", 15f },
+            { "walnut", 7.5f },
+            { "purpleheart", 15f },
         };
-        public float DefaultLogXp = 2f;
+        public float DefaultLogXp = 7.5f;
 
         // Combat XP: awarded XP = entity max health * this
-        public float XpPerHealthPoint = 1.5f;
-        public float DefaultCombatXp = 1f; // used if the entity has no health behavior
+        public float XpPerHealthPoint = 3.5f;
+        public float DefaultCombatXp = 100f; // used if the entity has no health behavior
 
         // Flat XP for harvesting a dead animal/creature
-        public float AnimalHarvestXp = 20f;
+        public float AnimalHarvestXp = 40f;
 
         // Social XP
         public float SocialXpPerPlayer = 5f; // per "active tick credit" awarded

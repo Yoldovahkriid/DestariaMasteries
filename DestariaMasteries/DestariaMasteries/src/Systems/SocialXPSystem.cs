@@ -56,9 +56,10 @@ namespace DestariaMasteries.src.Systems
 
                 status.ActiveTicks++;
 
-                if (status.ActiveTicks >= _xpAwardedAfterTicks && CountNearbyActivePlayers(player) >= _minPlayersForSocialXp - 1)
+                if (status.ActiveTicks >= _xpAwardedAfterTicks && CountNearbyActivePlayers(player) >= _minPlayersForSocialXp)
                 {
-                    XpRewardEvaluator.GrantSocialXp(player, _xpAwardedAfterTicks);
+                    int playercount = CountNearbyActivePlayers(player);
+                    XpRewardEvaluator.GrantSocialXp(player, playercount);
                     status.ActiveTicks = 0;
                 }
             }

@@ -7,7 +7,7 @@
     "Unknown"
   ],
   "description": "To be added",
-  "version": "1.0.0-pre.2",
+  "version": "1.0.0-pre.3",
   "dependencies": {
     "game": "1.22.0",
     "masterylibrary": "*",
