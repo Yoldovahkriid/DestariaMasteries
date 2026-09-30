@@ -353,7 +353,7 @@ namespace DestariaMasteries.src.Utils
         public static void OnEntityDeath(Entity entity, DamageSource damageSource)
         {
             if (entity == null || damageSource == null) return;
-            if (damageSource.SourceEntity is not EntityPlayer byPlayer) return;
+            if (damageSource.GetCauseEntity() is not EntityPlayer byPlayer) return;
 
             IServerPlayer? player = byPlayer.Player as IServerPlayer;
             if (player == null) return;
