@@ -384,5 +384,61 @@ namespace DestariaMasteries.src.Utils
             GrantXpToPlayer(player, xpToAward, EnumXpImageSourceType.Image, Lang.Get("destariamasteries:xpsource-social"), new AssetLocation("destariamasteries:textures/gui/xp-social.png"));
         }
         #endregion
+
+        #region Smithing XP Calculation
+        private const int voxelsperingot = 42;
+        private static string? ResolveSmithingMetal(ItemStack workItem)
+        {
+            CollectibleObject? collectible = workItem.Collectible;
+            if (collectible == null) return null;
+
+            string? metal = collectible.Variant?["metal"];
+            if (metal != null) return metal;
+
+            return Config.SmithingWorkItemMetalOverrides.TryGetValue(collectible.Code.Path, out var overrideMetal)
+                ? overrideMetal
+                : null;
+        }
+
+        private static int GetMinimumIngots(SmithingRecipe recipe)
+        {
+            bool[,,]? voxels = recipe.Voxels;
+            int layers = Math.Min(1, recipe.QuantityLayers);
+            int voxelCount = 0;
+
+            if (voxels != null)
+            {
+                for (int x = 0; x < voxels.GetLength(0); x++)
+                    for (int y = 0; y < layers && y < voxels.GetLength(1); y++)
+                        for (int z = 0; z < voxels.GetLength(2); z++)
+                            if (voxels[x, y, z]) voxelCount++;
+            }
+
+            int ingots = Math.Max(1, (int)Math.Ceiling(voxelCount / (double)voxelsperingot));
+
+            return ingots;
+        }
+
+
+        public static void OnSmithingComplete(IServerPlayer player, SmithingRecipe recipe, ItemStack workItem)
+        {
+            if (player == null || recipe == null || workItem == null) return;
+
+            string? metal = ResolveSmithingMetal(workItem);
+            int ingots = GetMinimumIngots(recipe);
+
+            float xpPerIngot = (metal != null && Config.SmithingMetalXp.TryGetValue(metal, out var perIngot))
+                ? perIngot
+                : Config.DefaultSmithingXpPerIngot;
+
+            float xpToAward = ingots * xpPerIngot;
+
+            string? outputName = recipe.Output?.ResolvedItemstack?.GetName();
+
+            player.Entity.Api.Logger.Audit($"Awarding {xpToAward} XP to player {player.PlayerName} for smithing {outputName} ({ingots}x ingot-{metal})");
+            GrantXpToPlayer(player, xpToAward, EnumXpImageSourceType.Item, outputName,
+                recipe.Output?.Code);
+        }
+        #endregion
     }
 }

@@ -121,6 +121,38 @@ namespace DestariaMasteries.src.Utils
         // Social XP
         public float SocialXpPerPlayer = 5f; // per "active tick credit" awarded
         public SocialSystemConfig SocialSystem = new();
+
+        public Dictionary<string, float> SmithingMetalXp { get; set; } = new()
+        {
+            { "bismuth",       10f },
+            { "bismuthbronze", 15f },
+            { "blackbronze",   25f },
+            { "brass",         15f },
+            { "chromium",      25f },
+            { "copper",        10f },
+            { "cupronickel",   25f },
+            { "electrum",      25f },
+            { "gold",          35f },
+            { "iron",          20f },
+            { "meteoriciron",  25f },
+            { "lead",          10f },
+            { "molybdochalkos",15f },
+            { "platinum",      25f },
+            { "nickel",        25f },
+            { "silver",        20f },
+            { "stainlesssteel",25f },
+            { "steel",         25f },
+            { "tin",           10f },
+            { "tinbronze",     15f },
+            { "titanium",      25f },
+            { "uranium",       20f },
+            { "zinc",          10f },
+        };
+        public Dictionary<string, string> SmithingWorkItemMetalOverrides { get; set; } = new()
+        {
+            { "ironbloom", "iron" },
+        };
+        public float DefaultSmithingXpPerIngot { get; set; } = 15f;
     }
 
     public class CropXpFormula
