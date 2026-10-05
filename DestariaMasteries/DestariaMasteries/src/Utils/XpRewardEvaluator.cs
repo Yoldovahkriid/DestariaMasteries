@@ -113,7 +113,7 @@ namespace DestariaMasteries.src.Utils
             string localizedBlockName = block.GetPlacedBlockName(byPlayer.Entity.World, blockSel.Position);
             if (xpToAward > 0)
             {
-                byPlayer.Entity.Api.Logger.Audit($"Awarding {xpToAward} XP to player {byPlayer.PlayerName} for breaking block {block.Code} ({localizedBlockName}) of type {blockType} (source category: {source})");
+                byPlayer.Entity.Api.Logger.Audit($"Awarding {xpToAward} XP to player {byPlayer.PlayerName} for breaking block {block.Code}");
             }
             GrantXpToPlayer(byPlayer, xpToAward, EnumXpImageSourceType.Block, localizedBlockName, block.Code);
         }
