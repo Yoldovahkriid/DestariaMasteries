@@ -8,7 +8,7 @@
       },
       "S": {
         "type": "block",
-        "code": "game:log-placed-*-ud",
+        "code": "*:log-placed-*-ud",
         "quantity": 2
       },
       "F": {
@@ -18,13 +18,14 @@
     },
     "width": 3,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+        "ScalingParams": { "Values": [ 1, 2, 2, 3, 3 ] }
       }
     },
     "output": {
@@ -42,7 +43,7 @@
       },
       "S": {
         "type": "block",
-        "code": "game:logsection-placed-*-ud",
+        "code": "*:logsection-placed-*-ud",
         "quantity": 2
       },
       "F": {
@@ -52,13 +53,14 @@
     },
     "width": 3,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+        "ScalingParams": { "Values": [ 1, 2, 2, 3, 3 ] }
       }
     },
     "output": {
@@ -72,7 +74,7 @@
     "ingredients": {
       "A": {
         "type": "block",
-        "code": "game:supportbeam-{wood}",
+        "code": "*:supportbeam-*",
         "quantity": 4
       },
       "B": {
@@ -85,18 +87,18 @@
       }
     },
     "allowedVariants": {
-      "wood": [ "oak", "maple", "kapok", "redwood", "ebony", "walnut", "purpleheart" ],
       "metal": [ "iron", "meteoriciron", "steel" ]
     },
     "width": 3,
     "height": 3,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+        "ScalingParams": { "Values": [ 1, 1, 1, 1, 2 ] }
       }
     },
     "output": {
@@ -110,8 +112,7 @@
     "ingredients": {
       "S": {
         "type": "block",
-        "code": "game:log-placed-*-ud",
-        "name": "wood"
+        "code": "*:log-placed-*-ud"
       },
       "F": {
         "type": "item",
@@ -120,13 +121,14 @@
     },
     "width": 2,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+        "ScalingParams": { "Values": [ 3, 3, 4, 4, 4 ] }
       }
     },
     "output": {
@@ -140,7 +142,7 @@
     "ingredients": {
       "S": {
         "type": "block",
-        "code": "game:logsection-placed-*-ud"
+        "code": "*:logsection-placed-*-ud"
       },
       "F": {
         "type": "item",
@@ -149,13 +151,14 @@
     },
     "width": 2,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 3, 3, 4, 4, 4 ] }
+        "ScalingParams": { "Values": [ 3, 3, 4, 4, 4 ] }
       }
     },
     "output": {
@@ -169,7 +172,7 @@
     "ingredients": {
       "S": {
         "type": "block",
-        "code": "game:log-placed-*-ud"
+        "code": "*:log-placed-*-ud"
       },
       "R": {
         "type": "item",
@@ -186,13 +189,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "output": {
@@ -206,7 +210,7 @@
     "ingredients": {
       "L": {
         "type": "block",
-        "code": "game:log-placed-*-ud"
+        "code": "*:log-placed-*-ud"
       },
       "S": {
         "type": "item",
@@ -224,13 +228,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "output": {
@@ -244,7 +249,7 @@
     "ingredients": {
       "S": {
         "type": "block",
-        "code": "game:logsection-placed-*-ud"
+        "code": "*:logsection-placed-*-ud"
       },
       "R": {
         "type": "item",
@@ -261,13 +266,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "output": {
@@ -281,7 +287,7 @@
     "ingredients": {
       "S": {
         "type": "block",
-        "code": "game:log-placed-*-ud"
+        "code": "*:log-placed-*-ud"
       },
       "F": {
         "type": "block",
@@ -295,13 +301,14 @@
     },
     "width": 3,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+        "ScalingParams": { "Values": [ 1, 1, 1, 1, 2 ] }
       }
     },
     "output": {
@@ -315,7 +322,7 @@
     "ingredients": {
       "S": {
         "type": "block",
-        "code": "game:logsection-placed-*-ud"
+        "code": "*:logsection-placed-*-ud"
       },
       "F": {
         "type": "block",
@@ -329,13 +336,14 @@
     },
     "width": 3,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+        "ScalingParams": { "Values": [ 1, 1, 1, 1, 2 ] }
       }
     },
     "output": {
@@ -349,8 +357,7 @@
     "ingredients": {
       "P": {
         "type": "item",
-        "code": "game:plank-*",
-        "name": "wood"
+        "code": "game:plank-*"
       },
       "R": {
         "type": "item",
@@ -359,13 +366,14 @@
     },
     "width": 3,
     "height": 3,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+        "ScalingParams": { "Values": [ 1, 2, 2, 3, 3 ] }
       }
     },
     "output": {
@@ -385,7 +393,6 @@
       "P": {
         "type": "item",
         "code": "game:plank-*",
-        "name": "wood",
         "quantity": 4
       },
       "F": {
@@ -399,13 +406,14 @@
     },
     "width": 3,
     "height": 3,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+        "ScalingParams": { "Values": [ 1, 2, 2, 3, 3 ] }
       }
     },
     "output": {
@@ -420,13 +428,11 @@
       "P": {
         "type": "item",
         "code": "game:plank-*",
-        "name": "wood",
         "quantity": 2
       },
       "A": {
         "type": "item",
         "code": "game:plank-*",
-        "name": "wood",
         "quantity": 1
       },
       "S": {
@@ -442,13 +448,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+        "ScalingParams": { "Values": [ 1, 2, 2, 3, 3 ] }
       }
     },
     "output": {
@@ -467,7 +474,7 @@
       },
       "A": {
         "type": "block",
-        "code": "game:log-placed-*-ud"
+        "code": "*:log-placed-*-ud"
       },
       "S": {
         "type": "item",
@@ -487,13 +494,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+        "ScalingParams": { "Values": [ 1, 1, 1, 1, 2 ] }
       }
     },
     "output": {
@@ -512,7 +520,7 @@
       },
       "A": {
         "type": "block",
-        "code": "game:logsection-placed-*-ud"
+        "code": "*:logsection-placed-*-ud"
       },
       "S": {
         "type": "item",
@@ -532,13 +540,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+        "ScalingParams": { "Values": [ 1, 1, 1, 1, 2 ] }
       }
     },
     "output": {
@@ -557,7 +566,6 @@
       "P": {
         "type": "item",
         "code": "game:plank-*",
-        "name": "wood",
         "quantity": 8
       },
       "R": {
@@ -572,13 +580,14 @@
     },
     "width": 3,
     "height": 2,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 1, 1, 1, 2 ] }
+        "ScalingParams": { "Values": [ 1, 1, 1, 1, 2 ] }
       }
     },
     "output": {
@@ -603,13 +612,14 @@
     },
     "width": 3,
     "height": 1,
+    "RecipeGroup": 2,
     "attributes": {
       "requiresSkill": "RefinedDevelopment",
       "requiresLevel": 2,
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 1, 2, 2, 3, 3 ] }
+        "ScalingParams": { "Values": [ 1, 2, 2, 3, 3 ] }
       }
     },
     "output": {

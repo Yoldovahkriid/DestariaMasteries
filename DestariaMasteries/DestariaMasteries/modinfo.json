@@ -4,10 +4,10 @@
   "modid": "destariamasteries",
   "name": "DestariaMasteries",
   "authors": [
-    "Unknown"
+    "Yoldovahkriid"
   ],
   "description": "To be added",
-  "version": "1.0.0-pre.5",
+  "version": "1.0.0-pre.6",
   "dependencies": {
     "game": "1.22.0",
     "masterylibrary": "*",

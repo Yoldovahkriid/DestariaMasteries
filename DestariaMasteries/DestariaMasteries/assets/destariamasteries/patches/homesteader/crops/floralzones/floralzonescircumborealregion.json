@@ -1,0 +1,46 @@
+[
+  {
+    "file": "floralzonescircumborealregion:blocktypes/plant/angelica",
+    "op": "addmerge",
+    "path": "/dropsByType/*-6/1/quantity/avg",
+    "value": "0.55",
+    "side": "server"
+  },
+  {
+    "file": "floralzonescircumborealregion:blocktypes/plant/angelica",
+    "op": "addmerge",
+    "path": "/dropsByType/*-6/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "floralzonescircumborealregion:blocktypes/plant/angelica",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/1/quantity/avg",
+    "value": "2.5",
+    "side": "server"
+  },
+  {
+    "file": "floralzonescircumborealregion:blocktypes/plant/angelica",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+
+
+  {
+    "file": "floralzonescircumborealregion:blocktypes/plant/lettuce",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/1/quantity/avg",
+    "value": "2.25",
+    "side": "server"
+  },
+  {
+    "file": "floralzonescircumborealregion:blocktypes/plant/lettuce",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "floralzonescaribbeanregion:blocktypes/plant/blueagave",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "floralzonescaribbeanregion:blocktypes/plant/blueagave",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

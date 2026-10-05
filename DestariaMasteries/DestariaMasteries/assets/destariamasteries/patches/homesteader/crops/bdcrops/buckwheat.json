@@ -1,0 +1,30 @@
+[
+  {
+    "file": "bdcrop:blocktypes/plant/crop/buckwheat",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/quantity/avg",
+    "value": "2",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/buckwheat",
+    "op": "addmerge",
+    "path": "/dropsByType/*-9/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/buckwheat",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/quantity/avg",
+    "value": "1.5",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/buckwheat",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/dropModbyStat",
+    "value": "grainHarvestMultiplier",
+    "side": "server"
+  }
+]

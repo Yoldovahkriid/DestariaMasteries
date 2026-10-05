@@ -1,0 +1,63 @@
+[
+  {
+    "file": "justthepepper:recipes/grid/pepperseed",
+    "op": "addmerge",
+    "path": "/0/enabled",
+    "value": false,
+    "side": "server"
+  },
+  {
+    "file": "justthepepper:blocktypes/plant/crop/crops",
+    "op": "addmerge",
+    "path": "/dropsByType/*pepperbell-14/0/quantity/avg",
+    "value": 1,
+    "side": "server"
+  },
+  {
+    "file": "justthepepper:blocktypes/plant/crop/crops",
+    "op": "addmerge",
+    "path": "/dropsByType/*pepperbell-14/0/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "justthepepper:blocktypes/plant/crop/crops",
+    "op": "addmerge",
+    "path": "/dropsByType/*pepperbell-14/-",
+    "value": {
+      "type": "item",
+      "code": "justthepepper:seeds-pepperbell",
+      "quantity": {
+        "avg": 0.99
+      }
+    },
+    "side": "server"
+  },
+  {
+    "file": "justthepepper:blocktypes/plant/crop/crops",
+    "op": "addmerge",
+    "path": "/dropsByType/*pepperbell-15/0/quantity/avg",
+    "value": 4,
+    "side": "server"
+  },
+  {
+    "file": "justthepepper:blocktypes/plant/crop/crops",
+    "op": "addmerge",
+    "path": "/dropsByType/*pepperbell-15/0/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "justthepepper:blocktypes/plant/crop/crops",
+    "op": "addmerge",
+    "path": "/dropsByType/*pepperbell-15/-",
+    "value": {
+      "type": "item",
+      "code": "justthepepper:seeds-pepperbell",
+      "quantity": {
+        "avg": 1.2
+      }
+    },
+    "side": "server"
+  }
+]

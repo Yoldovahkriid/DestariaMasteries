@@ -7,6 +7,7 @@ namespace DestariaMasteries.src.Utils
         //Block-code wildcards used to classify broken blocks
         public string OreWildcard = "*:ore-*-*-*";
         public string UngradedOreWildcard = "*:ore-*-*";
+        public string MeteoriteWildcard = "*:meteorite-*";
         public string CropWildcard = "*:crop-*-*";
         public string LogWildcard = "*:log-*-*-*";
         public string LogSectionWildcard = "*:logsection-*-*-*";
@@ -27,6 +28,8 @@ namespace DestariaMasteries.src.Utils
             { "ingot-silver", 50f },
             { "ingot-bismuth", 35f },
             { "ingot-nickel", 50f },
+            { "ingot-uranium", 45f },
+
         };
 
         // Gem base XP
@@ -59,6 +62,11 @@ namespace DestariaMasteries.src.Utils
             { "phosphorite", 5f },
         };
 
+        public Dictionary<string, float> meteoriteXP = new()
+        {
+            { "iron", 100f }
+        };
+
         // Multipliers keyed by ore grade / gem potential
         public Dictionary<string, float> OreGradeMultiplier = new()
         {
@@ -84,7 +92,7 @@ namespace DestariaMasteries.src.Utils
         };
 
         // Fallback XP when a lookup fails
-        public float DefaultOreXp = 1f;
+        public float DefaultOreXp = 5f;
         public float DefaultUngradedOreXp = 1f;
 
         // Crop XP formula: xp = a*totalMonths^2 + b*totalMonths + c

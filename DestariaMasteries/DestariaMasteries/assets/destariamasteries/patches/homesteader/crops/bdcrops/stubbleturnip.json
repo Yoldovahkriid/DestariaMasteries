@@ -1,0 +1,30 @@
+[
+  {
+    "file": "bdcrop:blocktypes/plant/crop/stubbleturnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-4/1/quantity/avg",
+    "value": "1",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/stubbleturnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-4/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/stubbleturnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-5/1/quantity/avg",
+    "value": "3",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/stubbleturnip",
+    "op": "addmerge",
+    "path": "/dropsByType/*-5/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

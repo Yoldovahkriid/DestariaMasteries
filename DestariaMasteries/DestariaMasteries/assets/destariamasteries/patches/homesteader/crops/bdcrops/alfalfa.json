@@ -1,0 +1,30 @@
+[
+  {
+    "file": "bdcrop:blocktypes/plant/crop/alfalfa",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/quantity/avg",
+    "value": "1",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/alfalfa",
+    "op": "addmerge",
+    "path": "/dropsByType/*-8/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/alfalfa",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/1/quantity/avg",
+    "value": "0.5",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/alfalfa",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/1/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

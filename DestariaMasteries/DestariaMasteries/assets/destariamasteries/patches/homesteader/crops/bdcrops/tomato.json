@@ -1,0 +1,30 @@
+[
+  {
+    "file": "bdcrop:blocktypes/plant/crop/tomato",
+    "op": "addmerge",
+    "path": "/dropsByType/*-6/0/quantity/avg",
+    "value": "1.5",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/tomato",
+    "op": "addmerge",
+    "path": "/dropsByType/*-6/0/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/tomato",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/0/quantity/avg",
+    "value": "8",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:blocktypes/plant/crop/tomato",
+    "op": "addmerge",
+    "path": "/dropsByType/*-7/0/dropModbyStat",
+    "value": "vegetableHarvestMultiplier",
+    "side": "server"
+  }
+]

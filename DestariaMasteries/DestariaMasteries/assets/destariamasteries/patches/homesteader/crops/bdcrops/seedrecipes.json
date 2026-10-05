@@ -1,0 +1,63 @@
+[
+  {
+    "file": "bdcrop:recipes/grid/butternutsquashseed",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "Subsistance"
+    },
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:recipes/grid/cantaloupemelonseed",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "Subsistance"
+    },
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:recipes/grid/honeydewmelonseed",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "Subsistance"
+    },
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:recipes/grid/mirzamelonseed",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "Subsistance"
+    },
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:recipes/grid/naplessquashseed",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "Subsistance"
+    },
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:recipes/grid/potatoseeds",
+    "op": "addmerge",
+    "path": "/0/enabled",
+    "value": "false",
+    "side": "server"
+  },
+  {
+    "file": "bdcrop:recipes/grid/watermelonseed",
+    "op": "addmerge",
+    "path": "/0/attributes",
+    "value": {
+      "requiresSkill": "Subsistance"
+    },
+    "side": "server"
+  }
+]

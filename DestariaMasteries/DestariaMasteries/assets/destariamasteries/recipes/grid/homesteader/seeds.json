@@ -15,7 +15,7 @@
         "code": "game:vegetable-*",
         "name": "type",
         "quantity": 3,
-        "SkipVariants": [ "cookedcattailroot", "cookedpapyrusroot", "olive", "bambooshoot" ]
+        "SkipVariants": [ "cookedcattailroot", "cookedpapyrusroot", "olive", "bambooshoot", "bellpepper" ]
       }
     },
     "width": 1,
@@ -26,6 +26,35 @@
     "output": {
       "type": "item",
       "code": "game:seeds-{type}",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_bellpepper_seeds",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "game:vegetable-bellpepper",
+        "name": "type",
+        "quantity": 3
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "justthepepper:seeds-pepperbell",
       "quantity": 1
     }
   },
@@ -73,7 +102,7 @@
         "type": "item",
         "code": "game:legume-*",
         "name": "type",
-        "quantity": 3,
+        "quantity": 3
       }
     },
     "width": 1,
@@ -99,8 +128,8 @@
         "isTool": true
       },
       "V": {
-        "type": "item",
-        "code": "game:fruit-pineapple",
+        "type": "block",
+        "code": "game:pineapple",
         "quantity": 2
       }
     },
@@ -140,6 +169,66 @@
     "output": {
       "type": "item",
       "code": "game:seeds-licorice",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_bdcrop_vegetable",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "bdcrop:vegetable-{type}",
+        "quantity": 2,
+        "SkipVariants": [
+          "naplessquash",
+          "butternutsquash"
+        ]
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "bdcrop:seeds-{type}",
+      "quantity": 1
+    }
+  },
+  {
+    "name": "homesteader_bdcrop_grain",
+    "recipeGroup": 1,
+    "ingredientPattern": "K,V",
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "tags": [ "tool-knife" ],
+        "isTool": true
+      },
+      "V": {
+        "type": "item",
+        "code": "bdcrop:grain-{type}",
+        "quantity": 2
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "requiresSkill": "Subsistance"
+    },
+    "output": {
+      "type": "item",
+      "code": "bdcrop:seeds-{type}",
       "quantity": 1
     }
   }

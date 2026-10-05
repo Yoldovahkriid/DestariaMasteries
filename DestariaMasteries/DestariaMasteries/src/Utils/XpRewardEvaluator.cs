@@ -19,6 +19,7 @@ namespace DestariaMasteries.src.Utils
     {
         Ore,
         UngradedOre,
+        Meteorite,
         Crop,
         Mushroom,
         NoXP
@@ -42,6 +43,7 @@ namespace DestariaMasteries.src.Utils
         private static NetworkServiceServer? NetworkService { get; set; } = null!;
         private static AssetLocation oreWildcard = new AssetLocation("*:ore-*-*-*");
         private static AssetLocation ungradedOreWildcard = new AssetLocation("*:ore-*-*");
+        private static AssetLocation meteoriteWildcard = new AssetLocation("*:meteorite-*");
         private static AssetLocation cropWildcard = new AssetLocation("*:crop-*-*");
         private static AssetLocation logWildcard = new AssetLocation("*:log-*-*-*");
         private static AssetLocation logSectionWildcard = new AssetLocation("*:logsection-*-*-*");
@@ -70,6 +72,7 @@ namespace DestariaMasteries.src.Utils
 
             oreWildcard = new AssetLocation(Config.OreWildcard);
             ungradedOreWildcard = new AssetLocation(Config.UngradedOreWildcard);
+            meteoriteWildcard = new AssetLocation(Config.MeteoriteWildcard);
             cropWildcard = new AssetLocation(Config.CropWildcard);
             logWildcard = new AssetLocation(Config.LogWildcard);
             logSectionWildcard = new AssetLocation(Config.LogSectionWildcard);
@@ -106,7 +109,6 @@ namespace DestariaMasteries.src.Utils
 
             BlockTypeEnum blockType = GetBlockType(block.Code);
             float xpToAward = GetExpForBlock(block, byPlayer, blockType);
-            XpSourceCategory source = blockType == BlockTypeEnum.Crop ? XpSourceCategory.Farming : XpSourceCategory.Mining;
 
             string localizedBlockName = block.GetPlacedBlockName(byPlayer.Entity.World, blockSel.Position);
             if (xpToAward > 0)
@@ -126,6 +128,10 @@ namespace DestariaMasteries.src.Utils
             {
                 return BlockTypeEnum.UngradedOre;
             }
+            else if (WildcardUtil.Match(meteoriteWildcard, block))
+            {
+                return BlockTypeEnum.Meteorite;
+            }
             else if (WildcardUtil.Match(cropWildcard, block))
             {
                 return BlockTypeEnum.Crop;
@@ -143,6 +149,7 @@ namespace DestariaMasteries.src.Utils
             {
                 BlockTypeEnum.Ore => CalculateOreXP(block, byPlayer),
                 BlockTypeEnum.UngradedOre => CalculateUngradedOreXP(block, byPlayer),
+                BlockTypeEnum.Meteorite => CalculateMeteoriteXP(block, byPlayer),
                 BlockTypeEnum.Crop => CalculateCropXP(block, byPlayer),
                 BlockTypeEnum.Mushroom => Config.MushroomXp,
                 _ => 0f
@@ -187,6 +194,13 @@ namespace DestariaMasteries.src.Utils
                 return Config.DefaultUngradedOreXp;
 
             return Config.UngradedOreXp.TryGetValue(material, out var xp) ? xp : Config.DefaultUngradedOreXp;
+        }
+
+        private static float CalculateMeteoriteXP(Block block, IServerPlayer byPlayer)
+        {
+            string? core = block.Variant?["core"];
+            if (core == null) return Config.DefaultOreXp;
+            return Config.meteoriteXP.TryGetValue(core, out var xp) ? xp : Config.DefaultOreXp;
         }
 
         private static bool TryGetGradedOreParts(AssetLocation code, out string? quality, out string? material, out string? rock)
