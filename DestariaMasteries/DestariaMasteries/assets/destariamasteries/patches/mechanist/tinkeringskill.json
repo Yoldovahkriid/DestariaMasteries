@@ -9,7 +9,7 @@
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "side": "server"
@@ -24,7 +24,7 @@
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "side": "server"
@@ -39,7 +39,7 @@
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "side": "server"
@@ -54,7 +54,7 @@
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "side": "server"
@@ -69,7 +69,7 @@
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "side": "server"
@@ -84,7 +84,7 @@
       "scalesWithSkill": "EfficientConstruction",
       "outputScaling": {
         "ScalingMethod": "Array",
-        "ScalingParams ": { "Values": [ 2, 2, 3, 3, 3 ] }
+        "ScalingParams": { "Values": [ 2, 2, 3, 3, 3 ] }
       }
     },
     "side": "server"

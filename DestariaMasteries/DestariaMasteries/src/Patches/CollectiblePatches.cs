@@ -6,125 +6,108 @@ using MasteryLibrary.src.Core.Masteries.Instances;
 using MasteryLibrary.src.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+using System.Reflection.Emit;
 using Vintagestory.API.Common;
-using Vintagestory.API.Config;
-using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace DestariaMasteries.src.Patches
 {
     [HarmonyPatch(typeof(CollectibleObject), "tryEatStop")]
-    public class CollectiblePatchesTryEatStopPatch
+    public static class CollectiblePatchesTryEatStopPatch
     {
-        private static AssetLocation mushroomWildcard = new AssetLocation("*:mushroom-*");
-        private static AssetLocation vegetableWildcard = new AssetLocation("*:vegetable-*");
-        private static bool IsMushroom(AssetLocation asset) 
-        { 
-            return WildcardUtil.Match(mushroomWildcard, asset);
-        } 
-        private static bool IsVegetable(AssetLocation asset)
+        private static readonly AssetLocation mushroomWildcard = new AssetLocation("*:mushroom-*");
+        private static readonly AssetLocation vegetableWildcard = new AssetLocation("*:vegetable-*");
+
+        private static bool IsMushroom(AssetLocation asset) => WildcardUtil.Match(mushroomWildcard, asset);
+        private static bool IsVegetable(AssetLocation asset) => WildcardUtil.Match(vegetableWildcard, asset);
+
+        private static readonly System.Reflection.FieldInfo satietyField =
+            AccessTools.Field(typeof(FoodNutritionProperties), nameof(FoodNutritionProperties.Satiety));
+        private static readonly System.Reflection.FieldInfo healthField =
+            AccessTools.Field(typeof(FoodNutritionProperties), nameof(FoodNutritionProperties.Health));
+
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            return WildcardUtil.Match(vegetableWildcard, asset);
+            var matcher = new CodeMatcher(instructions);
+
+            // 1) byEntity.ReceiveSaturation(nutriProps.Satiety * satLossMul, ...)
+            //    IL: ldloc nutriProps; ldfld Satiety; ldloc satLossMul; mul
+            //    -> after ldfld Satiety, run the value through AdjustSatiety(satiety, this, byEntity)
+            matcher
+                .MatchStartForward(
+                    new CodeMatch(OpCodes.Ldfld, satietyField),
+                    new CodeMatch(ci => ci.IsLdloc()),
+                    new CodeMatch(OpCodes.Mul))
+                .ThrowIfInvalid("tryEatStop transpiler: could not find Satiety * satLossMul")
+                .Advance(1) // just past ldfld Satiety
+                .InsertAndAdvance(
+                    new CodeInstruction(OpCodes.Ldarg_0),  // this (CollectibleObject)
+                    new CodeInstruction(OpCodes.Ldarg_3),  // byEntity
+                    CodeInstruction.Call(typeof(CollectiblePatchesTryEatStopPatch), nameof(AdjustSatiety)));
+
+            // 2) float healthChange = nutriProps.Health * healthLossMul;
+            //    IL: ldloc nutriProps; ldfld Health; ldloc healthLossMul; mul; stloc healthChange
+            //    -> insert just before the stloc
+            matcher
+                .MatchEndForward(
+                    new CodeMatch(OpCodes.Ldfld, healthField),
+                    new CodeMatch(ci => ci.IsLdloc()),
+                    new CodeMatch(OpCodes.Mul))
+                .ThrowIfInvalid("tryEatStop transpiler: could not find Health * healthLossMul")
+                .Advance(1) // now on the stloc
+                .Insert(
+                    new CodeInstruction(OpCodes.Ldarg_0),
+                    new CodeInstruction(OpCodes.Ldarg_3),
+                    CodeInstruction.Call(typeof(CollectiblePatchesTryEatStopPatch), nameof(AdjustHealth)));
+
+            return matcher.InstructionEnumeration();
         }
 
-        static bool Prefix(CollectibleObject __instance, float secondsUsed, ItemSlot slot, EntityAgent byEntity)
+        public static float AdjustSatiety(float satiety, CollectibleObject collectible, EntityAgent byEntity)
         {
-            FoodNutritionProperties nutriProps = __instance.GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity);
+            float bonusNutrition = 0;
 
-            if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
+            if (IsMushroom(collectible.Code)
+                && byEntity.HasBehavior<EntityBehaviorEffects>()
+                && byEntity.HasBehavior<EntityBehaviorPlayerMasteries>())
             {
-                TransitionState state = __instance.UpdateAndGetTransitionState(byEntity.World, slot, EnumTransitionType.Perish);
-                float spoilState = state != null ? state.TransitionLevel : 0;
+                bonusNutrition = byEntity.Stats.GetBlended("mushroomsSaturation");
 
-                float satLossMul = GlobalConstants.FoodSpoilageSatLossMul(spoilState, slot.Itemstack, byEntity);
-                float healthLossMul = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, slot.Itemstack, byEntity);
+                var masteries = byEntity.GetBehavior<EntityBehaviorPlayerMasteries>();
+                SkillInstance? skill = masteries?.PlayerMasteryData.GetSkillInstance("FungalNourishment");
+                EffectManager? effectManager = byEntity.GetBehavior<EntityBehaviorEffects>()?.EffectManager;
 
-                float bonusNutrition = 0;
-                if (IsMushroom(__instance.Code) && byEntity.HasBehavior<EntityBehaviorEffects>() && byEntity.HasBehavior<EntityBehaviorPlayerMasteries>())
+                if (skill != null)
                 {
-                    bonusNutrition = byEntity.Stats.GetBlended("mushroomsSaturation"); //Subtracting one because of BaseValue
-                    EntityBehaviorPlayerMasteries? masteries = byEntity.GetBehavior<EntityBehaviorPlayerMasteries>();
-                    SkillInstance? skill = masteries?.PlayerMasteryData.GetSkillInstance("FungalNourishment");
+                    var mapi = byEntity.Api.ModLoader.GetModSystem<MasteryLibraryAPI>();
+                    EffectInstance? effect = mapi.EffectRegistry.CreateEffectInstance(
+                        "StatBoost", byEntity.GetName(), (long)skill.Skill.Duration * 1000, skill.Level);
 
-                    EntityBehaviorEffects? agentEffects = byEntity.GetBehavior<EntityBehaviorEffects>();
-                    EffectManager? effectManager = agentEffects?.EffectManager;
-                    if (skill != null)
+                    var activeStats = skill.Skill.GetValueSafe<Dictionary<string, StatConfiguration>>("ActiveStats");
+                    if (activeStats != null)
                     {
-                        MasteryLibraryAPI mapi = byEntity.Api.ModLoader.GetModSystem<MasteryLibraryAPI>();
-                        EffectInstance? effect = mapi.EffectRegistry.CreateEffectInstance("StatBoost", byEntity.GetName(), (long)skill.Skill.Duration * 1000, skill.Level);
-                        var activeStats = skill.Skill.GetValueSafe<Dictionary<string, StatConfiguration>>("ActiveStats");
-                        if (activeStats != null)
-                        {
-                            effect?.CustomData.Add("ActiveStats", activeStats);
-                        }
-                        effectManager?.AddEffect(effect);
+                        effect?.CustomData.Add("ActiveStats", activeStats);
                     }
+                    if (effect != null) effectManager?.AddEffect(effect);
                 }
-                if (IsVegetable(__instance.Code))
-                {
-                    bonusNutrition = nutriProps.Satiety * byEntity.Stats.GetBlended("vegetablesSaturation");
-                }
-                byEntity.ReceiveSaturation((nutriProps.Satiety + bonusNutrition) * satLossMul, nutriProps.FoodCategory, nutriProps.SaturationLossDelay);
-
-                foreach (var category in byEntity.Stats)
-                {
-                    byEntity.Api.Logger.Debug(category.Key);
-                }
-
-                IPlayer player = null;
-                if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
-
-                slot.TakeOut(1);
-
-                if (nutriProps.EatenStack != null)
-                {
-                    if (slot.Empty)
-                    {
-                        slot.Itemstack = nutriProps.EatenStack.ResolvedItemstack?.Clone();
-                    }
-                    else
-                    {
-                        if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack?.Clone(), true))
-                        {
-                            byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack?.Clone(), byEntity.Pos.XYZ);
-                        }
-                    }
-                }
-
-                float healthChange = nutriProps.Health * healthLossMul;
-                if (healthChange < 0 && IsMushroom(__instance.Code))
-                {
-                    healthChange *= Math.Max(player.Entity.Stats.GetBlended("mushroomDamageMult"), 0);
-                }
-
-                float intox = byEntity.WatchedAttributes.GetFloat("intoxication");
-                byEntity.WatchedAttributes.SetFloat("intoxication", Math.Min(1.1f, intox + nutriProps.Intoxication));
-
-                float psyche = byEntity.WatchedAttributes.GetFloat("psychedelic");
-                byEntity.WatchedAttributes.SetFloat("psychedelic", Math.Min(2.0f, psyche + nutriProps.Psychedelic));
-
-                if (healthChange != 0)
-                {
-                    float durationSec = slot.Itemstack?.Collectible?.Attributes?["eatHealthEffectDurationSec"].AsFloat(0) ?? 0;
-                    int ticks = slot.Itemstack?.Collectible?.Attributes?["eatHealthEffectTicks"].AsInt(1) ?? 1;
-
-                    byEntity.ReceiveDamage(new DamageSource()
-                    {
-                        Source = EnumDamageSource.Internal,
-                        Type = healthChange > 0 ? EnumDamageType.Heal : EnumDamageType.Poison,
-                        Duration = TimeSpan.FromSeconds(durationSec),
-                        TicksPerDuration = ticks,
-                        DamageOverTimeTypeEnum = healthChange > 0 ? EnumDamageOverTimeEffectType.Unknown : EnumDamageOverTimeEffectType.Poison
-                    }, Math.Abs(healthChange));
-                }
-
-                slot.MarkDirty();
-                player?.InventoryManager.BroadcastHotbarSlot();
             }
-            return false;
+
+            if (IsVegetable(collectible.Code))
+            {
+                bonusNutrition = satiety * byEntity.Stats.GetBlended("vegetablesSaturation") - 1;
+            }
+
+            return satiety + bonusNutrition;
+        }
+
+        public static float AdjustHealth(float healthChange, CollectibleObject collectible, EntityAgent byEntity)
+        {
+            if (healthChange < 0 && IsMushroom(collectible.Code))
+            {
+                healthChange *= Math.Max(byEntity.Stats.GetBlended("mushroomDamageMult"), 0);
+            }
+            return healthChange;
         }
     }
 }

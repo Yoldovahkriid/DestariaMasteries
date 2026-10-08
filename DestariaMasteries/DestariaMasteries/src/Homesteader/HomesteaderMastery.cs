@@ -259,7 +259,7 @@ namespace DestariaMasteries.src.Homesteader
         public override int RequiredMasteryLevel => 8;
         public SelfsufficientSkill()
         {
-            var passiveStats = new Dictionary<string, StatConfiguration> { { "hungerrate ", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.0f, -0.1f, -0.1f } } } ) } };
+            var passiveStats = new Dictionary<string, StatConfiguration> { { "hungerrate", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.0f, -0.1f, -0.1f } } } ) } };
             Attributes.Add("PassiveStats", passiveStats);
         }
 
@@ -520,7 +520,7 @@ namespace DestariaMasteries.src.Homesteader
         public override int RequiredMasteryLevel => 21;
         public RationingSkill()
         {
-            var passiveStats = new Dictionary<string, StatConfiguration> { { "hungerrate ", new StatConfiguration("Linear", new Dictionary<string, object> { { "BaseValue", 0.02f } }) } };
+            var passiveStats = new Dictionary<string, StatConfiguration> { { "hungerrate", new StatConfiguration("Linear", new Dictionary<string, object> { { "BaseValue", 0.02f } }) } };
             passiveStats.Add("saveSeedChance", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.03f, 0.06f, 0.09f, 0.12f, 0.2f } } }));
             passiveStats.Add("saveFertilizerChance", new StatConfiguration("Array", new Dictionary<string, object> { { "Values", new float[] { 0.03f, 0.06f, 0.09f, 0.12f, 0.2f } } }));
             Attributes.Add("PassiveStats", passiveStats);

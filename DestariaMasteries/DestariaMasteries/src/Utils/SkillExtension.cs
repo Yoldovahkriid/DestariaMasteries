@@ -20,7 +20,11 @@ namespace DestariaMasteries.src.Utils
             var stats = skill.GetValueSafe<Dictionary<string, StatConfiguration>>(statGroup);
 
             return statKeys
-                .Select(key => (object)(StatScalingUtil.GetScaledValue(stats?.GetValueOrDefault(key), level) * 100f))
+                .Select(key =>
+                {
+                    float scaledValue = StatScalingUtil.GetScaledValue(stats?.GetValueOrDefault(key), level) * 100f;
+                    return (object)MathF.Round(scaledValue, 2);
+                })
                 .ToArray();
         }
     }
