@@ -72,7 +72,7 @@ namespace DestariaMasteries.src.Patches
                 && byEntity.HasBehavior<EntityBehaviorEffects>()
                 && byEntity.HasBehavior<EntityBehaviorPlayerMasteries>())
             {
-                bonusNutrition = byEntity.Stats.GetBlended("mushroomsSaturation");
+                bonusNutrition = byEntity.Stats.GetBlended("mushroomsSaturation")-1;
 
                 var masteries = byEntity.GetBehavior<EntityBehaviorPlayerMasteries>();
                 SkillInstance? skill = masteries?.PlayerMasteryData.GetSkillInstance("FungalNourishment");
@@ -95,7 +95,7 @@ namespace DestariaMasteries.src.Patches
 
             if (IsVegetable(collectible.Code))
             {
-                bonusNutrition = satiety * byEntity.Stats.GetBlended("vegetablesSaturation") - 1;
+                bonusNutrition = satiety * (byEntity.Stats.GetBlended("vegetablesSaturation") - 1);
             }
 
             return satiety + bonusNutrition;
