@@ -3,6 +3,7 @@ using MasteryLibrary.src.Core.Masteries.Data;
 using MasteryLibrary.src.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Config;
 
@@ -407,9 +408,12 @@ namespace DestariaMasteries.src.Homesteader
 
         public override string GetDescription(int level)
         {
-            return Lang.Get("destariamasteries:homesteader-grovetending-desc", 
-                this.GetScaledPercentActiveArgs(level, "cuttingReviveChance"),
-                this.GetScaledPercentArgs(level, "forageDropRate"));
+            var reviveChanceArgs = this.GetScaledPercentActiveArgs(level, "cuttingReviveChance");
+            var forageDropArgs = this.GetScaledPercentArgs(level, "forageDropRate");
+
+            object[] combinedArgs = reviveChanceArgs.Concat(forageDropArgs).ToArray();
+
+            return Lang.Get("destariamasteries:homesteader-grovetending-desc", combinedArgs);
         }
     }
     public class GentleTouchSkill : Skill

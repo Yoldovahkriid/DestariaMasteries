@@ -1,6 +1,7 @@
 ﻿using DestariaMasteries.src.Alchemy;
 using DestariaMasteries.src.Behavior.CollectibleBehaviors;
 using DestariaMasteries.src.Behavior.EntityBehaviors;
+using DestariaMasteries.src.EarthShaper;
 using DestariaMasteries.src.Effects;
 using DestariaMasteries.src.Homesteader;
 using DestariaMasteries.src.Mechanist;
@@ -34,6 +35,7 @@ namespace DestariaMasteries.src.Systems
             MasteryLibrary.MasteryDefinitions.AddMastery(new AlchemyMastery());
             MasteryLibrary.MasteryDefinitions.AddMastery(new MechanistMastery());
             MasteryLibrary.MasteryDefinitions.AddMastery(new HomesteaderMastery());
+            MasteryLibrary.MasteryDefinitions.AddMastery(new EarthShaperMastery());
             //Alchemy Skills
             MasteryLibrary.AbilityRegistry.RegisterAbility(new PrimedToxin());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new DazzleBlast());
@@ -52,6 +54,8 @@ namespace DestariaMasteries.src.Systems
             MasteryLibrary.AbilityRegistry.RegisterAbility(new BrewMaster());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new GreenerThanGreen());
             MasteryLibrary.AbilityRegistry.RegisterAbility(new MiracleOfLife());
+            //EarthShaper Skills
+            MasteryLibrary.AbilityRegistry.RegisterAbility(new TimeToRock());
             //Effects
             MasteryLibrary.EffectRegistry.RegisterEffect(new PoisonDOT());
             MasteryLibrary.EffectRegistry.RegisterEffect(new Blindness());
@@ -62,6 +66,7 @@ namespace DestariaMasteries.src.Systems
 
             api.RegisterCollectibleBehaviorClass("SmallItemDamageReduction", typeof(SmallItemDamageReduction));
             api.RegisterCollectibleBehaviorClass("DamageScalar", typeof(DamageScalarBehavior));
+            api.RegisterCollectibleBehaviorClass("StatBasedDurabilityScale", typeof(CollectibleBehaviorStatBasedDurabilityScale));
 
             api.RegisterBlockEntityBehaviorClass("MPJonasScrew", typeof(BEBehaviorMPJonasScrew));
 

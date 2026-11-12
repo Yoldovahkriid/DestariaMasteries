@@ -1,0 +1,56 @@
+[
+  {
+    "file": "game:itemtypes/tool/axe-stone",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": { "name": "StatBasedDurabilityScale" },
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/tool/axe-stone",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": { "name": "Buffable" },
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/tool/hoe",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "StatBasedDurabilityScale",
+      "properties": { "allowedvariants": [ "@hoe-(chert|granite|andesite|basalt|obsidian|peridotite|flint)" ]}
+    },
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/tool/knife",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "StatBasedDurabilityScale",
+      "properties": { "allowedvariants": [ "@knife-generic-(chert|granite|andesite|basalt|obsidian|peridotite|flint|bonechert|bonegranite|boneandesite|bonebasalt|boneobsidian|boneperidotite|boneflin)" ] }
+    },
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/tool/shovel",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "StatBasedDurabilityScale",
+      "properties": { "allowedvariants": [ "@shovel-(chert|granite|andesite|basalt|obsidian|peridotite|flint)" ] }
+    },
+    "side": "server"
+  },
+  {
+    "file": "game:itemtypes/tool/spear",
+    "op": "addmerge",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "StatBasedDurabilityScale",
+      "properties": { "allowedvariants": [ "@spear-(chert|granite|andesite|basalt|obsidian|peridotite|flint)" ] }
+    },
+    "side": "server"
+  }
+]

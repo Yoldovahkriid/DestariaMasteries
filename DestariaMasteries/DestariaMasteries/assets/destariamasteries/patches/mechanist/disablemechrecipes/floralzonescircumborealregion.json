@@ -120,13 +120,6 @@
   },
   {
     "op": "addmerge",
-    "path": "/17/enabled",
-    "value": false,
-    "file": "floralzonescircumborealregion:recipes/grid/wood/mechpowerblocks",
-    "side": "server"
-  },
-  {
-    "op": "addmerge",
     "path": "/0/enabled",
     "value": false,
     "file": "floralzonescircumborealregion:recipes/grid/wood/mechpowerblocks-pulverizer",

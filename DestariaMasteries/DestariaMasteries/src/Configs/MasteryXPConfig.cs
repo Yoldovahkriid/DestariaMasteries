@@ -127,7 +127,7 @@ namespace DestariaMasteries.src.Utils
         public float AnimalHarvestXp = 40f;
 
         // Social XP
-        public float SocialXpPerPlayer = 5f; // per "active tick credit" awarded
+        public float SocialXpPerPlayer = 25f; // per "active tick credit" awarded
         public SocialSystemConfig SocialSystem = new();
 
         public Dictionary<string, float> SmithingMetalXp { get; set; } = new()

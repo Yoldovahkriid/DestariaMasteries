@@ -157,7 +157,7 @@
   "destariamasteries:homesteader-gentletouch-desc": "Attempt to calm an animal that has already been milked today with a {0}%% chance of success. On success, the animal becomes milkable again. The cooldown is only applied on failure.",
 
   "destariamasteries:homesteader-grovetending-name": "Grove Tending",
-  "destariamasteries:homesteader-grovetending-desc": "Attempt to revive a dead cutting with a {0}%% chance of success. On failure, the cutting is destroyed. Furthermore, gain an additional {0}%% yield from berry bushes and fruit trees.",
+  "destariamasteries:homesteader-grovetending-desc": "Attempt to revive a dead cutting with a {0}%% chance of success. On failure, the cutting is destroyed. Furthermore, gain an additional {1}%% yield from berry bushes and fruit trees.",
 
   "destariamasteries:homesteader-tothebone-name": "To the Bone",
   "destariamasteries:homesteader-tothebone-desc": "While holding a knife, you can exert yourself to strip every last bit from an animal or fish, adding 50%% to the yield. You can use this ability {0} times per day.",
@@ -205,5 +205,7 @@
   "destariamasteries:block-jonasscrew-*": "Jonas Screw",
 
 
-  "destariamasteries:xpsource-social": "Social"
+  "destariamasteries:xpsource-social": "Social",
+
+  "game:mulbuff-statdurability-maxdurability": "Skill. {0:\\+##%;##%} durability"
 }

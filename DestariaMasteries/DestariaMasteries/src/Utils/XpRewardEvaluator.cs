@@ -104,17 +104,22 @@ namespace DestariaMasteries.src.Utils
 
         public static void OnBlockBroken(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling)
         {
-            Block block = blockSel.Block;
-            if (block == null) return;
+            OnBlockBroken(byPlayer, blockSel.Block, blockSel.Position);
+        }
+
+        public static void OnBlockBroken(IServerPlayer byPlayer, Block block, BlockPos pos)
+        {
+            if (block == null || block.Id == 0) return;
 
             BlockTypeEnum blockType = GetBlockType(block.Code);
             float xpToAward = GetExpForBlock(block, byPlayer, blockType);
 
-            string localizedBlockName = block.GetPlacedBlockName(byPlayer.Entity.World, blockSel.Position);
             if (xpToAward > 0)
             {
                 byPlayer.Entity.Api.Logger.Audit($"Awarding {xpToAward} XP to player {byPlayer.PlayerName} for breaking block {block.Code}");
             }
+
+            string localizedBlockName = block.GetPlacedBlockName(byPlayer.Entity.World, pos);
             GrantXpToPlayer(byPlayer, xpToAward, EnumXpImageSourceType.Block, localizedBlockName, block.Code);
         }
 

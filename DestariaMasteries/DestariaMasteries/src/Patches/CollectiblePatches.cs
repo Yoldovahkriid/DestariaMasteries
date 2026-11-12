@@ -10,6 +10,7 @@ using System.Reflection.Emit;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
+using static OpenTK.Graphics.OpenGL.GL;
 
 namespace DestariaMasteries.src.Patches
 {
@@ -108,6 +109,18 @@ namespace DestariaMasteries.src.Patches
                 healthChange *= Math.Max(byEntity.Stats.GetBlended("mushroomDamageMult"), 0);
             }
             return healthChange;
+        }
+    }
+
+    [HarmonyPatch(typeof(CollectibleObject), nameof(CollectibleObject.GetMiningSpeed))]
+    public class CollectiblePatchesGetMiningSpeedPatch
+    {
+        static void Postfix(CollectibleObject __instance, ref float __result, IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer)
+        {
+            if (block.GetBlockMaterial(forPlayer.Entity.Api.World.BlockAccessor, blockSel.Position) == EnumBlockMaterial.Soil)
+            {
+                __result *= forPlayer.Entity.Stats.GetBlended("soilBreakingSpeedMul");
+            }
         }
     }
 }

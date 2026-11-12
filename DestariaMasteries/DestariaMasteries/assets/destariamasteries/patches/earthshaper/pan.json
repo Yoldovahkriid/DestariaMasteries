@@ -1,0 +1,191 @@
+[
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/0/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/1/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/2/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/3/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/4/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/5/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/6/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/7/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/8/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/9/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/10/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/11/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/12/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/13/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/14/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/15/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/16/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/17/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/18/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/19/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/20/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/21/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/22/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/23/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/24/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/25/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  },
+  {
+    "file": "game:blocktypes/wood/pan",
+    "op": "addmerge",
+    "path": "/attributes/panningDrops/@(sand|gravel|sandwavy)-.*/26/dropModbyStat",
+    "value": "panDropMul",
+    "side": "server"
+  }
+]
